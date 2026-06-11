@@ -105,17 +105,13 @@ def build_html(scores, participants):
     # Pretty-print the date
     if last_run != "—":
         try:
-            from datetime import datetime
+            from datetime import datetime, timedelta
             dt = datetime.fromisoformat(last_run.replace("Z", "+00:00"))
-            last_run = dt.strftime("%-d %b %Y · %H:%M UTC")
+            dt_bst = dt + timedelta(hours=1)  # World Cup runs entirely in BST (UTC+1)
+            day = str(int(dt_bst.strftime("%d")))  # no leading zero, cross-platform
+            last_run = f"{day} {dt_bst.strftime('%b %Y · %H:%M')} BST"
         except Exception:
-            pass  # leave as-is on Windows (no %-d)
-            try:
-                from datetime import datetime
-                dt = datetime.fromisoformat(last_run.replace("Z", "+00:00"))
-                last_run = dt.strftime("%d %b %Y · %H:%M UTC").lstrip("0")
-            except Exception:
-                pass
+            pass
 
     # Sort participants by total descending
     ranked = sorted(
