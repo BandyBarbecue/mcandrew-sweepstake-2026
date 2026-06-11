@@ -1,19 +1,9 @@
 {
-  "lastRunAt": "2026-06-11T21:39:01.837997+00:00",
+  "lastRunAt": "2026-06-11T21:42:53.950309+00:00",
   "lastEmailAt": "2026-06-11T21:25:56.757543+00:00",
   "processedMatchIds": [],
   "qualificationAwarded": [],
-  "recentResults": [
-    {
-      "matchId": 537327,
-      "homeTeam": "Mexico",
-      "awayTeam": "South Africa",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2026-06-11",
-      "stage": "Group Stage"
-    }
-  ],
+  "recentResults": [],
   "participants": {
     "Kenny": {
       "total": 0,
