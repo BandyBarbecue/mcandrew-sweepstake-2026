@@ -184,13 +184,16 @@ def main():
     for match in sorted(matches, key=lambda m: m["utcDate"], reverse=True)[:10]:
         home = normalize(match["homeTeam"]["name"] or "", aliases)
         away = normalize(match["awayTeam"]["name"] or "", aliases)
-        score_data = match["score"]["fullTime"]
+        ft = match["score"].get("fullTime", {}) or {}
+        rt = match["score"].get("regularTime", {}) or {}
+        home_score = ft.get("home") if ft.get("home") is not None else rt.get("home")
+        away_score = ft.get("away") if ft.get("away") is not None else rt.get("away")
         recent.append({
             "matchId": match["id"],
             "homeTeam": home,
             "awayTeam": away,
-            "homeScore": score_data["home"],
-            "awayScore": score_data["away"],
+            "homeScore": home_score if home_score is not None else "?",
+            "awayScore": away_score if away_score is not None else "?",
             "date": match["utcDate"][:10],
             "stage": STAGE_LABELS.get(match["stage"], match["stage"]),
         })
