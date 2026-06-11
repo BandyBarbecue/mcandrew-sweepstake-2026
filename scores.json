@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-06-11T22:01:48.503169+00:00",
+  "lastRunAt": "2026-06-11T22:09:29.872242+00:00",
   "lastEmailAt": "2026-06-11T22:01:53.141119+00:00",
   "processedMatchIds": [
     537327
@@ -10,8 +10,8 @@
       "matchId": 537327,
       "homeTeam": "Mexico",
       "awayTeam": "South Africa",
-      "homeScore": 2,
-      "awayScore": 0,
+      "homeScore": "?",
+      "awayScore": "?",
       "date": "2026-06-11",
       "stage": "Group Stage"
     }
