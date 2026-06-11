@@ -1,0 +1,79 @@
+{
+  "lastRunAt": null,
+  "lastEmailAt": null,
+  "processedMatchIds": [],
+  "qualificationAwarded": [],
+  "recentResults": [],
+  "Kenny": {
+    "total": 0,
+    "countries": {
+      "Qatar": {"points": 0},
+      "Uruguay": {"points": 0},
+      "Morocco": {"points": 0},
+      "Argentina": {"points": 0},
+      "Norway": {"points": 0},
+      "Iran": {"points": 0},
+      "Croatia": {"points": 0},
+      "Spain": {"points": 0},
+      "Belgium": {"points": 0},
+      "Ivory Coast": {"points": 0},
+      "Mexico": {"points": 0},
+      "Czechia": {"points": 0}
+    },
+    "log": []
+  },
+  "Fiona": {
+    "total": 0,
+    "countries": {
+      "Bosnia & Herz.": {"points": 0},
+      "Japan": {"points": 0},
+      "Panama": {"points": 0},
+      "Senegal": {"points": 0},
+      "DR Congo": {"points": 0},
+      "Canada": {"points": 0},
+      "Cape Verde": {"points": 0},
+      "Jordan": {"points": 0},
+      "USA": {"points": 0},
+      "South Africa": {"points": 0},
+      "England": {"points": 0},
+      "Colombia": {"points": 0}
+    },
+    "log": []
+  },
+  "Edward": {
+    "total": 0,
+    "countries": {
+      "Haiti": {"points": 0},
+      "Brazil": {"points": 0},
+      "Sweden": {"points": 0},
+      "France": {"points": 0},
+      "South Korea": {"points": 0},
+      "Ecuador": {"points": 0},
+      "New Zealand": {"points": 0},
+      "Saudi Arabia": {"points": 0},
+      "Netherlands": {"points": 0},
+      "Turkey": {"points": 0},
+      "Paraguay": {"points": 0},
+      "Iraq": {"points": 0}
+    },
+    "log": []
+  },
+  "Alex": {
+    "total": 0,
+    "countries": {
+      "Scotland": {"points": 0},
+      "Egypt": {"points": 0},
+      "Australia": {"points": 0},
+      "Curaçao": {"points": 0},
+      "Ghana": {"points": 0},
+      "Austria": {"points": 0},
+      "Germany": {"points": 0},
+      "Tunisia": {"points": 0},
+      "Algeria": {"points": 0},
+      "Portugal": {"points": 0},
+      "Switzerland": {"points": 0},
+      "Uzbekistan": {"points": 0}
+    },
+    "log": []
+  }
+}

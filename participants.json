@@ -1,0 +1,37 @@
+{
+  "countryToOwner": {
+    "Qatar": "Kenny", "Uruguay": "Kenny", "Morocco": "Kenny",
+    "Argentina": "Kenny", "Norway": "Kenny", "Iran": "Kenny",
+    "Croatia": "Kenny", "Spain": "Kenny", "Belgium": "Kenny",
+    "Ivory Coast": "Kenny", "Mexico": "Kenny", "Czechia": "Kenny",
+    "Bosnia & Herz.": "Fiona", "Japan": "Fiona", "Panama": "Fiona",
+    "Senegal": "Fiona", "DR Congo": "Fiona", "Canada": "Fiona",
+    "Cape Verde": "Fiona", "Jordan": "Fiona", "USA": "Fiona",
+    "South Africa": "Fiona", "England": "Fiona", "Colombia": "Fiona",
+    "Haiti": "Edward", "Brazil": "Edward", "Sweden": "Edward",
+    "France": "Edward", "South Korea": "Edward", "Ecuador": "Edward",
+    "New Zealand": "Edward", "Saudi Arabia": "Edward",
+    "Netherlands": "Edward", "Turkey": "Edward",
+    "Paraguay": "Edward", "Iraq": "Edward",
+    "Scotland": "Alex", "Egypt": "Alex", "Australia": "Alex",
+    "Curaçao": "Alex", "Ghana": "Alex", "Austria": "Alex",
+    "Germany": "Alex", "Tunisia": "Alex", "Algeria": "Alex",
+    "Portugal": "Alex", "Switzerland": "Alex", "Uzbekistan": "Alex"
+  },
+  "apiNameAliases": {
+    "Côte d'Ivoire": "Ivory Coast",
+    "Bosnia and Herzegovina": "Bosnia & Herz.",
+    "Korea Republic": "South Korea",
+    "Congo DR": "DR Congo",
+    "United States": "USA",
+    "Curacao": "Curaçao",
+    "IR Iran": "Iran"
+  },
+  "emails": {
+    "Edward": "edward.mcandrew@outlook.com",
+    "Kenny": "kenny@kennymcandrew.com",
+    "Fiona": "mcandrewfiona@gmail.com",
+    "Alex": "alex.mcandrew@outlook.com"
+  },
+  "sender": "edward.mcandrew20@gmail.com"
+}
