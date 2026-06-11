@@ -560,8 +560,18 @@ def build_html(scores, participants):
 # ---------------------------------------------------------------------------
 
 def main():
-    print("Reading scores.json from GitHub...")
-    scores, scores_sha = read_json("scores.json")
+    # Read scores.json from local file if available (written by update_scores.py in same run),
+    # otherwise fall back to GitHub API. Avoids a race condition where the API briefly
+    # returns a cached pre-update version when called within seconds of the write.
+    import json as _json
+    local_scores = os.path.join(os.path.dirname(__file__), "scores.json")
+    if os.path.exists(local_scores):
+        print("Reading scores.json from local file...")
+        with open(local_scores, encoding="utf-8") as _f:
+            scores = _json.load(_f)
+    else:
+        print("Reading scores.json from GitHub...")
+        scores, _ = read_json("scores.json")
 
     print("Reading participants.json from GitHub...")
     participants, _ = read_json("participants.json")
