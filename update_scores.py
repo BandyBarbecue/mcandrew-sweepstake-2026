@@ -203,6 +203,13 @@ def main():
         "scores.json", scores, scores_sha,
         f"Update scores {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC"
     )
+
+    # Also write locally so generate_html.py can read without hitting the API again
+    import json as _json
+    local_path = os.path.join(os.path.dirname(__file__), "scores.json")
+    with open(local_path, "w", encoding="utf-8") as _f:
+        _json.dump(scores, _f, indent=2, ensure_ascii=False)
+
     print(f"Run complete. {len(new_events)} new point events.")
     return new_events
 
