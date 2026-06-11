@@ -57,9 +57,10 @@ def new_events_since_last_email(scores):
         for entry in data.get("log", []):
             all_events.append({"owner": owner, **entry})
     if not last_email:
-        return all_events
+        return sorted(all_events, key=lambda e: e.get("date", ""), reverse=True)
     cutoff = last_email[:10]  # YYYY-MM-DD
-    return [e for e in all_events if e.get("date", "") >= cutoff]
+    filtered = [e for e in all_events if e.get("date", "") >= cutoff]
+    return sorted(filtered, key=lambda e: e.get("date", ""), reverse=True)
 
 
 def format_day(dt):
