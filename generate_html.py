@@ -148,7 +148,7 @@ def build_html(scores, participants):
 
         # Points log
         log_html = ""
-        log_entries = pdata.get("log", [])
+        log_entries = sorted(pdata.get("log", []), key=lambda e: e.get("date", ""), reverse=True)
         if log_entries:
             for entry in log_entries:
                 pts_val = entry.get("points", 0)
