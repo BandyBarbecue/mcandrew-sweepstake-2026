@@ -59,7 +59,7 @@ def new_events_since_last_email(scores):
     if not last_email:
         return sorted(all_events, key=lambda e: e.get("date", ""), reverse=True)
     cutoff = last_email[:10]  # YYYY-MM-DD
-    filtered = [e for e in all_events if e.get("date", "") >= cutoff]
+    filtered = [e for e in all_events if e.get("date", "") > cutoff]
     return sorted(filtered, key=lambda e: e.get("date", ""), reverse=True)
 
 
