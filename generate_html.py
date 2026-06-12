@@ -197,8 +197,8 @@ def build_html(scores, participants):
         for res in recent_results[:10]:
             home = res.get("homeTeam", "")
             away = res.get("awayTeam", "")
-            hs = res.get("homeScore", "?")
-            as_ = res.get("awayScore", "?")
+            hs = res.get("homeScore")
+            as_ = res.get("awayScore")
             date_str = res.get("date", "")
             stage_str = res.get("stage", "")
             hf = flag(home)
@@ -206,7 +206,7 @@ def build_html(scores, participants):
             recent_html += f"""
           <div class="result-row">
             <span class="result-home">{hf} {home}</span>
-            <span class="result-score">{hs} – {as_}</span>
+            <span class="result-score">{f"{hs} – {as_}" if hs is not None and as_ is not None else "–"}</span>
             <span class="result-away">{away} {af}</span>
             <span class="result-meta">{stage_str} · {date_str}</span>
           </div>"""
