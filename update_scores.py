@@ -192,8 +192,8 @@ def main():
             "matchId": match["id"],
             "homeTeam": home,
             "awayTeam": away,
-            "homeScore": home_score if home_score is not None else "?",
-            "awayScore": away_score if away_score is not None else "?",
+            "homeScore": home_score,
+            "awayScore": away_score,
             "date": match["utcDate"][:10],
             "stage": STAGE_LABELS.get(match["stage"], match["stage"]),
         })
