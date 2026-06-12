@@ -1,17 +1,27 @@
 {
-  "lastRunAt": "2026-06-11T22:09:29.872242+00:00",
+  "lastRunAt": "2026-06-12T08:38:36.583317+00:00",
   "lastEmailAt": "2026-06-11T22:09:33.767280+00:00",
   "processedMatchIds": [
+    537328,
     537327
   ],
   "qualificationAwarded": [],
   "recentResults": [
     {
+      "matchId": 537328,
+      "homeTeam": "South Korea",
+      "awayTeam": "Czechia",
+      "homeScore": 2,
+      "awayScore": 1,
+      "date": "2026-06-12",
+      "stage": "Group Stage"
+    },
+    {
       "matchId": 537327,
       "homeTeam": "Mexico",
       "awayTeam": "South Africa",
-      "homeScore": "?",
-      "awayScore": "?",
+      "homeScore": 2,
+      "awayScore": 0,
       "date": "2026-06-11",
       "stage": "Group Stage"
     }
@@ -111,7 +121,7 @@
       "log": []
     },
     "Edward": {
-      "total": 0,
+      "total": 2,
       "countries": {
         "Haiti": {
           "points": 0
@@ -126,7 +136,7 @@
           "points": 0
         },
         "South Korea": {
-          "points": 0
+          "points": 2
         },
         "Ecuador": {
           "points": 0
@@ -150,7 +160,16 @@
           "points": 0
         }
       },
-      "log": []
+      "log": [
+        {
+          "country": "South Korea",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-12",
+          "opponent": "Czechia",
+          "matchId": 537328
+        }
+      ]
     },
     "Alex": {
       "total": 0,
