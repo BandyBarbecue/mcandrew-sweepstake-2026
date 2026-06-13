@@ -1,12 +1,32 @@
 {
-  "lastRunAt": "2026-06-12T08:38:36.583317+00:00",
+  "lastRunAt": "2026-06-13T07:53:45.392445+00:00",
   "lastEmailAt": "2026-06-12T08:38:40.364764+00:00",
   "processedMatchIds": [
     537328,
+    537345,
+    537333,
     537327
   ],
   "qualificationAwarded": [],
   "recentResults": [
+    {
+      "matchId": 537345,
+      "homeTeam": "USA",
+      "awayTeam": "Paraguay",
+      "homeScore": 4,
+      "awayScore": 1,
+      "date": "2026-06-13",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537333,
+      "homeTeam": "Canada",
+      "awayTeam": "Bosnia-Herzegovina",
+      "homeScore": 1,
+      "awayScore": 1,
+      "date": "2026-06-12",
+      "stage": "Group Stage"
+    },
     {
       "matchId": 537328,
       "homeTeam": "South Korea",
@@ -79,7 +99,7 @@
       ]
     },
     "Fiona": {
-      "total": 0,
+      "total": 3,
       "countries": {
         "Bosnia & Herz.": {
           "points": 0
@@ -97,7 +117,7 @@
           "points": 0
         },
         "Canada": {
-          "points": 0
+          "points": 1
         },
         "Cape Verde": {
           "points": 0
@@ -106,7 +126,7 @@
           "points": 0
         },
         "USA": {
-          "points": 0
+          "points": 2
         },
         "South Africa": {
           "points": 0
@@ -118,7 +138,24 @@
           "points": 0
         }
       },
-      "log": []
+      "log": [
+        {
+          "country": "USA",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-13",
+          "opponent": "Paraguay",
+          "matchId": 537345
+        },
+        {
+          "country": "Canada",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-12",
+          "opponent": "Bosnia-Herzegovina",
+          "matchId": 537333
+        }
+      ]
     },
     "Edward": {
       "total": 2,
