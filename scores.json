@@ -1,14 +1,54 @@
 {
-  "lastRunAt": "2026-06-13T07:53:45.392445+00:00",
+  "lastRunAt": "2026-06-14T08:19:41.447609+00:00",
   "lastEmailAt": "2026-06-13T07:53:50.016998+00:00",
   "processedMatchIds": [
-    537328,
     537345,
+    537346,
+    537327,
+    537328,
     537333,
-    537327
+    537334,
+    537339,
+    537340
   ],
   "qualificationAwarded": [],
   "recentResults": [
+    {
+      "matchId": 537346,
+      "homeTeam": "Australia",
+      "awayTeam": "Turkey",
+      "homeScore": 2,
+      "awayScore": 0,
+      "date": "2026-06-14",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537340,
+      "homeTeam": "Haiti",
+      "awayTeam": "Scotland",
+      "homeScore": 0,
+      "awayScore": 1,
+      "date": "2026-06-14",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537339,
+      "homeTeam": "Brazil",
+      "awayTeam": "Morocco",
+      "homeScore": 1,
+      "awayScore": 1,
+      "date": "2026-06-13",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537334,
+      "homeTeam": "Qatar",
+      "awayTeam": "Switzerland",
+      "homeScore": 1,
+      "awayScore": 1,
+      "date": "2026-06-13",
+      "stage": "Group Stage"
+    },
     {
       "matchId": 537345,
       "homeTeam": "USA",
@@ -48,16 +88,16 @@
   ],
   "participants": {
     "Kenny": {
-      "total": 2,
+      "total": 4,
       "countries": {
         "Qatar": {
-          "points": 0
+          "points": 1
         },
         "Uruguay": {
           "points": 0
         },
         "Morocco": {
-          "points": 0
+          "points": 1
         },
         "Argentina": {
           "points": 0
@@ -88,6 +128,22 @@
         }
       },
       "log": [
+        {
+          "country": "Morocco",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-13",
+          "opponent": "Brazil",
+          "matchId": 537339
+        },
+        {
+          "country": "Qatar",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-13",
+          "opponent": "Switzerland",
+          "matchId": 537334
+        },
         {
           "country": "Mexico",
           "event": "GROUP_STAGE_WIN",
@@ -158,13 +214,13 @@
       ]
     },
     "Edward": {
-      "total": 2,
+      "total": 3,
       "countries": {
         "Haiti": {
           "points": 0
         },
         "Brazil": {
-          "points": 0
+          "points": 1
         },
         "Sweden": {
           "points": 0
@@ -199,6 +255,14 @@
       },
       "log": [
         {
+          "country": "Brazil",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-13",
+          "opponent": "Morocco",
+          "matchId": 537339
+        },
+        {
           "country": "South Korea",
           "event": "GROUP_STAGE_WIN",
           "points": 2,
@@ -209,16 +273,16 @@
       ]
     },
     "Alex": {
-      "total": 0,
+      "total": 5,
       "countries": {
         "Scotland": {
-          "points": 0
+          "points": 2
         },
         "Egypt": {
           "points": 0
         },
         "Australia": {
-          "points": 0
+          "points": 2
         },
         "Curaçao": {
           "points": 0
@@ -242,13 +306,38 @@
           "points": 0
         },
         "Switzerland": {
-          "points": 0
+          "points": 1
         },
         "Uzbekistan": {
           "points": 0
         }
       },
-      "log": []
+      "log": [
+        {
+          "country": "Australia",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-14",
+          "opponent": "Turkey",
+          "matchId": 537346
+        },
+        {
+          "country": "Scotland",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-14",
+          "opponent": "Haiti",
+          "matchId": 537340
+        },
+        {
+          "country": "Switzerland",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-13",
+          "opponent": "Qatar",
+          "matchId": 537334
+        }
+      ]
     }
   }
 }
