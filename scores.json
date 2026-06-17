@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-06-16T09:32:32.592353+00:00",
+  "lastRunAt": "2026-06-17T08:21:26.965010+00:00",
   "lastEmailAt": "2026-06-16T09:32:38.324072+00:00",
   "processedMatchIds": [
     537345,
@@ -8,19 +8,59 @@
     537352,
     537357,
     537358,
-    537327,
-    537328,
     537363,
     537364,
-    537333,
-    537334,
     537369,
     537370,
+    537391,
+    537392,
+    537397,
+    537398,
+    537327,
+    537328,
+    537333,
+    537334,
     537339,
     537340
   ],
   "qualificationAwarded": [],
   "recentResults": [
+    {
+      "matchId": 537398,
+      "homeTeam": "Austria",
+      "awayTeam": "Jordan",
+      "homeScore": 3,
+      "awayScore": 1,
+      "date": "2026-06-17",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537397,
+      "homeTeam": "Argentina",
+      "awayTeam": "Algeria",
+      "homeScore": 3,
+      "awayScore": 0,
+      "date": "2026-06-17",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537392,
+      "homeTeam": "Iraq",
+      "awayTeam": "Norway",
+      "homeScore": 1,
+      "awayScore": 4,
+      "date": "2026-06-16",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537391,
+      "homeTeam": "France",
+      "awayTeam": "Senegal",
+      "homeScore": 3,
+      "awayScore": 1,
+      "date": "2026-06-16",
+      "stage": "Group Stage"
+    },
     {
       "matchId": 537364,
       "homeTeam": "Iran",
@@ -74,47 +114,11 @@
       "awayScore": 0,
       "date": "2026-06-14",
       "stage": "Group Stage"
-    },
-    {
-      "matchId": 537357,
-      "homeTeam": "Netherlands",
-      "awayTeam": "Japan",
-      "homeScore": 2,
-      "awayScore": 2,
-      "date": "2026-06-14",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537351,
-      "homeTeam": "Germany",
-      "awayTeam": "Curaçao",
-      "homeScore": 7,
-      "awayScore": 1,
-      "date": "2026-06-14",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537346,
-      "homeTeam": "Australia",
-      "awayTeam": "Turkey",
-      "homeScore": 2,
-      "awayScore": 0,
-      "date": "2026-06-14",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537340,
-      "homeTeam": "Haiti",
-      "awayTeam": "Scotland",
-      "homeScore": 0,
-      "awayScore": 1,
-      "date": "2026-06-14",
-      "stage": "Group Stage"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 10,
+      "total": 14,
       "countries": {
         "Qatar": {
           "points": 1
@@ -126,10 +130,10 @@
           "points": 1
         },
         "Argentina": {
-          "points": 0
+          "points": 2
         },
         "Norway": {
-          "points": 0
+          "points": 2
         },
         "Iran": {
           "points": 1
@@ -154,6 +158,22 @@
         }
       },
       "log": [
+        {
+          "country": "Argentina",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-17",
+          "opponent": "Algeria",
+          "matchId": 537397
+        },
+        {
+          "country": "Norway",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-16",
+          "opponent": "Iraq",
+          "matchId": 537392
+        },
         {
           "country": "Iran",
           "event": "GROUP_STAGE_DRAW",
@@ -288,7 +308,7 @@
       ]
     },
     "Edward": {
-      "total": 8,
+      "total": 10,
       "countries": {
         "Haiti": {
           "points": 0
@@ -300,7 +320,7 @@
           "points": 2
         },
         "France": {
-          "points": 0
+          "points": 2
         },
         "South Korea": {
           "points": 2
@@ -328,6 +348,14 @@
         }
       },
       "log": [
+        {
+          "country": "France",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-16",
+          "opponent": "Senegal",
+          "matchId": 537391
+        },
         {
           "country": "New Zealand",
           "event": "GROUP_STAGE_DRAW",
@@ -379,7 +407,7 @@
       ]
     },
     "Alex": {
-      "total": 8,
+      "total": 10,
       "countries": {
         "Scotland": {
           "points": 2
@@ -397,7 +425,7 @@
           "points": 0
         },
         "Austria": {
-          "points": 0
+          "points": 2
         },
         "Germany": {
           "points": 2
@@ -419,6 +447,14 @@
         }
       },
       "log": [
+        {
+          "country": "Austria",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-17",
+          "opponent": "Jordan",
+          "matchId": 537398
+        },
         {
           "country": "Egypt",
           "event": "GROUP_STAGE_DRAW",
