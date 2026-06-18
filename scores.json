@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-06-17T09:07:49.042936+00:00",
+  "lastRunAt": "2026-06-18T08:52:38.584054+00:00",
   "lastEmailAt": "2026-06-17T08:21:31.630779+00:00",
   "processedMatchIds": [
     537345,
@@ -16,6 +16,10 @@
     537392,
     537397,
     537398,
+    537403,
+    537404,
+    537409,
+    537410,
     537327,
     537328,
     537333,
@@ -25,6 +29,42 @@
   ],
   "qualificationAwarded": [],
   "recentResults": [
+    {
+      "matchId": 537404,
+      "homeTeam": "Uzbekistan",
+      "awayTeam": "Colombia",
+      "homeScore": 1,
+      "awayScore": 3,
+      "date": "2026-06-18",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537410,
+      "homeTeam": "Ghana",
+      "awayTeam": "Panama",
+      "homeScore": 1,
+      "awayScore": 0,
+      "date": "2026-06-17",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537409,
+      "homeTeam": "England",
+      "awayTeam": "Croatia",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-06-17",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537403,
+      "homeTeam": "Portugal",
+      "awayTeam": "DR Congo",
+      "homeScore": 1,
+      "awayScore": 1,
+      "date": "2026-06-17",
+      "stage": "Group Stage"
+    },
     {
       "matchId": 537398,
       "homeTeam": "Austria",
@@ -77,42 +117,6 @@
       "homeScore": 1,
       "awayScore": 1,
       "date": "2026-06-15",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537363,
-      "homeTeam": "Belgium",
-      "awayTeam": "Egypt",
-      "homeScore": 1,
-      "awayScore": 1,
-      "date": "2026-06-15",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537369,
-      "homeTeam": "Spain",
-      "awayTeam": "Cape Verde Islands",
-      "homeScore": 0,
-      "awayScore": 0,
-      "date": "2026-06-15",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537358,
-      "homeTeam": "Sweden",
-      "awayTeam": "Tunisia",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2026-06-15",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537352,
-      "homeTeam": "Ivory Coast",
-      "awayTeam": "Ecuador",
-      "homeScore": 1,
-      "awayScore": 0,
-      "date": "2026-06-14",
       "stage": "Group Stage"
     }
   ],
@@ -241,7 +245,7 @@
       ]
     },
     "Fiona": {
-      "total": 4,
+      "total": 9,
       "countries": {
         "Bosnia & Herz.": {
           "points": 0
@@ -256,7 +260,7 @@
           "points": 0
         },
         "DR Congo": {
-          "points": 0
+          "points": 1
         },
         "Canada": {
           "points": 1
@@ -274,13 +278,37 @@
           "points": 0
         },
         "England": {
-          "points": 0
+          "points": 2
         },
         "Colombia": {
-          "points": 0
+          "points": 2
         }
       },
       "log": [
+        {
+          "country": "Colombia",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-18",
+          "opponent": "Uzbekistan",
+          "matchId": 537404
+        },
+        {
+          "country": "England",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-17",
+          "opponent": "Croatia",
+          "matchId": 537409
+        },
+        {
+          "country": "DR Congo",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-17",
+          "opponent": "Portugal",
+          "matchId": 537403
+        },
         {
           "country": "Japan",
           "event": "GROUP_STAGE_DRAW",
@@ -407,7 +435,7 @@
       ]
     },
     "Alex": {
-      "total": 10,
+      "total": 13,
       "countries": {
         "Scotland": {
           "points": 2
@@ -422,7 +450,7 @@
           "points": 0
         },
         "Ghana": {
-          "points": 0
+          "points": 2
         },
         "Austria": {
           "points": 2
@@ -437,7 +465,7 @@
           "points": 0
         },
         "Portugal": {
-          "points": 0
+          "points": 1
         },
         "Switzerland": {
           "points": 1
@@ -447,6 +475,22 @@
         }
       },
       "log": [
+        {
+          "country": "Ghana",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-17",
+          "opponent": "Panama",
+          "matchId": 537410
+        },
+        {
+          "country": "Portugal",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-17",
+          "opponent": "DR Congo",
+          "matchId": 537403
+        },
         {
           "country": "Austria",
           "event": "GROUP_STAGE_WIN",
