@@ -1,9 +1,11 @@
 {
-  "lastRunAt": "2026-06-19T09:09:45.048706+00:00",
+  "lastRunAt": "2026-06-20T07:55:06.796556+00:00",
   "lastEmailAt": "2026-06-19T09:09:50.425989+00:00",
   "processedMatchIds": [
     537345,
     537346,
+    537347,
+    537348,
     537351,
     537352,
     537357,
@@ -29,10 +31,48 @@
     537335,
     537336,
     537339,
-    537340
+    537340,
+    537341,
+    537342
   ],
   "qualificationAwarded": [],
   "recentResults": [
+    {
+      "matchId": 537347,
+      "homeTeam": "Turkey",
+      "awayTeam": "Paraguay",
+      "homeScore": 0,
+      "awayScore": 1,
+      "date": "2026-06-20",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537341,
+      "homeTeam": "Brazil",
+      "awayTeam": "Haiti",
+      "homeScore": 3,
+      "awayScore": 0,
+      "date": "2026-06-20",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537342,
+      "homeTeam": "Scotland",
+      "awayTeam": "Morocco",
+      "homeScore": 0,
+      "awayScore": 1,
+      "date": "2026-06-19",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537348,
+      "homeTeam": "USA",
+      "awayTeam": "Australia",
+      "homeScore": 2,
+      "awayScore": 0,
+      "date": "2026-06-19",
+      "stage": "Group Stage"
+    },
     {
       "matchId": 537330,
       "homeTeam": "Mexico",
@@ -86,47 +126,11 @@
       "awayScore": 0,
       "date": "2026-06-17",
       "stage": "Group Stage"
-    },
-    {
-      "matchId": 537409,
-      "homeTeam": "England",
-      "awayTeam": "Croatia",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2026-06-17",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537403,
-      "homeTeam": "Portugal",
-      "awayTeam": "DR Congo",
-      "homeScore": 1,
-      "awayScore": 1,
-      "date": "2026-06-17",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537398,
-      "homeTeam": "Austria",
-      "awayTeam": "Jordan",
-      "homeScore": 3,
-      "awayScore": 1,
-      "date": "2026-06-17",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537397,
-      "homeTeam": "Argentina",
-      "awayTeam": "Algeria",
-      "homeScore": 3,
-      "awayScore": 0,
-      "date": "2026-06-17",
-      "stage": "Group Stage"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 17,
+      "total": 19,
       "countries": {
         "Qatar": {
           "points": 1
@@ -135,7 +139,7 @@
           "points": 1
         },
         "Morocco": {
-          "points": 1
+          "points": 3
         },
         "Argentina": {
           "points": 2
@@ -166,6 +170,14 @@
         }
       },
       "log": [
+        {
+          "country": "Morocco",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-19",
+          "opponent": "Scotland",
+          "matchId": 537342
+        },
         {
           "country": "Mexico",
           "event": "GROUP_STAGE_WIN",
@@ -265,7 +277,7 @@
       ]
     },
     "Fiona": {
-      "total": 12,
+      "total": 14,
       "countries": {
         "Bosnia & Herz.": {
           "points": 0
@@ -292,7 +304,7 @@
           "points": 0
         },
         "USA": {
-          "points": 2
+          "points": 4
         },
         "South Africa": {
           "points": 1
@@ -305,6 +317,14 @@
         }
       },
       "log": [
+        {
+          "country": "USA",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-19",
+          "opponent": "Australia",
+          "matchId": 537348
+        },
         {
           "country": "Canada",
           "event": "GROUP_STAGE_WIN",
@@ -372,13 +392,13 @@
       ]
     },
     "Edward": {
-      "total": 10,
+      "total": 14,
       "countries": {
         "Haiti": {
           "points": 0
         },
         "Brazil": {
-          "points": 1
+          "points": 3
         },
         "Sweden": {
           "points": 2
@@ -405,13 +425,29 @@
           "points": 0
         },
         "Paraguay": {
-          "points": 0
+          "points": 2
         },
         "Iraq": {
           "points": 0
         }
       },
       "log": [
+        {
+          "country": "Paraguay",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-20",
+          "opponent": "Turkey",
+          "matchId": 537347
+        },
+        {
+          "country": "Brazil",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-20",
+          "opponent": "Haiti",
+          "matchId": 537341
+        },
         {
           "country": "France",
           "event": "GROUP_STAGE_WIN",
