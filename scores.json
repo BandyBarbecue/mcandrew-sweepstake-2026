@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-06-20T07:55:06.796556+00:00",
+  "lastRunAt": "2026-06-21T08:38:44.401511+00:00",
   "lastEmailAt": "2026-06-19T09:09:50.425989+00:00",
   "processedMatchIds": [
     537345,
@@ -8,8 +8,12 @@
     537348,
     537351,
     537352,
+    537353,
+    537354,
     537357,
     537358,
+    537359,
+    537360,
     537363,
     537364,
     537369,
@@ -37,6 +41,42 @@
   ],
   "qualificationAwarded": [],
   "recentResults": [
+    {
+      "matchId": 537360,
+      "homeTeam": "Tunisia",
+      "awayTeam": "Japan",
+      "homeScore": 0,
+      "awayScore": 4,
+      "date": "2026-06-21",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537354,
+      "homeTeam": "Ecuador",
+      "awayTeam": "Curaçao",
+      "homeScore": 0,
+      "awayScore": 0,
+      "date": "2026-06-21",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537353,
+      "homeTeam": "Germany",
+      "awayTeam": "Ivory Coast",
+      "homeScore": 2,
+      "awayScore": 1,
+      "date": "2026-06-20",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537359,
+      "homeTeam": "Netherlands",
+      "awayTeam": "Sweden",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-06-20",
+      "stage": "Group Stage"
+    },
     {
       "matchId": 537347,
       "homeTeam": "Turkey",
@@ -89,42 +129,6 @@
       "homeScore": 6,
       "awayScore": 0,
       "date": "2026-06-18",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537335,
-      "homeTeam": "Switzerland",
-      "awayTeam": "Bosnia-Herzegovina",
-      "homeScore": 4,
-      "awayScore": 1,
-      "date": "2026-06-18",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537329,
-      "homeTeam": "Czechia",
-      "awayTeam": "South Africa",
-      "homeScore": 1,
-      "awayScore": 1,
-      "date": "2026-06-18",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537404,
-      "homeTeam": "Uzbekistan",
-      "awayTeam": "Colombia",
-      "homeScore": 1,
-      "awayScore": 3,
-      "date": "2026-06-18",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537410,
-      "homeTeam": "Ghana",
-      "awayTeam": "Panama",
-      "homeScore": 1,
-      "awayScore": 0,
-      "date": "2026-06-17",
       "stage": "Group Stage"
     }
   ],
@@ -277,13 +281,13 @@
       ]
     },
     "Fiona": {
-      "total": 14,
+      "total": 16,
       "countries": {
         "Bosnia & Herz.": {
           "points": 0
         },
         "Japan": {
-          "points": 1
+          "points": 3
         },
         "Panama": {
           "points": 0
@@ -317,6 +321,14 @@
         }
       },
       "log": [
+        {
+          "country": "Japan",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-21",
+          "opponent": "Tunisia",
+          "matchId": 537360
+        },
         {
           "country": "USA",
           "event": "GROUP_STAGE_WIN",
@@ -392,7 +404,7 @@
       ]
     },
     "Edward": {
-      "total": 14,
+      "total": 17,
       "countries": {
         "Haiti": {
           "points": 0
@@ -410,7 +422,7 @@
           "points": 2
         },
         "Ecuador": {
-          "points": 0
+          "points": 1
         },
         "New Zealand": {
           "points": 1
@@ -419,7 +431,7 @@
           "points": 1
         },
         "Netherlands": {
-          "points": 1
+          "points": 3
         },
         "Turkey": {
           "points": 0
@@ -432,6 +444,22 @@
         }
       },
       "log": [
+        {
+          "country": "Ecuador",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-21",
+          "opponent": "Curaçao",
+          "matchId": 537354
+        },
+        {
+          "country": "Netherlands",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-20",
+          "opponent": "Sweden",
+          "matchId": 537359
+        },
         {
           "country": "Paraguay",
           "event": "GROUP_STAGE_WIN",
@@ -507,7 +535,7 @@
       ]
     },
     "Alex": {
-      "total": 15,
+      "total": 18,
       "countries": {
         "Scotland": {
           "points": 2
@@ -519,7 +547,7 @@
           "points": 2
         },
         "Curaçao": {
-          "points": 0
+          "points": 1
         },
         "Ghana": {
           "points": 2
@@ -528,7 +556,7 @@
           "points": 2
         },
         "Germany": {
-          "points": 2
+          "points": 4
         },
         "Tunisia": {
           "points": 0
@@ -547,6 +575,22 @@
         }
       },
       "log": [
+        {
+          "country": "Curaçao",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-21",
+          "opponent": "Ecuador",
+          "matchId": 537354
+        },
+        {
+          "country": "Germany",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-20",
+          "opponent": "Ivory Coast",
+          "matchId": 537353
+        },
         {
           "country": "Switzerland",
           "event": "GROUP_STAGE_WIN",
