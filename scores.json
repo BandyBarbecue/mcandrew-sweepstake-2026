@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-06-21T12:51:26.147654+00:00",
+  "lastRunAt": "2026-06-22T09:52:26.322601+00:00",
   "lastEmailAt": "2026-06-21T12:51:29.677994+00:00",
   "processedMatchIds": [
     537345,
@@ -16,8 +16,12 @@
     537360,
     537363,
     537364,
+    537365,
+    537366,
     537369,
     537370,
+    537371,
+    537372,
     537391,
     537392,
     537397,
@@ -41,6 +45,42 @@
   ],
   "qualificationAwarded": [],
   "recentResults": [
+    {
+      "matchId": 537366,
+      "homeTeam": "New Zealand",
+      "awayTeam": "Egypt",
+      "homeScore": 1,
+      "awayScore": 3,
+      "date": "2026-06-22",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537372,
+      "homeTeam": "Uruguay",
+      "awayTeam": "Cape Verde Islands",
+      "homeScore": 2,
+      "awayScore": 2,
+      "date": "2026-06-21",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537365,
+      "homeTeam": "Belgium",
+      "awayTeam": "Iran",
+      "homeScore": 0,
+      "awayScore": 0,
+      "date": "2026-06-21",
+      "stage": "Group Stage"
+    },
+    {
+      "matchId": 537371,
+      "homeTeam": "Spain",
+      "awayTeam": "Saudi Arabia",
+      "homeScore": 4,
+      "awayScore": 0,
+      "date": "2026-06-21",
+      "stage": "Group Stage"
+    },
     {
       "matchId": 537360,
       "homeTeam": "Tunisia",
@@ -94,53 +134,17 @@
       "awayScore": 0,
       "date": "2026-06-20",
       "stage": "Group Stage"
-    },
-    {
-      "matchId": 537342,
-      "homeTeam": "Scotland",
-      "awayTeam": "Morocco",
-      "homeScore": 0,
-      "awayScore": 1,
-      "date": "2026-06-19",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537348,
-      "homeTeam": "USA",
-      "awayTeam": "Australia",
-      "homeScore": 2,
-      "awayScore": 0,
-      "date": "2026-06-19",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537330,
-      "homeTeam": "Mexico",
-      "awayTeam": "South Korea",
-      "homeScore": 1,
-      "awayScore": 0,
-      "date": "2026-06-19",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537336,
-      "homeTeam": "Canada",
-      "awayTeam": "Qatar",
-      "homeScore": 6,
-      "awayScore": 0,
-      "date": "2026-06-18",
-      "stage": "Group Stage"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 19,
+      "total": 24,
       "countries": {
         "Qatar": {
           "points": 1
         },
         "Uruguay": {
-          "points": 1
+          "points": 2
         },
         "Morocco": {
           "points": 3
@@ -152,16 +156,16 @@
           "points": 2
         },
         "Iran": {
-          "points": 1
+          "points": 2
         },
         "Croatia": {
           "points": 0
         },
         "Spain": {
-          "points": 1
+          "points": 3
         },
         "Belgium": {
-          "points": 1
+          "points": 2
         },
         "Ivory Coast": {
           "points": 2
@@ -174,6 +178,38 @@
         }
       },
       "log": [
+        {
+          "country": "Uruguay",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-21",
+          "opponent": "Cape Verde Islands",
+          "matchId": 537372
+        },
+        {
+          "country": "Iran",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-21",
+          "opponent": "Belgium",
+          "matchId": 537365
+        },
+        {
+          "country": "Belgium",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-21",
+          "opponent": "Iran",
+          "matchId": 537365
+        },
+        {
+          "country": "Spain",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-21",
+          "opponent": "Saudi Arabia",
+          "matchId": 537371
+        },
         {
           "country": "Morocco",
           "event": "GROUP_STAGE_WIN",
@@ -535,13 +571,13 @@
       ]
     },
     "Alex": {
-      "total": 18,
+      "total": 20,
       "countries": {
         "Scotland": {
           "points": 2
         },
         "Egypt": {
-          "points": 1
+          "points": 3
         },
         "Australia": {
           "points": 2
@@ -575,6 +611,14 @@
         }
       },
       "log": [
+        {
+          "country": "Egypt",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-22",
+          "opponent": "New Zealand",
+          "matchId": 537366
+        },
         {
           "country": "Curaçao",
           "event": "GROUP_STAGE_DRAW",
