@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-06-28T07:55:21.543856+00:00",
+  "lastRunAt": "2026-06-29T09:03:57.724005+00:00",
   "lastEmailAt": "2026-06-28T07:55:26.029477+00:00",
   "processedMatchIds": [
     537344,
@@ -57,6 +57,7 @@
     537412,
     537413,
     537414,
+    537417,
     537327,
     537328,
     537329,
@@ -101,6 +102,15 @@
     "Croatia"
   ],
   "recentResults": [
+    {
+      "matchId": 537417,
+      "homeTeam": "South Africa",
+      "awayTeam": "Canada",
+      "homeScore": 0,
+      "awayScore": 1,
+      "date": "2026-06-28",
+      "stage": "Round of 32"
+    },
     {
       "matchId": 537401,
       "homeTeam": "Jordan",
@@ -179,15 +189,6 @@
       "awayTeam": "Spain",
       "homeScore": 0,
       "awayScore": 1,
-      "date": "2026-06-27",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537374,
-      "homeTeam": "Cape Verde Islands",
-      "awayTeam": "Saudi Arabia",
-      "homeScore": 0,
-      "awayScore": 0,
       "date": "2026-06-27",
       "stage": "Group Stage"
     }
@@ -525,7 +526,7 @@
       ]
     },
     "Fiona": {
-      "total": 47,
+      "total": 51,
       "countries": {
         "Bosnia & Herz.": {
           "points": 0
@@ -543,7 +544,7 @@
           "points": 3
         },
         "Canada": {
-          "points": 6
+          "points": 10
         },
         "Cape Verde": {
           "points": 0
@@ -565,6 +566,14 @@
         }
       },
       "log": [
+        {
+          "country": "Canada",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-06-28",
+          "opponent": "South Africa",
+          "matchId": 537417
+        },
         {
           "country": "England",
           "event": "QUALIFY_TOP_2",
