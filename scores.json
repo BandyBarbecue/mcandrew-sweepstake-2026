@@ -1,7 +1,24 @@
 {
-  "lastRunAt": "2026-06-30T07:58:39.869962+00:00",
+  "lastRunAt": "2026-07-01T08:18:43.530813+00:00",
   "lastEmailAt": "2026-06-30T07:58:46.208394+00:00",
   "processedMatchIds": [
+    537327,
+    537328,
+    537329,
+    537330,
+    537331,
+    537332,
+    537333,
+    537334,
+    537335,
+    537336,
+    537337,
+    537338,
+    537339,
+    537340,
+    537341,
+    537342,
+    537343,
     537344,
     537345,
     537346,
@@ -58,26 +75,12 @@
     537413,
     537414,
     537415,
+    537416,
     537417,
     537418,
     537423,
-    537327,
-    537328,
-    537329,
-    537330,
-    537331,
-    537332,
-    537333,
-    537334,
-    537335,
-    537336,
-    537337,
-    537338,
-    537339,
-    537340,
-    537341,
-    537342,
-    537343
+    537424,
+    537425
   ],
   "qualificationAwarded": [
     "Mexico",
@@ -103,9 +106,38 @@
     "Portugal",
     "England",
     "Croatia",
-    "Paraguay"
+    "Paraguay",
+    "Sweden",
+    "Ecuador"
   ],
   "recentResults": [
+    {
+      "matchId": 537425,
+      "homeTeam": "Mexico",
+      "awayTeam": "Ecuador",
+      "homeScore": 2,
+      "awayScore": 0,
+      "date": "2026-07-01",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537416,
+      "homeTeam": "France",
+      "awayTeam": "Sweden",
+      "homeScore": 3,
+      "awayScore": 0,
+      "date": "2026-06-30",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537424,
+      "homeTeam": "Ivory Coast",
+      "awayTeam": "Norway",
+      "homeScore": 1,
+      "awayScore": 2,
+      "date": "2026-06-30",
+      "stage": "Round of 32"
+    },
     {
       "matchId": 537418,
       "homeTeam": "Netherlands",
@@ -168,38 +200,11 @@
       "awayScore": 0,
       "date": "2026-06-27",
       "stage": "Group Stage"
-    },
-    {
-      "matchId": 537408,
-      "homeTeam": "DR Congo",
-      "awayTeam": "Uzbekistan",
-      "homeScore": 3,
-      "awayScore": 1,
-      "date": "2026-06-27",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537413,
-      "homeTeam": "Panama",
-      "awayTeam": "England",
-      "homeScore": 0,
-      "awayScore": 2,
-      "date": "2026-06-27",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537414,
-      "homeTeam": "Croatia",
-      "awayTeam": "Ghana",
-      "homeScore": 2,
-      "awayScore": 1,
-      "date": "2026-06-27",
-      "stage": "Group Stage"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 73,
+      "total": 81,
       "countries": {
         "Qatar": {
           "points": 1
@@ -214,7 +219,7 @@
           "points": 9
         },
         "Norway": {
-          "points": 7
+          "points": 11
         },
         "Iran": {
           "points": 3
@@ -232,13 +237,29 @@
           "points": 7
         },
         "Mexico": {
-          "points": 9
+          "points": 13
         },
         "Czechia": {
           "points": 1
         }
       },
       "log": [
+        {
+          "country": "Mexico",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-01",
+          "opponent": "Ecuador",
+          "matchId": 537425
+        },
+        {
+          "country": "Norway",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-06-30",
+          "opponent": "Ivory Coast",
+          "matchId": 537424
+        },
         {
           "country": "Morocco",
           "event": "LAST_32_WIN",
@@ -781,7 +802,7 @@
       ]
     },
     "Edward": {
-      "total": 51,
+      "total": 59,
       "countries": {
         "Haiti": {
           "points": 0
@@ -790,16 +811,16 @@
           "points": 12
         },
         "Sweden": {
-          "points": 3
+          "points": 5
         },
         "France": {
-          "points": 9
+          "points": 13
         },
         "South Korea": {
           "points": 2
         },
         "Ecuador": {
-          "points": 3
+          "points": 5
         },
         "New Zealand": {
           "points": 1
@@ -821,6 +842,30 @@
         }
       },
       "log": [
+        {
+          "country": "Ecuador",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-01",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_Ecuador"
+        },
+        {
+          "country": "Sweden",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-01",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_Sweden"
+        },
+        {
+          "country": "France",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-06-30",
+          "opponent": "Sweden",
+          "matchId": 537416
+        },
         {
           "country": "Paraguay",
           "event": "QUALIFY_BEST_THIRD",
