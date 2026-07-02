@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-01T08:18:43.530813+00:00",
+  "lastRunAt": "2026-07-02T07:38:22.094925+00:00",
   "lastEmailAt": "2026-07-01T08:18:47.548964+00:00",
   "processedMatchIds": [
     537327,
@@ -78,9 +78,12 @@
     537416,
     537417,
     537418,
+    537421,
+    537422,
     537423,
     537424,
-    537425
+    537425,
+    537426
   ],
   "qualificationAwarded": [
     "Mexico",
@@ -108,9 +111,38 @@
     "Croatia",
     "Paraguay",
     "Sweden",
-    "Ecuador"
+    "Ecuador",
+    "Senegal",
+    "DR Congo"
   ],
   "recentResults": [
+    {
+      "matchId": 537421,
+      "homeTeam": "USA",
+      "awayTeam": "Bosnia-Herzegovina",
+      "homeScore": 2,
+      "awayScore": 0,
+      "date": "2026-07-02",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537422,
+      "homeTeam": "Belgium",
+      "awayTeam": "Senegal",
+      "homeScore": 3,
+      "awayScore": 2,
+      "date": "2026-07-01",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537426,
+      "homeTeam": "England",
+      "awayTeam": "DR Congo",
+      "homeScore": 2,
+      "awayScore": 1,
+      "date": "2026-07-01",
+      "stage": "Round of 32"
+    },
     {
       "matchId": 537425,
       "homeTeam": "Mexico",
@@ -173,38 +205,11 @@
       "awayScore": 1,
       "date": "2026-06-28",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537401,
-      "homeTeam": "Jordan",
-      "awayTeam": "Argentina",
-      "homeScore": 1,
-      "awayScore": 3,
-      "date": "2026-06-28",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537402,
-      "homeTeam": "Algeria",
-      "awayTeam": "Austria",
-      "homeScore": 3,
-      "awayScore": 3,
-      "date": "2026-06-28",
-      "stage": "Group Stage"
-    },
-    {
-      "matchId": 537407,
-      "homeTeam": "Colombia",
-      "awayTeam": "Portugal",
-      "homeScore": 0,
-      "awayScore": 0,
-      "date": "2026-06-27",
-      "stage": "Group Stage"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 81,
+      "total": 85,
       "countries": {
         "Qatar": {
           "points": 1
@@ -231,7 +236,7 @@
           "points": 8
         },
         "Belgium": {
-          "points": 7
+          "points": 11
         },
         "Ivory Coast": {
           "points": 7
@@ -244,6 +249,14 @@
         }
       },
       "log": [
+        {
+          "country": "Belgium",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-01",
+          "opponent": "Senegal",
+          "matchId": 537422
+        },
         {
           "country": "Mexico",
           "event": "LAST_32_WIN",
@@ -559,7 +572,7 @@
       ]
     },
     "Fiona": {
-      "total": 51,
+      "total": 63,
       "countries": {
         "Bosnia & Herz.": {
           "points": 0
@@ -571,10 +584,10 @@
           "points": 0
         },
         "Senegal": {
-          "points": 2
+          "points": 4
         },
         "DR Congo": {
-          "points": 3
+          "points": 5
         },
         "Canada": {
           "points": 10
@@ -586,19 +599,51 @@
           "points": 0
         },
         "USA": {
-          "points": 7
+          "points": 11
         },
         "South Africa": {
           "points": 6
         },
         "England": {
-          "points": 8
+          "points": 12
         },
         "Colombia": {
           "points": 8
         }
       },
       "log": [
+        {
+          "country": "DR Congo",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-02",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_DR Congo"
+        },
+        {
+          "country": "Senegal",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-02",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_Senegal"
+        },
+        {
+          "country": "USA",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-02",
+          "opponent": "Bosnia-Herzegovina",
+          "matchId": 537421
+        },
+        {
+          "country": "England",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-01",
+          "opponent": "DR Congo",
+          "matchId": 537426
+        },
         {
           "country": "Canada",
           "event": "LAST_32_WIN",
