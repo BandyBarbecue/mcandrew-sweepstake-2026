@@ -60,12 +60,16 @@ test('fixtureStakes derby and head-to-head', () => {
 });
 
 test('bracketData pads to expected counts', () => {
-  const rounds = bracketData(scores, { fixtures: [] });
+  const rounds = bracketData(scores, { fixtures: [] }, participants.apiNameAliases);
   const byStage = Object.fromEntries(rounds.map(r => [r.stage, r.ties.length]));
   assert.deepEqual(byStage, {
     LAST_32: 16, LAST_16: 8, QUARTER_FINALS: 4,
     SEMI_FINALS: 2, THIRD_PLACE: 1, FINAL: 1,
   });
+  // Regression: raw API opponent names are normalized for display/lookup
+  const r32 = rounds.find(r => r.stage === 'LAST_32');
+  assert.ok(r32.ties.some(t => t.away === 'Bosnia & Herz.'));
+  assert.ok(!r32.ties.some(t => t.away === 'Bosnia-Herzegovina'));
 });
 
 test('matchdayNumber', () => {
