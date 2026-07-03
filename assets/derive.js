@@ -141,12 +141,13 @@ const EXPECTED_TIES = {
   LAST_32: 16, LAST_16: 8, QUARTER_FINALS: 4, SEMI_FINALS: 2, THIRD_PLACE: 1, FINAL: 1,
 };
 
-export function bracketData(scores, fixtures) {
+export function bracketData(scores, fixtures, aliases = {}) {
   const evs = allEvents(scores);
+  const norm = n => aliases[n] || n;
   return Object.keys(EXPECTED_TIES).map(stage => {
     const evKey = STAGE_EVENT[stage];
     const played = evs.filter(e => e.event === evKey).map(e => ({
-      home: e.country, away: e.opponent, winner: e.country,
+      home: e.country, away: norm(e.opponent), winner: e.country,
       date: e.date, matchId: e.matchId,
     }));
     const playedIds = new Set(played.map(t => t.matchId));
