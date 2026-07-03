@@ -169,7 +169,8 @@ def build_html(scores, participants):
             log_html = '<div class="log-empty">No points yet — the tournament is just getting started! ⚽</div>'
 
         leaderboard_rows += f"""
-      <div class="player-card{first_class}" onclick="toggle('{name}')">
+      <div class="player-card{first_class}" onclick="toggle('{name}')" tabindex="0"
+           onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();toggle('{name}');}}">
         <div class="card-header" id="header-{name}">
           <span class="rank">{rank_num}</span>
           <span class="medal">{medal}</span>
@@ -219,6 +220,7 @@ def build_html(scores, participants):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>McAndrew Family · World Cup 2026 Sweepstake</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
   <style>
     /* ===================== RESET & BASE ===================== */
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -253,7 +255,7 @@ def build_html(scores, participants):
       border-bottom: 2px solid rgba(245,197,24,0.3);
     }}
     .site-header h1 {{
-      font-size: 1.6rem;
+      font-size: clamp(1.25rem, 4.5vw, 1.6rem);
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -288,13 +290,18 @@ def build_html(scores, participants):
 
     /* ===================== PLAYER CARD ===================== */
     .player-card {{
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 10px;
       overflow: hidden;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       cursor: pointer;
       transition: background 0.15s;
+    }}
+    .player-card:focus-visible {{
+      outline: 2px solid #f5c518;
+      outline-offset: 2px;
     }}
     .player-card:hover {{
       background: rgba(255,255,255,0.09);
@@ -329,6 +336,10 @@ def build_html(scores, participants):
     }}
     .player-name {{
       flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -338,6 +349,8 @@ def build_html(scores, participants):
       color: #f5c518;
       font-weight: 700;
       font-size: 0.9rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
       padding: 3px 10px;
       border-radius: 20px;
       border: 1px solid rgba(245,197,24,0.35);
@@ -374,7 +387,7 @@ def build_html(scores, participants):
     }}
     .countries-grid {{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 5px 12px;
     }}
     .country-cell {{
@@ -440,6 +453,8 @@ def build_html(scores, participants):
     }}
     .log-desc {{
       flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
       color: rgba(255,255,255,0.85);
     }}
     .log-date {{
@@ -477,6 +492,10 @@ def build_html(scores, participants):
     }}
     .result-home {{
       text-align: right;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       color: rgba(255,255,255,0.85);
     }}
     .result-score {{
@@ -488,6 +507,10 @@ def build_html(scores, participants):
     }}
     .result-away {{
       text-align: left;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       color: rgba(255,255,255,0.85);
     }}
     .result-meta {{

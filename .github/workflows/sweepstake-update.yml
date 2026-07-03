@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # ← add this line
-      
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -46,3 +47,14 @@ jobs:
           GMAIL_SENDER: edward.mcandrew20@gmail.com
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
+
+      # The three commits above trigger racing legacy Pages builds; if the last
+      # one errors the site serves stale data all day. Request a final rebuild.
+      - name: Request Pages rebuild
+        if: always()
+        run: |
+          curl -sf -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages/builds" \
+            || echo "Pages rebuild request failed (non-fatal)"
