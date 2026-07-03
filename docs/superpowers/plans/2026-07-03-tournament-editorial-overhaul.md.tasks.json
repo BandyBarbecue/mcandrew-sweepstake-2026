@@ -1,0 +1,87 @@
+{
+  "planPath": "docs/superpowers/plans/2026-07-03-tournament-editorial-overhaul.md",
+  "tasks": [
+    {
+      "id": 10,
+      "subject": "Task 1: Flag assets + shared country-code map",
+      "status": "pending",
+      "description": "**Goal:** Commit 48 SVG flags, 48 email PNGs, a fallback flag, and flag-codes.json as the single country→code source.\n\n**Files:**\n- Create: flag-codes.json\n- Create: scripts/download_flags.py\n- Create (generated): flags/*.svg, flags/png/*.png, flags/_fallback.svg\n\n**Acceptance Criteria:**\n- flag-codes.json maps all 48 countries in participants.json countryToOwner to flagcdn codes\n- flags/ contains 48 .svg + _fallback.svg; flags/png/ contains 48 .png\n- Download script validates completeness against participants.json and fails loudly on any miss\n\n**Verify:** python scripts/download_flags.py → OK: 48/48 flags downloaded\n\nFull code: plan doc Task 1.\n\n```json:metadata\n{\"files\": [\"flag-codes.json\", \"scripts/download_flags.py\", \"flags/\"], \"verifyCommand\": \"python scripts/download_flags.py\", \"acceptanceCriteria\": [\"flag-codes.json covers all 48 countries\", \"flags/ has 48 svg + fallback; flags/png/ has 48 png\", \"script fails loudly on missing country\"], \"modelTier\": \"mechanical\"}\n```"
+    },
+    {
+      "id": 11,
+      "subject": "Task 2: fetch_fixtures.py + tests",
+      "status": "pending",
+      "description": "**Goal:** Read-only script that writes upcoming fixtures to fixtures.json in the GitHub repo; never blocks the chain.\n\n**Files:**\n- Create: fetch_fixtures.py\n- Test: tests/test_fetch_fixtures.py\n\n**Acceptance Criteria:**\n- Extracts only SCHEDULED/TIMED matches, names mapped through apiNameAliases\n- Writes fixtures.json {fetchedAt, fixtures:[{matchId, homeTeam, awayTeam, utcDate, stage}]} sorted by utcDate\n- Any exception → prints warning, exits 0\n- Does not touch scoring state\n\n**Verify:** python -m pytest tests/test_fetch_fixtures.py -v → 3 passed; python fetch_fixtures.py → fixtures.json written\n\nFull code: plan doc Task 2.\n\n```json:metadata\n{\"files\": [\"fetch_fixtures.py\", \"tests/test_fetch_fixtures.py\"], \"verifyCommand\": \"python -m pytest tests/test_fetch_fixtures.py -v\", \"acceptanceCriteria\": [\"only SCHEDULED/TIMED extracted with aliased names\", \"fixtures.json shape and sort correct\", \"failures warn and exit 0\", \"scores.json untouched\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 12,
+      "subject": "Task 3: assets/derive.js + node tests",
+      "status": "pending",
+      "description": "**Goal:** All presentation-data derivations as pure, unit-tested ES module functions.\n\n**Files:**\n- Create: assets/derive.js\n- Test: tests/derive.test.mjs\n\n**Acceptance Criteria:**\n- cumulativeSeries totals end exactly at each player's total (validated against real scores.json)\n- teamStatus marks knockout losers and non-qualifiers eliminated once knockouts began; all 48 covered\n- records returns biggestDay, mostValuableTeam, knockoutKing, sharpestRise\n- fixtureStakes produces derby / head-to-head sentences with points from scoring-rules.json\n- bracketData pads rounds to 16/8/4/2/1/1 with TBD placeholders\n\n**Verify:** node --test tests/derive.test.mjs → all pass\n\nFull code: plan doc Task 3.\n\n```json:metadata\n{\"files\": [\"assets/derive.js\", \"tests/derive.test.mjs\"], \"verifyCommand\": \"node --test tests/derive.test.mjs\", \"acceptanceCriteria\": [\"cumulative totals match real totals\", \"teamStatus covers 48 with correct elimination\", \"records four values sane\", \"stakes sentences correct\", \"bracket padded to expected counts\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 13,
+      "subject": "Task 4: Site shell — index.html, base CSS, data loading, hero, error state",
+      "status": "pending",
+      "blockedBy": [10],
+      "description": "**Goal:** The page loads all four JSON files, renders the hero with live stats, and shows a styled error state on fetch failure.\n\n**Files:**\n- Create: index.html\n- Create: assets/styles.css\n- Create: assets/app.js\n- Create: .nojekyll\n\n**Acceptance Criteria:**\n- python -m http.server + browser: hero renders with kicker, word-by-word headline animation, stat strip with real Matchday / Stage / Leader / Teams-alive\n- Renaming scores.json → styled error panel, no blank page, no console exception\n- Fonts load (Fraunces visible); no emoji; lang/title/viewport present\n\n**Verify:** python -m http.server 8010 then browser check of hero + stats + error drill\n\nFull code: plan doc Task 4.\n\n```json:metadata\n{\"files\": [\"index.html\", \"assets/styles.css\", \"assets/app.js\", \".nojekyll\"], \"verifyCommand\": \"python -m http.server 8010 (then browser check)\", \"acceptanceCriteria\": [\"hero renders with real stats\", \"error state on missing scores.json\", \"fonts load, no emoji, semantics present\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 14,
+      "subject": "Task 5: Standings section (expandable event logs)",
+      "status": "pending",
+      "blockedBy": [12, 13],
+      "description": "**Goal:** Editorial standings — gold leader card, hairline rows, per-player sparkline, click-to-expand full points log.\n\n**Files:**\n- Modify: assets/app.js (add renderStandings + call in main)\n- Modify: assets/styles.css (append standings block)\n\n**Acceptance Criteria:**\n- Leader card gold-tinted with points-composition bar and today chip when scored today\n- Rows 2–4 show sparkline of cumulative series\n- Every row is a button expander (aria-expanded, rotating chevron, animated open) revealing full event log with flags and mono dates\n- Log newest-first, matches scores.json exactly\n\n**Verify:** browser at #standings — expand each player, cross-check 2–3 log entries against scores.json\n\nFull code: plan doc Task 5.\n\n```json:metadata\n{\"files\": [\"assets/app.js\", \"assets/styles.css\"], \"verifyCommand\": \"browser check at http://localhost:8010#standings\", \"acceptanceCriteria\": [\"gold leader card with comp bar and today chip\", \"sparklines on rows 2-4\", \"accessible animated expanders\", \"log matches scores.json\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 15,
+      "subject": "Task 6: Points race chart",
+      "status": "pending",
+      "blockedBy": [12, 13],
+      "description": "**Goal:** Cumulative SVG line chart that draws on scroll, with annotations, filters, and hover/tap player highlight.\n\n**Files:**\n- Modify: assets/app.js (add renderRace + call)\n- Modify: assets/styles.css (append race block)\n\n**Acceptance Criteria:**\n- One line per player in identity colors; end labels Kenny · 89\n- Lines animate via stroke-dashoffset on scroll-into-view (skipped under reduced motion)\n- Two largest swings annotated (terracotta mono)\n- Filter chips All / Group stage / Knockouts re-render\n- Legend hover/focus dims other lines\n- sr-only table mirrors totals\n\n**Verify:** browser at #race — draw animation, filters, hover, Kenny line ends at 89 on All\n\nFull code: plan doc Task 6.\n\n```json:metadata\n{\"files\": [\"assets/app.js\", \"assets/styles.css\"], \"verifyCommand\": \"browser check at http://localhost:8010#race\", \"acceptanceCriteria\": [\"identity-colored lines with end labels\", \"scroll-triggered draw animation\", \"annotations on biggest swings\", \"working filters and legend highlight\", \"sr-only table\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 16,
+      "subject": "Task 7: Matchday timeline (cream section)",
+      "status": "pending",
+      "blockedBy": [11, 12, 13],
+      "description": "**Goal:** Today/next fixtures as a vertical timeline with kickoff chips and family-stake lines; falls back to recent results without fixtures data.\n\n**Files:**\n- Modify: assets/app.js (add ownerDot + renderMatchday + call)\n- Modify: assets/styles.css (append matchday block)\n\n**Acceptance Criteria:**\n- With fixtures.json: up to 4 upcoming fixtures, BST kickoffs, stake sentence per fixture, owner identity-color dots\n- Without fixtures: 4 most recent results, header switches to Latest results\n- Cream section styling per spec\n\n**Verify:** browser at #matchday with and without fixtures.json present\n\nFull code: plan doc Task 7.\n\n```json:metadata\n{\"files\": [\"assets/app.js\", \"assets/styles.css\"], \"verifyCommand\": \"browser check at http://localhost:8010#matchday (with and without fixtures.json)\", \"acceptanceCriteria\": [\"upcoming fixtures with BST times and stakes\", \"results fallback works\", \"cream styling correct\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 17,
+      "subject": "Task 8: Knockout bracket",
+      "status": "pending",
+      "blockedBy": [11, 12, 13],
+      "description": "**Goal:** Horizontally scrollable R32→Final columns with flags, owner dots, winners bold, losers faded, gold champion slot.\n\n**Files:**\n- Modify: assets/app.js (add renderBracket + call)\n- Modify: assets/styles.css (append bracket block)\n\n**Acceptance Criteria:**\n- Six columns (R32/R16/QF/SF/3rd/Final) with 16/8/4/2/1/1 tie cards\n- Played ties: winner bold with dot, loser faded; upcoming show kickoff; unknown show TBD\n- Champion slot gold-outlined, To be won until FINAL_WIN exists\n- Horizontal scroll confined to bracket container on small screens\n\n**Verify:** browser at #bracket — real R32 ties, mobile-width scroll check\n\nFull code: plan doc Task 8.\n\n```json:metadata\n{\"files\": [\"assets/app.js\", \"assets/styles.css\"], \"verifyCommand\": \"browser check at http://localhost:8010#bracket\", \"acceptanceCriteria\": [\"six padded columns\", \"winner/loser/TBD states correct\", \"champion slot placeholder\", \"contained horizontal scroll\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 18,
+      "subject": "Task 9: Squad explorer, records, recent results",
+      "status": "pending",
+      "blockedBy": [12, 13],
+      "description": "**Goal:** Remaining content sections: accordion squads with per-team points, stat-card records, restyled recent results.\n\n**Files:**\n- Modify: assets/app.js (add renderSquads, renderRecords, renderResults + calls)\n- Modify: assets/styles.css (append blocks)\n\n**Acceptance Criteria:**\n- Squads: one accordion panel per player (one open at a time); each country shows flag, name, points contributed; eliminated struck through + desaturated; alive/out counts in header\n- Clicking a country scrolls to standings, opens that owner's log, highlights that team's entries briefly\n- Records: four stat cards with serif numbers, staggered reveal\n- Recent results: last 10 with flags + stage chips\n\n**Verify:** browser — accordion behavior, Cape Verde shows Fiona's actual total, records match derive outputs\n\nFull code: plan doc Task 9.\n\n```json:metadata\n{\"files\": [\"assets/app.js\", \"assets/styles.css\"], \"verifyCommand\": \"browser check at http://localhost:8010#squads and #records and #results\", \"acceptanceCriteria\": [\"accordion squads with per-team points and elimination styling\", \"country click cross-links to log\", \"four record cards\", \"restyled last-10 results\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 19,
+      "subject": "Task 10: Cross-cutting polish pass (motion, responsive, a11y)",
+      "status": "pending",
+      "blockedBy": [14, 15, 16, 17, 18],
+      "description": "**Goal:** Systematic verification and fixes across devices and accessibility, now all sections exist.\n\n**Files:**\n- Modify: assets/styles.css / assets/app.js / index.html (fixes only)\n\n**Acceptance Criteria:**\n- Mobile 375px: no horizontal page scroll, topbar dropdown works, tap targets ≥ 40px\n- Keyboard-only walkthrough: everything reachable and operable, visible focus\n- prefers-reduced-motion: no animations, content visible immediately\n- data-reveal elements appear exactly once; 3s failsafe adds .in to stragglers\n- No console errors or 404s (all flags resolve)\n\n**Verify:** DevTools sweeps + node --test tests/derive.test.mjs regression\n\nFull code: plan doc Task 10.\n\n```json:metadata\n{\"files\": [\"assets/app.js\", \"assets/styles.css\", \"index.html\"], \"verifyCommand\": \"node --test tests/derive.test.mjs + browser sweeps\", \"acceptanceCriteria\": [\"mobile clean at 375px\", \"keyboard operable\", \"reduced-motion honored\", \"reveal failsafe present\", \"no 404s or console errors\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 20,
+      "subject": "Task 11: Daily email redesign",
+      "status": "pending",
+      "blockedBy": [10, 11],
+      "description": "**Goal:** Rewrite build_email_html() and subject in the Tournament Editorial brand; add today's stakes; add --test flag for safe solo sends. Send/tracking logic otherwise unchanged.\n\n**Files:**\n- Modify: send_digest.py\n- Test: tests/test_send_digest.py\n\n**Acceptance Criteria:**\n- Zero emoji in HTML and subject (regex-verified)\n- Table-based inline styles; Georgia serif + Courier mono; brand colors #0b120d/#f2efe6/#d9a441/#c98a5b\n- Leader row gold tint with today chip; gap-to-leader line in header; flags via SITE_URL/flags/png/<code>.png with alt text\n- Stakes block when fixtures exist for today (silently omitted otherwise)\n- Subject Sweepstake — {leader} leads by {gap} (Matchday {N}) with tied variant\n- --test sends only to GMAIL_SENDER, no state updates; normal runs identical to before\n\n**Verify:** python -m pytest tests/test_send_digest.py -v → pass; email_preview.html brand check; python send_digest.py --test lands in inbox\n\nFull code: plan doc Task 11.\n\n```json:metadata\n{\"files\": [\"send_digest.py\", \"tests/test_send_digest.py\"], \"verifyCommand\": \"python -m pytest tests/test_send_digest.py -v\", \"acceptanceCriteria\": [\"no emoji anywhere\", \"brand styling in tables\", \"gap line + gold leader + png flags\", \"conditional stakes block\", \"informative subject\", \"--test flag safe\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 21,
+      "subject": "Task 12: Retire generator, deploy, verify live",
+      "status": "pending",
+      "blockedBy": [19, 20],
+      "description": "**Goal:** Delete generate_html.py, push everything, verify the live Pages site and full pipeline.\n\n**Files:**\n- Delete: generate_html.py\n\n**Acceptance Criteria:**\n- generate_html.py deleted; no remaining references in *.py\n- All tests green (node + pytest)\n- git pull --rebase origin main then push succeeds; live Pages site renders all sections\n- python update_scores.py and python fetch_fixtures.py still run cleanly post-push\n- User told to update scheduled chain: update_scores.py → fetch_fixtures.py → send_digest.py\n\n**Verify:** live https://bandybarbecue.github.io/mcandrew-sweepstake-2026 renders new site\n\nFull commands: plan doc Task 12.\n\n```json:metadata\n{\"files\": [\"generate_html.py\"], \"verifyCommand\": \"node --test tests/derive.test.mjs; python -m pytest tests/ -v; live URL check\", \"acceptanceCriteria\": [\"generator gone with no references\", \"tests green\", \"live site verified\", \"pipeline scripts run clean\", \"user informed about scheduler\"], \"modelTier\": \"standard\"}\n```"
+    }
+  ],
+  "lastUpdated": "2026-07-03T12:00:00Z"
+}
