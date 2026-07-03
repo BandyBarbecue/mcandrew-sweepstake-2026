@@ -55,9 +55,12 @@ export function cumulativeSeries(scores, filter = 'all') {
 
 export function teamStatus(scores, participants) {
   const evs = allEvents(scores);
+  const aliases = participants.apiNameAliases || {};
+  const norm = n => aliases[n] || n;
   const knockoutBegan = evs.some(e => KNOCKOUT_EVENTS.includes(e.event));
   const qualified = new Set(evs.filter(e => QUALIFY_EVENTS.includes(e.event)).map(e => e.country));
-  const koLosers = new Set(evs.filter(e => KNOCKOUT_EVENTS.includes(e.event)).map(e => e.opponent));
+  const koLosers = new Set(
+    evs.filter(e => KNOCKOUT_EVENTS.includes(e.event)).map(e => norm(e.opponent)));
   const status = {};
   for (const [country, owner] of Object.entries(participants.countryToOwner)) {
     let alive = true;

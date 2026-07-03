@@ -34,6 +34,9 @@ test('teamStatus covers all 48 and eliminates knockout losers', () => {
   // A knockout winner is alive
   const someWin = allEvents(scores).find(e => e.event === 'LAST_32_WIN');
   assert.equal(st[someWin.country].alive, true);
+  // Regression: log entries can carry un-normalized API names (pre-alias-fix data).
+  // USA beat "Bosnia-Herzegovina" (raw) in the R32; canonical key is "Bosnia & Herz."
+  assert.equal(st['Bosnia & Herz.'].alive, false);
 });
 
 test('records shape and sanity', () => {
