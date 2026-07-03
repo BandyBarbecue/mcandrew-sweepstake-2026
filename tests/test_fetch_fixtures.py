@@ -1,3 +1,6 @@
+import pytest
+
+import fetch_fixtures
 from fetch_fixtures import extract_fixtures
 
 ALIASES = {"Korea Republic": "South Korea"}
@@ -24,3 +27,16 @@ def test_sorted_and_shaped():
     out = extract_fixtures(SAMPLE, ALIASES)
     assert out[0]["utcDate"] <= out[1]["utcDate"]
     assert set(out[0]) == {"matchId", "homeTeam", "awayTeam", "utcDate", "stage"}
+
+def test_main_warns_and_exits_zero_on_failure(monkeypatch, capsys):
+    def boom(*args, **kwargs):
+        raise ConnectionError("network down")
+
+    # Fail at the very first step; also stub requests.get so the test can
+    # never hit the real API even if main()'s ordering changes.
+    monkeypatch.setattr(fetch_fixtures, "read_json", boom)
+    monkeypatch.setattr(fetch_fixtures.requests, "get", boom)
+    with pytest.raises(SystemExit) as exc:
+        fetch_fixtures.main()
+    assert exc.value.code == 0
+    assert "WARNING: fixtures fetch skipped" in capsys.readouterr().out
