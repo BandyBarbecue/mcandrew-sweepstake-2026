@@ -117,7 +117,9 @@
     "Ecuador",
     "Senegal",
     "DR Congo",
-    "Algeria"
+    "Algeria",
+    "Bosnia & Herz.",
+    "Cape Verde"
   ],
   "recentResults": [
     {
@@ -584,10 +586,10 @@
       ]
     },
     "Fiona": {
-      "total": 63,
+      "total": 74,
       "countries": {
         "Bosnia & Herz.": {
-          "points": 0
+          "points": 5
         },
         "Japan": {
           "points": 7
@@ -605,7 +607,7 @@
           "points": 10
         },
         "Cape Verde": {
-          "points": 0
+          "points": 6
         },
         "Jordan": {
           "points": 0
@@ -624,6 +626,22 @@
         }
       },
       "log": [
+        {
+          "country": "Bosnia & Herz.",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-03",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_Bosnia & Herz."
+        },
+        {
+          "country": "Cape Verde",
+          "event": "QUALIFY_TOP_2",
+          "points": 3,
+          "date": "2026-07-03",
+          "opponent": "Group qualification",
+          "matchId": "qual_Cape Verde"
+        },
         {
           "country": "DR Congo",
           "event": "QUALIFY_BEST_THIRD",
@@ -705,6 +723,14 @@
           "matchId": 537413
         },
         {
+          "country": "Cape Verde",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-27",
+          "opponent": "Saudi Arabia",
+          "matchId": 537374
+        },
+        {
           "country": "Senegal",
           "event": "GROUP_STAGE_WIN",
           "points": 2,
@@ -769,6 +795,14 @@
           "matchId": 537406
         },
         {
+          "country": "Bosnia & Herz.",
+          "event": "GROUP_STAGE_WIN",
+          "points": 2,
+          "date": "2026-06-24",
+          "opponent": "Qatar",
+          "matchId": 537338
+        },
+        {
           "country": "England",
           "event": "GROUP_STAGE_DRAW",
           "points": 1,
@@ -783,6 +817,14 @@
           "date": "2026-06-21",
           "opponent": "Tunisia",
           "matchId": 537360
+        },
+        {
+          "country": "Cape Verde",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-21",
+          "opponent": "Uruguay",
+          "matchId": 537372
         },
         {
           "country": "USA",
@@ -833,6 +875,14 @@
           "matchId": 537403
         },
         {
+          "country": "Cape Verde",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-15",
+          "opponent": "Spain",
+          "matchId": 537369
+        },
+        {
           "country": "Japan",
           "event": "GROUP_STAGE_DRAW",
           "points": 1,
@@ -854,6 +904,14 @@
           "points": 1,
           "date": "2026-06-12",
           "opponent": "Bosnia-Herzegovina",
+          "matchId": 537333
+        },
+        {
+          "country": "Bosnia & Herz.",
+          "event": "GROUP_STAGE_DRAW",
+          "points": 1,
+          "date": "2026-06-12",
+          "opponent": "Canada",
           "matchId": 537333
         }
       ]
@@ -1416,5 +1474,134 @@
         }
       ]
     }
-  }
+  },
+  "emailedEvents": [
+    "Alex|Algeria|GROUP_STAGE_DRAW|537402",
+    "Alex|Algeria|GROUP_STAGE_WIN|537400",
+    "Alex|Algeria|QUALIFY_BEST_THIRD|best3rd_Algeria",
+    "Alex|Australia|GROUP_STAGE_DRAW|537350",
+    "Alex|Australia|GROUP_STAGE_WIN|537346",
+    "Alex|Australia|QUALIFY_TOP_2|qual_Australia",
+    "Alex|Austria|GROUP_STAGE_DRAW|537402",
+    "Alex|Austria|GROUP_STAGE_WIN|537398",
+    "Alex|Austria|QUALIFY_TOP_2|qual_Austria",
+    "Alex|Curaçao|GROUP_STAGE_DRAW|537354",
+    "Alex|Egypt|GROUP_STAGE_DRAW|537363",
+    "Alex|Egypt|GROUP_STAGE_DRAW|537368",
+    "Alex|Egypt|GROUP_STAGE_WIN|537366",
+    "Alex|Egypt|QUALIFY_TOP_2|qual_Egypt",
+    "Alex|Germany|GROUP_STAGE_WIN|537351",
+    "Alex|Germany|GROUP_STAGE_WIN|537353",
+    "Alex|Germany|QUALIFY_TOP_2|qual_Germany",
+    "Alex|Ghana|GROUP_STAGE_DRAW|537411",
+    "Alex|Ghana|GROUP_STAGE_WIN|537410",
+    "Alex|Portugal|GROUP_STAGE_DRAW|537403",
+    "Alex|Portugal|GROUP_STAGE_DRAW|537407",
+    "Alex|Portugal|GROUP_STAGE_WIN|537405",
+    "Alex|Portugal|QUALIFY_TOP_2|qual_Portugal",
+    "Alex|Scotland|GROUP_STAGE_WIN|537340",
+    "Alex|Switzerland|GROUP_STAGE_DRAW|537334",
+    "Alex|Switzerland|GROUP_STAGE_WIN|537335",
+    "Alex|Switzerland|GROUP_STAGE_WIN|537337",
+    "Alex|Switzerland|LAST_32_WIN|537429",
+    "Alex|Switzerland|QUALIFY_TOP_2|qual_Switzerland",
+    "Edward|Brazil|GROUP_STAGE_DRAW|537339",
+    "Edward|Brazil|GROUP_STAGE_WIN|537341",
+    "Edward|Brazil|GROUP_STAGE_WIN|537343",
+    "Edward|Brazil|LAST_32_WIN|537423",
+    "Edward|Brazil|QUALIFY_TOP_2|qual_Brazil",
+    "Edward|Ecuador|GROUP_STAGE_DRAW|537354",
+    "Edward|Ecuador|GROUP_STAGE_WIN|537355",
+    "Edward|Ecuador|QUALIFY_BEST_THIRD|best3rd_Ecuador",
+    "Edward|France|GROUP_STAGE_WIN|537391",
+    "Edward|France|GROUP_STAGE_WIN|537393",
+    "Edward|France|GROUP_STAGE_WIN|537395",
+    "Edward|France|LAST_32_WIN|537416",
+    "Edward|France|QUALIFY_TOP_2|qual_France",
+    "Edward|Netherlands|GROUP_STAGE_DRAW|537357",
+    "Edward|Netherlands|GROUP_STAGE_WIN|537359",
+    "Edward|Netherlands|GROUP_STAGE_WIN|537361",
+    "Edward|Netherlands|QUALIFY_TOP_2|qual_Netherlands",
+    "Edward|New Zealand|GROUP_STAGE_DRAW|537364",
+    "Edward|Paraguay|GROUP_STAGE_DRAW|537350",
+    "Edward|Paraguay|GROUP_STAGE_WIN|537347",
+    "Edward|Paraguay|LAST_32_WIN|537415",
+    "Edward|Paraguay|QUALIFY_BEST_THIRD|best3rd_Paraguay",
+    "Edward|Saudi Arabia|GROUP_STAGE_DRAW|537370",
+    "Edward|Saudi Arabia|GROUP_STAGE_DRAW|537374",
+    "Edward|South Korea|GROUP_STAGE_WIN|537328",
+    "Edward|Sweden|GROUP_STAGE_DRAW|537362",
+    "Edward|Sweden|GROUP_STAGE_WIN|537358",
+    "Edward|Sweden|QUALIFY_BEST_THIRD|best3rd_Sweden",
+    "Edward|Turkey|GROUP_STAGE_WIN|537349",
+    "Fiona|Canada|GROUP_STAGE_DRAW|537333",
+    "Fiona|Canada|GROUP_STAGE_WIN|537336",
+    "Fiona|Canada|LAST_32_WIN|537417",
+    "Fiona|Canada|QUALIFY_TOP_2|qual_Canada",
+    "Fiona|Colombia|GROUP_STAGE_DRAW|537407",
+    "Fiona|Colombia|GROUP_STAGE_WIN|537404",
+    "Fiona|Colombia|GROUP_STAGE_WIN|537406",
+    "Fiona|Colombia|QUALIFY_TOP_2|qual_Colombia",
+    "Fiona|DR Congo|GROUP_STAGE_DRAW|537403",
+    "Fiona|DR Congo|GROUP_STAGE_WIN|537408",
+    "Fiona|DR Congo|QUALIFY_BEST_THIRD|best3rd_DR Congo",
+    "Fiona|England|GROUP_STAGE_DRAW|537411",
+    "Fiona|England|GROUP_STAGE_WIN|537409",
+    "Fiona|England|GROUP_STAGE_WIN|537413",
+    "Fiona|England|LAST_32_WIN|537426",
+    "Fiona|England|QUALIFY_TOP_2|qual_England",
+    "Fiona|Japan|GROUP_STAGE_DRAW|537357",
+    "Fiona|Japan|GROUP_STAGE_DRAW|537362",
+    "Fiona|Japan|GROUP_STAGE_WIN|537360",
+    "Fiona|Japan|QUALIFY_TOP_2|qual_Japan",
+    "Fiona|Senegal|GROUP_STAGE_WIN|537396",
+    "Fiona|Senegal|QUALIFY_BEST_THIRD|best3rd_Senegal",
+    "Fiona|South Africa|GROUP_STAGE_DRAW|537329",
+    "Fiona|South Africa|GROUP_STAGE_WIN|537332",
+    "Fiona|South Africa|QUALIFY_TOP_2|qual_South Africa",
+    "Fiona|USA|GROUP_STAGE_WIN|537345",
+    "Fiona|USA|GROUP_STAGE_WIN|537348",
+    "Fiona|USA|LAST_32_WIN|537421",
+    "Fiona|USA|QUALIFY_TOP_2|qual_USA",
+    "Kenny|Argentina|GROUP_STAGE_WIN|537397",
+    "Kenny|Argentina|GROUP_STAGE_WIN|537399",
+    "Kenny|Argentina|GROUP_STAGE_WIN|537401",
+    "Kenny|Argentina|QUALIFY_TOP_2|qual_Argentina",
+    "Kenny|Belgium|GROUP_STAGE_DRAW|537363",
+    "Kenny|Belgium|GROUP_STAGE_DRAW|537365",
+    "Kenny|Belgium|GROUP_STAGE_WIN|537367",
+    "Kenny|Belgium|LAST_32_WIN|537422",
+    "Kenny|Belgium|QUALIFY_TOP_2|qual_Belgium",
+    "Kenny|Croatia|GROUP_STAGE_WIN|537412",
+    "Kenny|Croatia|GROUP_STAGE_WIN|537414",
+    "Kenny|Croatia|QUALIFY_TOP_2|qual_Croatia",
+    "Kenny|Czechia|GROUP_STAGE_DRAW|537329",
+    "Kenny|Iran|GROUP_STAGE_DRAW|537364",
+    "Kenny|Iran|GROUP_STAGE_DRAW|537365",
+    "Kenny|Iran|GROUP_STAGE_DRAW|537368",
+    "Kenny|Ivory Coast|GROUP_STAGE_WIN|537352",
+    "Kenny|Ivory Coast|GROUP_STAGE_WIN|537356",
+    "Kenny|Ivory Coast|QUALIFY_TOP_2|qual_Ivory Coast",
+    "Kenny|Mexico|GROUP_STAGE_WIN|537327",
+    "Kenny|Mexico|GROUP_STAGE_WIN|537330",
+    "Kenny|Mexico|GROUP_STAGE_WIN|537331",
+    "Kenny|Mexico|LAST_32_WIN|537425",
+    "Kenny|Mexico|QUALIFY_TOP_2|qual_Mexico",
+    "Kenny|Morocco|GROUP_STAGE_DRAW|537339",
+    "Kenny|Morocco|GROUP_STAGE_WIN|537342",
+    "Kenny|Morocco|GROUP_STAGE_WIN|537344",
+    "Kenny|Morocco|LAST_32_WIN|537418",
+    "Kenny|Morocco|QUALIFY_TOP_2|qual_Morocco",
+    "Kenny|Norway|GROUP_STAGE_WIN|537392",
+    "Kenny|Norway|GROUP_STAGE_WIN|537394",
+    "Kenny|Norway|LAST_32_WIN|537424",
+    "Kenny|Norway|QUALIFY_TOP_2|qual_Norway",
+    "Kenny|Qatar|GROUP_STAGE_DRAW|537334",
+    "Kenny|Spain|GROUP_STAGE_DRAW|537369",
+    "Kenny|Spain|GROUP_STAGE_WIN|537371",
+    "Kenny|Spain|GROUP_STAGE_WIN|537373",
+    "Kenny|Spain|QUALIFY_TOP_2|qual_Spain",
+    "Kenny|Uruguay|GROUP_STAGE_DRAW|537370",
+    "Kenny|Uruguay|GROUP_STAGE_DRAW|537372"
+  ]
 }

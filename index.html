@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>McAndrew Family · World Cup 2026 Sweepstake</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
   <style>
     /* ===================== RESET & BASE ===================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +39,7 @@
       border-bottom: 2px solid rgba(245,197,24,0.3);
     }
     .site-header h1 {
-      font-size: 1.6rem;
+      font-size: clamp(1.25rem, 4.5vw, 1.6rem);
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -73,13 +74,18 @@
 
     /* ===================== PLAYER CARD ===================== */
     .player-card {
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 10px;
       overflow: hidden;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       cursor: pointer;
       transition: background 0.15s;
+    }
+    .player-card:focus-visible {
+      outline: 2px solid #f5c518;
+      outline-offset: 2px;
     }
     .player-card:hover {
       background: rgba(255,255,255,0.09);
@@ -114,6 +120,10 @@
     }
     .player-name {
       flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -123,6 +133,8 @@
       color: #f5c518;
       font-weight: 700;
       font-size: 0.9rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
       padding: 3px 10px;
       border-radius: 20px;
       border: 1px solid rgba(245,197,24,0.35);
@@ -159,7 +171,7 @@
     }
     .countries-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 5px 12px;
     }
     .country-cell {
@@ -225,6 +237,8 @@
     }
     .log-desc {
       flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
       color: rgba(255,255,255,0.85);
     }
     .log-date {
@@ -262,6 +276,10 @@
     }
     .result-home {
       text-align: right;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       color: rgba(255,255,255,0.85);
     }
     .result-score {
@@ -273,6 +291,10 @@
     }
     .result-away {
       text-align: left;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       color: rgba(255,255,255,0.85);
     }
     .result-meta {
@@ -305,7 +327,8 @@
     <!-- LEADERBOARD -->
     <div class="section-title">Leaderboard</div>
     
-      <div class="player-card first-place" onclick="toggle('Kenny')">
+      <div class="player-card first-place" onclick="toggle('Kenny')" tabindex="0"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle('Kenny');}">
         <div class="card-header" id="header-Kenny">
           <span class="rank">1</span>
           <span class="medal">🏆</span>
@@ -590,22 +613,23 @@
           </div>
         </div>
       </div>
-      <div class="player-card" onclick="toggle('Fiona')">
+      <div class="player-card" onclick="toggle('Fiona')" tabindex="0"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle('Fiona');}">
         <div class="card-header" id="header-Fiona">
           <span class="rank">2</span>
           <span class="medal">🥈</span>
           <span class="player-name">FIONA</span>
-          <span class="points-badge">63 pts</span>
+          <span class="points-badge">74 pts</span>
           <span class="chevron" id="chev-Fiona">▼</span>
         </div>
         <div class="card-body" id="body-Fiona">
           <div class="section-label">Countries</div>
           <div class="countries-grid">
             
-                <div class="country-cell" style="color:rgba(255,255,255,0.25);">
+                <div class="country-cell" style="color:#f5c518;font-weight:600;">
                   <span class="cflag">🇧🇦</span>
                   <span class="cname">Bosnia & Herz.</span>
-                  <span class="cpts">0</span>
+                  <span class="cpts">+5</span>
                 </div>
                 <div class="country-cell" style="color:#f5c518;font-weight:600;">
                   <span class="cflag">🇯🇵</span>
@@ -632,10 +656,10 @@
                   <span class="cname">Canada</span>
                   <span class="cpts">+10</span>
                 </div>
-                <div class="country-cell" style="color:rgba(255,255,255,0.25);">
+                <div class="country-cell" style="color:#f5c518;font-weight:600;">
                   <span class="cflag">🇨🇻</span>
                   <span class="cname">Cape Verde</span>
-                  <span class="cpts">0</span>
+                  <span class="cpts">+6</span>
                 </div>
                 <div class="country-cell" style="color:rgba(255,255,255,0.25);">
                   <span class="cflag">🇯🇴</span>
@@ -667,6 +691,16 @@
           <div class="section-label">Points Log</div>
           <div class="log-list">
             
+                <div class="log-entry">
+                  <span class="log-badge badge-white">+2</span>
+                  <span class="log-desc">🇧🇦 Bosnia & Herz. qualified as Best 3rd Place</span>
+                  <span class="log-date">2026-07-03</span>
+                </div>
+                <div class="log-entry">
+                  <span class="log-badge badge-white">+3</span>
+                  <span class="log-desc">🇨🇻 Cape Verde qualified from Group (Top 2)</span>
+                  <span class="log-date">2026-07-03</span>
+                </div>
                 <div class="log-entry">
                   <span class="log-badge badge-white">+2</span>
                   <span class="log-desc">🇨🇩 DR Congo qualified as Best 3rd Place</span>
@@ -718,6 +752,11 @@
                   <span class="log-date">2026-06-27</span>
                 </div>
                 <div class="log-entry">
+                  <span class="log-badge badge-white">+1</span>
+                  <span class="log-desc">🇨🇻 Cape Verde drew in Group Stage vs Saudi Arabia</span>
+                  <span class="log-date">2026-06-27</span>
+                </div>
+                <div class="log-entry">
                   <span class="log-badge badge-white">+2</span>
                   <span class="log-desc">🇸🇳 Senegal won in Group Stage vs Iraq</span>
                   <span class="log-date">2026-06-26</span>
@@ -758,6 +797,11 @@
                   <span class="log-date">2026-06-24</span>
                 </div>
                 <div class="log-entry">
+                  <span class="log-badge badge-white">+2</span>
+                  <span class="log-desc">🇧🇦 Bosnia & Herz. won in Group Stage vs Qatar</span>
+                  <span class="log-date">2026-06-24</span>
+                </div>
+                <div class="log-entry">
                   <span class="log-badge badge-white">+1</span>
                   <span class="log-desc">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England drew in Group Stage vs Ghana</span>
                   <span class="log-date">2026-06-23</span>
@@ -765,6 +809,11 @@
                 <div class="log-entry">
                   <span class="log-badge badge-white">+2</span>
                   <span class="log-desc">🇯🇵 Japan won in Group Stage vs Tunisia</span>
+                  <span class="log-date">2026-06-21</span>
+                </div>
+                <div class="log-entry">
+                  <span class="log-badge badge-white">+1</span>
+                  <span class="log-desc">🇨🇻 Cape Verde drew in Group Stage vs Uruguay</span>
                   <span class="log-date">2026-06-21</span>
                 </div>
                 <div class="log-entry">
@@ -799,6 +848,11 @@
                 </div>
                 <div class="log-entry">
                   <span class="log-badge badge-white">+1</span>
+                  <span class="log-desc">🇨🇻 Cape Verde drew in Group Stage vs Spain</span>
+                  <span class="log-date">2026-06-15</span>
+                </div>
+                <div class="log-entry">
+                  <span class="log-badge badge-white">+1</span>
                   <span class="log-desc">🇯🇵 Japan drew in Group Stage vs Netherlands</span>
                   <span class="log-date">2026-06-14</span>
                 </div>
@@ -812,10 +866,16 @@
                   <span class="log-desc">🇨🇦 Canada drew in Group Stage vs Bosnia-Herzegovina</span>
                   <span class="log-date">2026-06-12</span>
                 </div>
+                <div class="log-entry">
+                  <span class="log-badge badge-white">+1</span>
+                  <span class="log-desc">🇧🇦 Bosnia & Herz. drew in Group Stage vs Canada</span>
+                  <span class="log-date">2026-06-12</span>
+                </div>
           </div>
         </div>
       </div>
-      <div class="player-card" onclick="toggle('Alex')">
+      <div class="player-card" onclick="toggle('Alex')" tabindex="0"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle('Alex');}">
         <div class="card-header" id="header-Alex">
           <span class="rank">3</span>
           <span class="medal">🥉</span>
@@ -1045,7 +1105,8 @@
           </div>
         </div>
       </div>
-      <div class="player-card" onclick="toggle('Edward')">
+      <div class="player-card" onclick="toggle('Edward')" tabindex="0"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle('Edward');}">
         <div class="card-header" id="header-Edward">
           <span class="rank">4</span>
           <span class="medal">😅</span>
