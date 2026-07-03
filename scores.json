@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-02T07:38:22.094925+00:00",
+  "lastRunAt": "2026-07-03T07:30:55.051426+00:00",
   "lastEmailAt": "2026-07-02T07:38:26.077178+00:00",
   "processedMatchIds": [
     537327,
@@ -78,12 +78,15 @@
     537416,
     537417,
     537418,
+    537419,
+    537420,
     537421,
     537422,
     537423,
     537424,
     537425,
-    537426
+    537426,
+    537429
   ],
   "qualificationAwarded": [
     "Mexico",
@@ -113,9 +116,37 @@
     "Sweden",
     "Ecuador",
     "Senegal",
-    "DR Congo"
+    "DR Congo",
+    "Algeria"
   ],
   "recentResults": [
+    {
+      "matchId": 537429,
+      "homeTeam": "Switzerland",
+      "awayTeam": "Algeria",
+      "homeScore": 2,
+      "awayScore": 0,
+      "date": "2026-07-03",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537419,
+      "homeTeam": "Portugal",
+      "awayTeam": "Croatia",
+      "homeScore": 2,
+      "awayScore": 1,
+      "date": "2026-07-02",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537420,
+      "homeTeam": "Spain",
+      "awayTeam": "Austria",
+      "homeScore": 3,
+      "awayScore": 0,
+      "date": "2026-07-02",
+      "stage": "Round of 32"
+    },
     {
       "matchId": 537421,
       "homeTeam": "USA",
@@ -178,38 +209,11 @@
       "awayScore": 4,
       "date": "2026-06-30",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537415,
-      "homeTeam": "Germany",
-      "awayTeam": "Paraguay",
-      "homeScore": 4,
-      "awayScore": 5,
-      "date": "2026-06-29",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537423,
-      "homeTeam": "Brazil",
-      "awayTeam": "Japan",
-      "homeScore": 2,
-      "awayScore": 1,
-      "date": "2026-06-29",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537417,
-      "homeTeam": "South Africa",
-      "awayTeam": "Canada",
-      "homeScore": 0,
-      "awayScore": 1,
-      "date": "2026-06-28",
-      "stage": "Round of 32"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 85,
+      "total": 89,
       "countries": {
         "Qatar": {
           "points": 1
@@ -233,7 +237,7 @@
           "points": 7
         },
         "Spain": {
-          "points": 8
+          "points": 12
         },
         "Belgium": {
           "points": 11
@@ -249,6 +253,14 @@
         }
       },
       "log": [
+        {
+          "country": "Spain",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-02",
+          "opponent": "Austria",
+          "matchId": 537420
+        },
         {
           "country": "Belgium",
           "event": "LAST_32_WIN",
@@ -1122,7 +1134,7 @@
       ]
     },
     "Alex": {
-      "total": 50,
+      "total": 60,
       "countries": {
         "Scotland": {
           "points": 2
@@ -1149,19 +1161,43 @@
           "points": 0
         },
         "Algeria": {
-          "points": 3
+          "points": 5
         },
         "Portugal": {
-          "points": 7
+          "points": 11
         },
         "Switzerland": {
-          "points": 8
+          "points": 12
         },
         "Uzbekistan": {
           "points": 0
         }
       },
       "log": [
+        {
+          "country": "Algeria",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-03",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_Algeria"
+        },
+        {
+          "country": "Switzerland",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-03",
+          "opponent": "Algeria",
+          "matchId": 537429
+        },
+        {
+          "country": "Portugal",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-02",
+          "opponent": "Croatia",
+          "matchId": 537419
+        },
         {
           "country": "Portugal",
           "event": "QUALIFY_TOP_2",
