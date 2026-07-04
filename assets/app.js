@@ -32,6 +32,12 @@ export function fmtKickoff(utcISO) {
   }) + ' BST';
 }
 
+function fmtKickoffDate(utcISO) {
+  return new Date(utcISO).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'short', timeZone: 'Europe/London',
+  });
+}
+
 async function getJSON(path, { optional = false } = {}) {
   try {
     const r = await fetch(`${path}?v=${Date.now()}`);
@@ -347,6 +353,8 @@ function ownerDot(owner) {
 
 function renderMatchday(scores, participants, rules, fixtures) {
   const owners = participants.countryToOwner;
+  const aliases = participants.apiNameAliases || {};
+  const norm = n => aliases[n] || n;
   const nowISO = new Date().toISOString();
   const upcoming = D.upcomingFixtures(fixtures, nowISO, 4);
   const root = document.getElementById('matchday-root');
@@ -358,14 +366,14 @@ function renderMatchday(scores, participants, rules, fixtures) {
     kicker = `Next up`;
     items = upcoming.map((f, i) => {
       const stake = D.fixtureStakes(f, owners, rules);
-      const dotOwner = owners[f.homeTeam] || owners[f.awayTeam];
+      const dotOwner = owners[norm(f.homeTeam)] || owners[norm(f.awayTeam)];
       return `<div class="timeline-item" data-reveal style="--stagger:${i};
           --dot:${PLAYER_COLORS[dotOwner] || 'var(--sage)'}">
         <div class="timeline-when">${fmtKickoff(f.utcDate)} ·
-          ${esc(D.STAGE_LABELS[f.stage] || f.stage)} · ${fmtDate(f.utcDate.slice(0, 10))}</div>
-        <div class="timeline-tie">${ownerDot(owners[f.homeTeam])} ${flagImg(f.homeTeam)}
+          ${esc(D.STAGE_LABELS[f.stage] || f.stage)} · ${fmtKickoffDate(f.utcDate)}</div>
+        <div class="timeline-tie">${ownerDot(owners[norm(f.homeTeam)])} ${flagImg(f.homeTeam)}
           ${esc(f.homeTeam)} <span class="timeline-score">v</span>
-          ${esc(f.awayTeam)} ${flagImg(f.awayTeam)} ${ownerDot(owners[f.awayTeam])}</div>
+          ${esc(f.awayTeam)} ${flagImg(f.awayTeam)} ${ownerDot(owners[norm(f.awayTeam)])}</div>
         <div class="timeline-stake">${esc(stake)}</div></div>`;
     }).join('');
   } else {
@@ -373,11 +381,11 @@ function renderMatchday(scores, participants, rules, fixtures) {
     kicker = 'Fixtures unavailable';
     items = (scores.recentResults || []).slice(0, 4).map((r, i) =>
       `<div class="timeline-item" data-reveal style="--stagger:${i};
-          --dot:${PLAYER_COLORS[owners[r.homeTeam]] || 'var(--sage)'}">
+          --dot:${PLAYER_COLORS[owners[norm(r.homeTeam)]] || 'var(--sage)'}">
         <div class="timeline-when">${esc(r.stage)} · ${fmtDate(r.date)}</div>
-        <div class="timeline-tie">${ownerDot(owners[r.homeTeam])} ${flagImg(r.homeTeam)}
+        <div class="timeline-tie">${ownerDot(owners[norm(r.homeTeam)])} ${flagImg(r.homeTeam)}
           ${esc(r.homeTeam)} <span class="timeline-score">${r.homeScore ?? '–'}–${r.awayScore ?? '–'}</span>
-          ${esc(r.awayTeam)} ${flagImg(r.awayTeam)} ${ownerDot(owners[r.awayTeam])}</div>
+          ${esc(r.awayTeam)} ${flagImg(r.awayTeam)} ${ownerDot(owners[norm(r.awayTeam)])}</div>
       </div>`).join('');
   }
 
