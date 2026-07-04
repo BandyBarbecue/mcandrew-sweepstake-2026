@@ -106,7 +106,7 @@
     {
       "id": 21,
       "subject": "Task 12: Retire generator, deploy, verify live",
-      "status": "in_progress",
+      "status": "completed",
       "blockedBy": [
         19,
         20
@@ -114,5 +114,5 @@
       "description": "**Goal:** Delete generate_html.py, push everything, verify the live Pages site and full pipeline.\n\n**Files:**\n- Delete: generate_html.py\n\n**Acceptance Criteria:**\n- generate_html.py deleted; no remaining references in *.py\n- All tests green (node + pytest)\n- git pull --rebase origin main then push succeeds; live Pages site renders all sections\n- python update_scores.py and python fetch_fixtures.py still run cleanly post-push\n- User told to update scheduled chain: update_scores.py → fetch_fixtures.py → send_digest.py\n\n**Verify:** live https://bandybarbecue.github.io/mcandrew-sweepstake-2026 renders new site\n\nFull commands: plan doc Task 12.\n\n```json:metadata\n{\"files\": [\"generate_html.py\"], \"verifyCommand\": \"node --test tests/derive.test.mjs; python -m pytest tests/ -v; live URL check\", \"acceptanceCriteria\": [\"generator gone with no references\", \"tests green\", \"live site verified\", \"pipeline scripts run clean\", \"user informed about scheduler\"], \"modelTier\": \"standard\"}\n```"
     }
   ],
-  "lastUpdated": "2026-07-04T23:20:32.281222+00:00"
+  "lastUpdated": "2026-07-04T23:25:36.345169+00:00"
 }
