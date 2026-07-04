@@ -249,3 +249,4 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
             align-self: center; }
 .champion-slot .kicker { color: var(--gold); margin-bottom: 8px; }
 .champion-name { font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; }
+.bracket-scroll:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }

@@ -70,6 +70,9 @@ test('bracketData pads to expected counts', () => {
   const r32 = rounds.find(r => r.stage === 'LAST_32');
   assert.ok(r32.ties.some(t => t.away === 'Bosnia & Herz.'));
   assert.ok(!r32.ties.some(t => t.away === 'Bosnia-Herzegovina'));
+  // Ties are chronological within a round
+  const r32dates = r32.ties.map(t => t.date || t.utcDate).filter(Boolean);
+  assert.deepEqual(r32dates, [...r32dates].sort());
 });
 
 test('teamStatus keeps un-awarded best-thirds alive when they have an upcoming KO fixture', () => {
