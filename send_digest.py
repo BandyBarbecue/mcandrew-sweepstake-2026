@@ -103,9 +103,14 @@ def matchday_number(date_iso):
     return max(1, (d1 - d0).days + 1)
 
 
+def today_london():
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    return datetime.now(ZoneInfo("Europe/London")).strftime("%Y-%m-%d")
+
+
 def build_subject(scores, today=None):
-    from datetime import datetime, timezone
-    today = today or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = today or today_london()
     ranked = sorted(scores["participants"].items(), key=lambda x: x[1]["total"], reverse=True)
     md = matchday_number(today)
     (n1, p1), (n2, p2) = ranked[0], ranked[1]
@@ -126,7 +131,11 @@ def _flag_img(country, flag_codes):
 def _stakes_rows(fixtures, owners, today, flag_codes):
     if not fixtures:
         return ""
-    todays = [f for f in fixtures.get("fixtures", []) if f["utcDate"][:10] == today]
+    from datetime import datetime as _dt
+    from zoneinfo import ZoneInfo as _ZI
+    def _london_date(utc_iso):
+        return _dt.fromisoformat(utc_iso.replace("Z", "+00:00")).astimezone(_ZI("Europe/London")).strftime("%Y-%m-%d")
+    todays = [f for f in fixtures.get("fixtures", []) if _london_date(f["utcDate"]) == today]
     if not todays:
         return ""
     rows = ""
@@ -160,11 +169,12 @@ def _stakes_rows(fixtures, owners, today, flag_codes):
 
 def build_email_html(scores, new_events, flag_codes=None, fixtures=None,
                      owners=None, today=None):
-    from datetime import datetime, timezone
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
     flag_codes = flag_codes or {}
     owners = owners or {}
-    now = datetime.now(timezone.utc)
-    today = today or now.strftime("%Y-%m-%d")
+    now = datetime.now(ZoneInfo("Europe/London"))
+    today = today or today_london()
     ranked = sorted(scores["participants"].items(), key=lambda x: x[1]["total"], reverse=True)
     md = matchday_number(today)
     leader_name, leader = ranked[0]
