@@ -1,34 +1,6 @@
 {
-  "fetchedAt": "2026-07-03T20:32:39.013018+00:00",
+  "fetchedAt": "2026-07-04T23:23:50.392286+00:00",
   "fixtures": [
-    {
-      "matchId": 537427,
-      "homeTeam": "Argentina",
-      "awayTeam": "Cape Verde",
-      "utcDate": "2026-07-03T22:00:00Z",
-      "stage": "LAST_32"
-    },
-    {
-      "matchId": 537430,
-      "homeTeam": "Colombia",
-      "awayTeam": "Ghana",
-      "utcDate": "2026-07-04T01:30:00Z",
-      "stage": "LAST_32"
-    },
-    {
-      "matchId": 537376,
-      "homeTeam": "Canada",
-      "awayTeam": "Morocco",
-      "utcDate": "2026-07-04T17:00:00Z",
-      "stage": "LAST_16"
-    },
-    {
-      "matchId": 537375,
-      "homeTeam": "Paraguay",
-      "awayTeam": "France",
-      "utcDate": "2026-07-04T21:00:00Z",
-      "stage": "LAST_16"
-    },
     {
       "matchId": 537377,
       "homeTeam": "Brazil",
@@ -45,8 +17,8 @@
     },
     {
       "matchId": 537379,
-      "homeTeam": "TBD",
-      "awayTeam": "TBD",
+      "homeTeam": "Portugal",
+      "awayTeam": "Spain",
       "utcDate": "2026-07-06T19:00:00Z",
       "stage": "LAST_16"
     },
@@ -59,15 +31,15 @@
     },
     {
       "matchId": 537381,
-      "homeTeam": "TBD",
-      "awayTeam": "TBD",
+      "homeTeam": "Argentina",
+      "awayTeam": "Egypt",
       "utcDate": "2026-07-07T16:00:00Z",
       "stage": "LAST_16"
     },
     {
       "matchId": 537382,
-      "homeTeam": "TBD",
-      "awayTeam": "TBD",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Colombia",
       "utcDate": "2026-07-07T20:00:00Z",
       "stage": "LAST_16"
     },
