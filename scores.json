@@ -1,6 +1,6 @@
 {
   "lastRunAt": "2026-07-04T23:37:23.276830+00:00",
-  "lastEmailAt": "2026-07-04T06:54:14.845244+00:00",
+  "lastEmailAt": "2026-07-04T23:37:29.104281+00:00",
   "processedMatchIds": [
     537327,
     537328,
@@ -1573,6 +1573,7 @@
     "Edward|France|GROUP_STAGE_WIN|537391",
     "Edward|France|GROUP_STAGE_WIN|537393",
     "Edward|France|GROUP_STAGE_WIN|537395",
+    "Edward|France|LAST_16_WIN|537375",
     "Edward|France|LAST_32_WIN|537416",
     "Edward|France|QUALIFY_TOP_2|qual_France",
     "Edward|Netherlands|GROUP_STAGE_DRAW|537357",
@@ -1656,6 +1657,7 @@
     "Kenny|Morocco|GROUP_STAGE_DRAW|537339",
     "Kenny|Morocco|GROUP_STAGE_WIN|537342",
     "Kenny|Morocco|GROUP_STAGE_WIN|537344",
+    "Kenny|Morocco|LAST_16_WIN|537376",
     "Kenny|Morocco|LAST_32_WIN|537418",
     "Kenny|Morocco|QUALIFY_TOP_2|qual_Morocco",
     "Kenny|Norway|GROUP_STAGE_WIN|537392",
