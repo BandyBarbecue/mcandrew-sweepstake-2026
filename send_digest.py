@@ -17,37 +17,6 @@ if not GMAIL_APP_PASSWORD:
 
 SITE_URL = "https://BandyBarbecue.github.io/mcandrew-sweepstake-2026"
 
-RANK_EMOJI = {1: "🏆", 2: "🥈", 3: "🥉", 4: "😅"}
-
-COUNTRY_FLAGS = {
-    "Qatar": "🇶🇦", "Uruguay": "🇺🇾", "Morocco": "🇲🇦", "Argentina": "🇦🇷",
-    "Norway": "🇳🇴", "Iran": "🇮🇷", "Croatia": "🇭🇷", "Spain": "🇪🇸",
-    "Belgium": "🇧🇪", "Ivory Coast": "🇨🇮", "Mexico": "🇲🇽", "Czechia": "🇨🇿",
-    "Bosnia & Herz.": "🇧🇦", "Japan": "🇯🇵", "Panama": "🇵🇦", "Senegal": "🇸🇳",
-    "DR Congo": "🇨🇩", "Canada": "🇨🇦", "Cape Verde": "🇨🇻", "Jordan": "🇯🇴",
-    "USA": "🇺🇸", "South Africa": "🇿🇦", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Colombia": "🇨🇴",
-    "Haiti": "🇭🇹", "Brazil": "🇧🇷", "Sweden": "🇸🇪", "France": "🇫🇷",
-    "South Korea": "🇰🇷", "Ecuador": "🇪🇨", "New Zealand": "🇳🇿",
-    "Saudi Arabia": "🇸🇦", "Netherlands": "🇳🇱", "Turkey": "🇹🇷",
-    "Paraguay": "🇵🇾", "Iraq": "🇮🇶",
-    "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Egypt": "🇪🇬", "Australia": "🇦🇺", "Curaçao": "🇨🇼",
-    "Ghana": "🇬🇭", "Austria": "🇦🇹", "Germany": "🇩🇪", "Tunisia": "🇹🇳",
-    "Algeria": "🇩🇿", "Portugal": "🇵🇹", "Switzerland": "🇨🇭", "Uzbekistan": "🇺🇿",
-}
-
-EVENT_LABELS = {
-    "GROUP_STAGE_WIN": "won in Group Stage",
-    "GROUP_STAGE_DRAW": "drew in Group Stage",
-    "QUALIFY_TOP_2": "qualified from Group (Top 2)",
-    "QUALIFY_BEST_THIRD": "qualified as Best 3rd Place",
-    "LAST_32_WIN": "won Round of 32",
-    "LAST_16_WIN": "won Round of 16",
-    "QUARTER_FINALS_WIN": "won Quarter-Final",
-    "SEMI_FINALS_WIN": "won Semi-Final",
-    "THIRD_PLACE_WIN": "won 3rd Place Play-off",
-    "FINAL_WIN": "WON THE WORLD CUP! 🏆",
-}
-
 
 def event_key(owner, entry):
     """Stable identity for a log entry, used to track what has been emailed."""
@@ -100,100 +69,202 @@ def format_day(dt):
     return str(int(dt.strftime("%d")))
 
 
-def build_email_html(scores, new_events):
-    ranked = sorted(scores["participants"].items(), key=lambda x: x[1]["total"], reverse=True)
-    now = datetime.now(timezone.utc)
-    today = f"{format_day(now)} {now.strftime('%B %Y')}"
+EVENT_LABELS = {
+    "GROUP_STAGE_WIN": "won in the Group Stage",
+    "GROUP_STAGE_DRAW": "drew in the Group Stage",
+    "QUALIFY_TOP_2": "qualified from the group (top 2)",
+    "QUALIFY_BEST_THIRD": "qualified as a best third",
+    "LAST_32_WIN": "won the Round of 32",
+    "LAST_16_WIN": "won the Round of 16",
+    "QUARTER_FINALS_WIN": "won the Quarter-Final",
+    "SEMI_FINALS_WIN": "won the Semi-Final",
+    "THIRD_PLACE_WIN": "won the 3rd Place Play-off",
+    "FINAL_WIN": "won the World Cup Final",
+}
 
-    # Points gained per player in this digest, shown as a chip in the standings
+STAGE_LABELS = {
+    "GROUP_STAGE": "Group Stage", "LAST_32": "Round of 32", "LAST_16": "Round of 16",
+    "QUARTER_FINALS": "Quarter-Final", "SEMI_FINALS": "Semi-Final",
+    "THIRD_PLACE": "3rd Place Play-off", "FINAL": "Final",
+}
+
+TOURNAMENT_START = "2026-06-11"
+
+INK, CREAM, GOLD, TERRA, DEEP = "#22301f", "#f2efe6", "#d9a441", "#c98a5b", "#0b120d"
+SERIF = "Georgia,'Times New Roman',serif"
+SANS = "-apple-system,'Segoe UI',Arial,sans-serif"
+MONO = "'Courier New',Courier,monospace"
+
+
+def matchday_number(date_iso):
+    from datetime import date
+    d0 = date.fromisoformat(TOURNAMENT_START)
+    d1 = date.fromisoformat(date_iso)
+    return max(1, (d1 - d0).days + 1)
+
+
+def today_london():
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    return datetime.now(ZoneInfo("Europe/London")).strftime("%Y-%m-%d")
+
+
+def build_subject(scores, today=None):
+    today = today or today_london()
+    ranked = sorted(scores["participants"].items(), key=lambda x: x[1]["total"], reverse=True)
+    md = matchday_number(today)
+    (n1, p1), (n2, p2) = ranked[0], ranked[1]
+    gap = p1["total"] - p2["total"]
+    if gap == 0:
+        return f"Sweepstake — {n1} and {n2} level at the top (Matchday {md})"
+    return f"Sweepstake — {n1} leads by {gap} (Matchday {md})"
+
+
+def _flag_img(country, flag_codes):
+    code = flag_codes.get(country)
+    if not code:
+        return ""
+    return (f'<img src="{SITE_URL}/flags/png/{code}.png" width="18" height="13" '
+            f'alt="{country} flag" style="vertical-align:-2px;border:0">')
+
+
+def _stakes_rows(fixtures, owners, today, flag_codes):
+    if not fixtures:
+        return ""
+    from datetime import datetime as _dt
+    from zoneinfo import ZoneInfo as _ZI
+    def _london_date(utc_iso):
+        return _dt.fromisoformat(utc_iso.replace("Z", "+00:00")).astimezone(_ZI("Europe/London")).strftime("%Y-%m-%d")
+    todays = [f for f in fixtures.get("fixtures", []) if _london_date(f["utcDate"]) == today]
+    if not todays:
+        return ""
+    rows = ""
+    for f in todays[:4]:
+        ho, ao = owners.get(f["homeTeam"]), owners.get(f["awayTeam"])
+        if ho and ao and ho == ao:
+            stake = f"{ho} derby — both teams are {ho}'s"
+        elif ho and ao:
+            stake = f"{ho}'s {f['homeTeam']} against {ao}'s {f['awayTeam']}"
+        elif ho or ao:
+            stake = f"{(ho or ao)}'s {(f['homeTeam'] if ho else f['awayTeam'])} in action"
+        else:
+            stake = "Neutral fixture"
+        stage = STAGE_LABELS.get(f["stage"], f["stage"])
+        rows += (
+            f'<tr><td style="padding:9px 14px;border-bottom:1px solid #e5e0d1">'
+            f'<div style="font-family:{MONO};font-size:0.68rem;letter-spacing:2px;'
+            f'text-transform:uppercase;color:#8a9284">{stage}</div>'
+            f'<div style="font-family:{SANS};font-weight:700;font-size:0.92rem;color:{INK};'
+            f'padding-top:2px">{_flag_img(f["homeTeam"], flag_codes)} {f["homeTeam"]} v '
+            f'{f["awayTeam"]} {_flag_img(f["awayTeam"], flag_codes)}</div>'
+            f'<div style="font-family:{SANS};font-size:0.8rem;color:#5a6b52;padding-top:2px">'
+            f'What\'s at stake: {stake}</div></td></tr>')
+    return (
+        f'<h2 style="font-family:{SERIF};color:{INK};font-size:1.05rem;font-weight:600;'
+        f'margin:26px 0 10px">Today\'s <em style="color:{TERRA}">stakes</em></h2>'
+        f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+        f'style="background:{CREAM};border-radius:8px;border-collapse:separate;'
+        f'overflow:hidden">{rows}</table>')
+
+
+def build_email_html(scores, new_events, flag_codes=None, fixtures=None,
+                     owners=None, today=None):
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    flag_codes = flag_codes or {}
+    owners = owners or {}
+    now = datetime.now(ZoneInfo("Europe/London"))
+    today = today or today_london()
+    ranked = sorted(scores["participants"].items(), key=lambda x: x[1]["total"], reverse=True)
+    md = matchday_number(today)
+    leader_name, leader = ranked[0]
+    gap = leader["total"] - ranked[1][1]["total"]
+
     gains = {}
     for e in new_events:
         gains[e["owner"]] = gains.get(e["owner"], 0) + e.get("points", 0)
 
-    # Standings rows
     standings_rows = ""
     for rank, (name, data) in enumerate(ranked, 1):
-        bg = "#1a472a" if rank == 1 else ("#f9f9f9" if rank % 2 == 0 else "#ffffff")
-        color = "#ffffff" if rank == 1 else "#333333"
-        emoji = RANK_EMOJI.get(rank, "")
+        is_leader = rank == 1
+        bg = "#faf3e0" if is_leader else "#ffffff"
+        border = f'border-left:3px solid {GOLD};' if is_leader else ''
         gain = gains.get(name, 0)
-        if gain > 0:
-            chip_style = ("background:rgba(245,197,24,0.25);color:#f5c518" if rank == 1
-                          else "background:#e8f3ec;color:#1a472a")
-            gain_chip = (f' <span style="{chip_style};font-weight:800;font-size:0.72rem;'
-                         f'padding:2px 7px;border-radius:10px;white-space:nowrap">▲ {gain}</span>')
-        else:
-            gain_chip = ""
-        standings_rows += f"""
-        <tr style="background:{bg};color:{color};">
-          <td style="padding:10px 14px;font-size:1rem;width:1%">{emoji}</td>
-          <td style="padding:10px 14px;font-weight:700;font-size:0.95rem">{name}{gain_chip}</td>
-          <td style="padding:10px 14px;font-weight:800;font-size:1rem;text-align:right;white-space:nowrap;color:{'#f5c518' if rank==1 else '#1a472a'}">{data['total']} pts</td>
-        </tr>"""
+        chip = (f' <span style="font-family:{MONO};font-size:0.7rem;color:#4a7d4f;'
+                f'font-weight:700">&#9650; {gain} new</span>') if gain > 0 else ""
+        standings_rows += (
+            f'<tr style="background:{bg}">'
+            f'<td style="{border}padding:12px 14px;font-family:{SERIF};font-style:italic;'
+            f'font-size:1.05rem;color:{"#b3763f" if is_leader else "#8a9284"};width:26px">{rank}</td>'
+            f'<td style="padding:12px 6px;font-family:{SANS};font-weight:700;'
+            f'font-size:0.95rem;color:{INK}">{name}{chip}</td>'
+            f'<td style="padding:12px 14px;font-family:{MONO};font-weight:700;'
+            f'font-size:1.05rem;text-align:right;color:'
+            f'{"#9a7118" if is_leader else INK}">{data["total"]}</td></tr>')
 
-    # Events rows
     events_rows = ""
     for e in new_events[:20]:
-        flag = COUNTRY_FLAGS.get(e["country"], "🏳")
         label = EVENT_LABELS.get(e["event"], e["event"])
-        opp = e.get("opponent", "")
-        opp_flag = COUNTRY_FLAGS.get(opp, "")
-        is_qualification = e["event"] in ("QUALIFY_TOP_2", "QUALIFY_BEST_THIRD")
-        opp_part = f" vs {opp_flag} {opp}" if opp and not is_qualification else ""
-        pts = e["points"]
-        badge_bg = "#1a472a" if pts >= 4 else "#888888"
-        events_rows += f"""
-        <tr>
-          <td style="padding:8px 14px;white-space:nowrap;width:1%;border-bottom:1px solid #f0f0f0;vertical-align:top">
-            <span style="background:{badge_bg};color:#fff;font-weight:800;padding:2px 8px;border-radius:4px;font-size:0.85rem">+{pts}</span>
-          </td>
-          <td style="padding:8px 14px;font-size:0.9rem;border-bottom:1px solid #f0f0f0;word-break:break-word">
-            <strong>{e['owner']}</strong> — {flag} {e['country']} {label}{opp_part}
-          </td>
-          <td style="padding:8px 14px;color:#888;font-size:0.78rem;white-space:nowrap;text-align:right;width:1%;border-bottom:1px solid #f0f0f0;vertical-align:top">{e.get('date','')}</td>
-        </tr>"""
-
+        is_qual = e["event"] in ("QUALIFY_TOP_2", "QUALIFY_BEST_THIRD")
+        opp = f' vs {e["opponent"]}' if e.get("opponent") and not is_qual else ""
+        events_rows += (
+            f'<tr><td style="padding:9px 0 9px 14px;width:44px;vertical-align:top;'
+            f'border-bottom:1px solid #f0ede4">'
+            f'<span style="font-family:{MONO};background:{DEEP};color:#f2f0e9;'
+            f'font-weight:700;padding:2px 7px;font-size:0.8rem">+{e["points"]}</span></td>'
+            f'<td style="padding:9px 14px;font-family:{SANS};font-size:0.88rem;color:{INK};'
+            f'border-bottom:1px solid #f0ede4"><strong>{e["owner"]}</strong> — '
+            f'{_flag_img(e["country"], flag_codes)} {e["country"]} {label}{opp}'
+            f'<span style="font-family:{MONO};font-size:0.7rem;color:#8a9284"> · '
+            f'{e.get("date", "")}</span></td></tr>')
     if not events_rows:
-        events_rows = '<tr><td colspan="3" style="padding:12px 14px;color:#888;text-align:center;font-style:italic">No new points since last update</td></tr>'
+        events_rows = (f'<tr><td style="padding:12px 14px;font-family:{SANS};color:#8a9284;'
+                       f'font-style:italic;font-size:0.85rem">No new points since the last '
+                       f'update.</td></tr>')
+
+    stakes_html = _stakes_rows(fixtures, owners, today, flag_codes)
+    day = format_day(now)
+    gap_line = (f"{leader_name} leads by {gap}" if gap
+                else f"{leader_name} level at the top")
 
     return f"""<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:20px;background:#f0f2f0;font-family:-apple-system,'Segoe UI',Arial,sans-serif">
-  <div style="max-width:520px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.12)">
-
-    <div style="background:#1a472a;padding:28px 24px;text-align:center;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 20px,transparent 20px,transparent 40px)">
-      <div style="font-size:2.2rem;margin-bottom:4px">⚽</div>
-      <div style="color:#ffffff;font-weight:800;font-size:1.1rem;letter-spacing:2px;text-transform:uppercase">McAndrew Family</div>
-      <div style="color:#f5c518;font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;margin-top:2px">WORLD CUP 2026 · SWEEPSTAKE</div>
-      <div style="color:rgba(255,255,255,0.55);font-size:0.75rem;margin-top:6px">{today}</div>
-    </div>
-
-    <div style="padding:24px">
-      <h2 style="color:#1a472a;font-size:1rem;font-weight:700;margin:0 0 12px">📊 Current Standings</h2>
-      <table style="width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
-        {standings_rows}
-      </table>
-
-      <h2 style="color:#1a472a;font-size:1rem;font-weight:700;margin:22px 0 12px">⚡ Points Update</h2>
-      <table style="width:100%;border-collapse:collapse">
-        {events_rows}
-      </table>
-
-      <div style="text-align:center;margin-top:28px">
-        <a href="{SITE_URL}"
-           style="display:inline-block;background:#1a472a;color:#ffffff;font-weight:700;
-                  font-size:0.95rem;padding:13px 28px;border-radius:8px;text-decoration:none;
-                  letter-spacing:0.5px">
-          View Live Leaderboard →
-        </a>
-      </div>
-    </div>
-
-    <div style="background:#f7f7f7;padding:12px 24px;text-align:center;color:#aaa;font-size:0.75rem;border-top:1px solid #eee">
-      McAndrew Family World Cup 2026 Sweepstake
-    </div>
-  </div>
+<body style="margin:0;padding:24px 12px;background:#e8e4d8">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+    style="max-width:540px;margin:0 auto;background:#ffffff;border-collapse:separate;
+    border-radius:12px;overflow:hidden">
+    <tr><td style="background:{DEEP};padding:30px 28px">
+      <div style="font-family:{MONO};font-size:0.66rem;letter-spacing:4px;
+        text-transform:uppercase;color:{TERRA}">World Cup 2026 · Matchday {md}</div>
+      <div style="font-family:{SERIF};font-size:1.5rem;color:#f2f0e9;padding-top:8px">
+        McAndrew <em style="color:{GOLD}">Sweepstake</em></div>
+      <div style="font-family:{MONO};font-size:0.7rem;color:#9aa89c;padding-top:8px;
+        text-transform:uppercase;letter-spacing:2px">{day} {now.strftime('%B %Y')} ·
+        {gap_line}</div>
+    </td></tr>
+    <tr><td style="padding:26px 28px">
+      <h2 style="font-family:{SERIF};color:{INK};font-size:1.05rem;font-weight:600;
+        margin:0 0 10px">The <em style="color:{TERRA}">standings</em></h2>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+        style="border:1px solid #e5e0d1;border-radius:8px;border-collapse:separate;
+        overflow:hidden">{standings_rows}</table>
+      <h2 style="font-family:{SERIF};color:{INK};font-size:1.05rem;font-weight:600;
+        margin:26px 0 10px">New <em style="color:{TERRA}">points</em></h2>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{events_rows}</table>
+      {stakes_html}
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr><td align="center" style="padding-top:30px">
+          <a href="{SITE_URL}" style="display:inline-block;background:{DEEP};color:#f2f0e9;
+            font-family:{SANS};font-weight:700;font-size:0.92rem;padding:14px 30px;
+            border-radius:8px;text-decoration:none">View the live leaderboard &#8594;</a>
+        </td></tr></table>
+    </td></tr>
+    <tr><td style="background:{CREAM};padding:14px 28px;text-align:center">
+      <span style="font-family:{MONO};font-size:0.62rem;letter-spacing:2px;
+        text-transform:uppercase;color:#8a9284">McAndrew Family · World Cup 2026</span>
+    </td></tr>
+  </table>
 </body>
 </html>"""
 
@@ -214,24 +285,41 @@ def send_email(subject, html_body, recipients):
 
 def main():
     force = "--force" in sys.argv
+    test_mode = "--test" in sys.argv                     # NEW
     participants, _ = read_json("participants.json")
     scores, scores_sha = read_json("scores.json")
 
+    try:                                                  # NEW (all optional data)
+        flag_codes, _ = read_json("flag-codes.json")
+    except Exception:
+        flag_codes = {}
+    try:
+        fixtures, _ = read_json("fixtures.json")
+    except Exception:
+        fixtures = None
+
     new_events = new_events_since_last_email(scores)
 
-    if not new_events and not force:
+    if not new_events and not (force or test_mode):
         print("No new points since last email. Skipping.")
         return
 
-    now = datetime.now(timezone.utc)
-    today_str = f"{format_day(now)} {now.strftime('%B')}"
-    subject = f"⚽ Sweepstake Update — {today_str}"
+    subject = build_subject(scores)
+    if test_mode:
+        subject = f"[TEST] {subject}"
 
-    recipients = list(participants["emails"].values())
+    recipients = [GMAIL_SENDER] if test_mode else list(participants["emails"].values())
     if not recipients:
         raise ValueError("No recipients found in participants.json emails")
-    html_body = build_email_html(scores, new_events if new_events else [])
+    html_body = build_email_html(
+        scores, new_events if new_events else [],
+        flag_codes=flag_codes, fixtures=fixtures,
+        owners=participants["countryToOwner"])
     send_email(subject, html_body, recipients)
+
+    if test_mode:                                         # NEW: no state updates
+        print(f"TEST email sent to {GMAIL_SENDER} only. State not updated.")
+        return
 
     record_emailed(scores, new_events)
     scores["lastEmailAt"] = datetime.now(timezone.utc).isoformat()
