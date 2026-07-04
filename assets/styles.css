@@ -145,9 +145,9 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
 .leader-card { background: linear-gradient(120deg, rgba(217, 164, 65, 0.14),
                rgba(217, 164, 65, 0.04) 60%); border: 1px solid rgba(217, 164, 65, 0.3);
                border-radius: var(--radius); margin-bottom: 6px; }
-.standing-row { border-bottom: 1px solid var(--hairline-soft); }
+.standing-row { border-bottom: 1px solid var(--hairline-soft); scroll-margin-top: 64px; }
 .standing-row:last-child { border-bottom: none; }
-.standing-head { display: flex; align-items: center; gap: 14px; width: 100%;
+.standing-head { scroll-margin-top: 64px; display: flex; align-items: center; gap: 14px; width: 100%;
                  padding: 16px 18px; background: none; border: none; color: inherit;
                  font: inherit; text-align: left; cursor: pointer; }
 .standing-rank { font-family: var(--font-serif); font-style: italic; font-size: 1.35rem;

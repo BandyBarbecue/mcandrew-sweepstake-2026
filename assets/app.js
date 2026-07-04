@@ -127,7 +127,7 @@ function logRowHTML(e) {
   const label = D.EVENT_LABELS[e.event] || e.event;
   const isQual = D.QUALIFY_EVENTS.includes(e.event);
   const opp = e.opponent && !isQual ? ` vs ${esc(e.opponent)}` : '';
-  return `<div class="log-row">
+  return `<div class="log-row" data-country="${esc(e.country)}">
     <span class="log-pts${big}">+${e.points}</span>
     <span class="log-text">${flagImg(e.country)} <strong>${esc(e.country)}</strong>
       ${esc(label)}${opp}</span>
@@ -485,11 +485,12 @@ function renderSquads(scores, participants, status) {
       const rank = ranked2.findIndex(([n]) => n === owner) + 1;
       const head = document.querySelector(`.standing-head[aria-controls="log-${rank}"]`);
       const body = document.getElementById(`log-${rank}`);
+      if (!head || !body) return;
       body.classList.add('open');
       head.setAttribute('aria-expanded', 'true');
       head.scrollIntoView({ behavior: 'smooth', block: 'start' });
       body.querySelectorAll('.log-row').forEach(row => {
-        if (row.textContent.includes(country)) {
+        if (row.dataset.country === country) {
           row.classList.add('hl');
           setTimeout(() => row.classList.remove('hl'), 2600);
         }
