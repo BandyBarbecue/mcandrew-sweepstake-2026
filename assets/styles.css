@@ -116,6 +116,7 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
 /* ============ LOAD ERROR ============ */
 .load-error { min-height: 100vh; display: flex; align-items: center; justify-content: center;
               background: var(--bg-deep); padding: 20px; }
+.load-error[hidden] { display: none; }
 .load-error-card { max-width: 420px; text-align: center; border: 1px solid var(--hairline);
                    border-radius: var(--radius); padding: 40px 32px; }
 .load-error-card h2 { font-size: 1.6rem; margin: 12px 0; }
@@ -137,4 +138,5 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .hero-title .w { opacity: 1; transform: none; animation: none; }
   .scroll-cue { animation: none; }
+  .topbar { transition: none; }
 }
