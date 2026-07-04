@@ -38,6 +38,13 @@ function fmtKickoffDate(utcISO) {
   });
 }
 
+function todayLondonISO() {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
+  return parts; // en-CA yields YYYY-MM-DD
+}
+
 async function getJSON(path, { optional = false } = {}) {
   try {
     const r = await fetch(`${path}?v=${Date.now()}`);
@@ -56,7 +63,7 @@ function renderHero(scores, participants, status) {
   const alive = Object.values(status).filter(s => s.alive).length;
   const lastResult = (scores.recentResults || [])[0];
   const stage = lastResult ? lastResult.stage : 'Group Stage';
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayLondonISO();
   document.getElementById('stat-strip').innerHTML = `
     <div class="stat"><dt>Matchday</dt><dd>${D.matchdayNumber(today)}</dd></div>
     <div class="stat"><dt>Stage</dt><dd>${esc(stage)}</dd></div>
@@ -110,6 +117,10 @@ function initReveals() {
     }
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  setTimeout(() =>
+    document.querySelectorAll('[data-reveal]:not(.in)')
+      .forEach(el => el.classList.add('in')), 3000);
 }
 
 function sparklineSVG(values, color) {
@@ -135,7 +146,7 @@ function logRowHTML(e) {
 }
 
 function renderStandings(scores, participants, status) {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayLondonISO();
   const { series } = D.cumulativeSeries(scores);
   const ranked = Object.entries(scores.participants)
     .sort((a, b) => b[1].total - a[1].total);
@@ -358,7 +369,7 @@ function renderMatchday(scores, participants, rules, fixtures) {
   const nowISO = new Date().toISOString();
   const upcoming = D.upcomingFixtures(fixtures, nowISO, 4);
   const root = document.getElementById('matchday-root');
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayLondonISO();
 
   let title, kicker, items;
   if (upcoming.length) {

@@ -64,7 +64,7 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
                 font-weight: 700; letter-spacing: 0.04em; }
 .topbar-nav a:hover, .topbar-nav a:focus-visible { color: var(--gold); }
 .topbar-menu { display: none; background: none; border: 1px solid var(--hairline);
-               border-radius: 8px; color: var(--ink); padding: 5px 8px; cursor: pointer; }
+               border-radius: 8px; color: var(--ink); padding: 9px 10px; cursor: pointer; }
 @media (max-width: 640px) {
   .topbar-nav { display: none; position: absolute; top: 100%; right: 12px;
                 flex-direction: column; gap: 0; background: var(--bg-deep);
@@ -198,7 +198,7 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
 .race-axis { font-family: var(--font-mono); font-size: 9px; fill: var(--ink-faint); }
 .race-chips { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
 .race-chip { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.18em;
-             text-transform: uppercase; padding: 7px 14px; border-radius: 999px;
+             text-transform: uppercase; padding: 11px 16px; border-radius: 999px;
              border: 1px solid transparent; background: none; color: var(--ink-faint);
              cursor: pointer; }
 .race-chip[aria-pressed="true"] { background: var(--hairline-soft);
