@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-04T06:54:11.059224+00:00",
+  "lastRunAt": "2026-07-04T23:23:44.413245+00:00",
   "lastEmailAt": "2026-07-04T06:54:14.845244+00:00",
   "processedMatchIds": [
     537327,
@@ -50,6 +50,8 @@
     537372,
     537373,
     537374,
+    537375,
+    537376,
     537391,
     537392,
     537393,
@@ -127,6 +129,24 @@
   ],
   "recentResults": [
     {
+      "matchId": 537375,
+      "homeTeam": "Paraguay",
+      "awayTeam": "France",
+      "homeScore": 0,
+      "awayScore": 1,
+      "date": "2026-07-04",
+      "stage": "Round of 16"
+    },
+    {
+      "matchId": 537376,
+      "homeTeam": "Canada",
+      "awayTeam": "Morocco",
+      "homeScore": 0,
+      "awayScore": 3,
+      "date": "2026-07-04",
+      "stage": "Round of 16"
+    },
+    {
       "matchId": 537430,
       "homeTeam": "Colombia",
       "awayTeam": "Ghana",
@@ -197,29 +217,11 @@
       "awayScore": 2,
       "date": "2026-07-01",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537426,
-      "homeTeam": "England",
-      "awayTeam": "DR Congo",
-      "homeScore": 2,
-      "awayScore": 1,
-      "date": "2026-07-01",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537425,
-      "homeTeam": "Mexico",
-      "awayTeam": "Ecuador",
-      "homeScore": 2,
-      "awayScore": 0,
-      "date": "2026-07-01",
-      "stage": "Round of 32"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 93,
+      "total": 98,
       "countries": {
         "Qatar": {
           "points": 1
@@ -228,7 +230,7 @@
           "points": 2
         },
         "Morocco": {
-          "points": 12
+          "points": 17
         },
         "Argentina": {
           "points": 13
@@ -259,6 +261,14 @@
         }
       },
       "log": [
+        {
+          "country": "Morocco",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-04",
+          "opponent": "Canada",
+          "matchId": 537376
+        },
         {
           "country": "Argentina",
           "event": "LAST_32_WIN",
@@ -937,7 +947,7 @@
       ]
     },
     "Edward": {
-      "total": 59,
+      "total": 64,
       "countries": {
         "Haiti": {
           "points": 0
@@ -949,7 +959,7 @@
           "points": 5
         },
         "France": {
-          "points": 13
+          "points": 18
         },
         "South Korea": {
           "points": 2
@@ -977,6 +987,14 @@
         }
       },
       "log": [
+        {
+          "country": "France",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-04",
+          "opponent": "Paraguay",
+          "matchId": 537375
+        },
         {
           "country": "Ecuador",
           "event": "QUALIFY_BEST_THIRD",
