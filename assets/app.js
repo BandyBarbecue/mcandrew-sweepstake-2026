@@ -395,6 +395,45 @@ function renderMatchday(scores, participants, rules, fixtures) {
     </div><div class="timeline">${items}</div>`;
 }
 
+function renderBracket(scores, participants, fixtures, status) {
+  const owners = participants.countryToOwner;
+  const aliases = participants.apiNameAliases || {};
+  const norm = n => aliases[n] || n;
+  const rounds = D.bracketData(scores, fixtures, participants.apiNameAliases);
+  const finalWin = D.allEvents(scores).find(e => e.event === 'FINAL_WIN');
+
+  const teamRow = (team, tie) => {
+    const cls = tie.winner ? (tie.winner === team ? 'won' : 'lost') : '';
+    const known = team && team !== 'TBD';
+    return `<div class="tie-team ${cls}">
+      ${known ? ownerDot(owners[norm(team)]) : ''} ${known ? flagImg(team) : ''}
+      <span>${esc(team || 'TBD')}</span></div>`;
+  };
+
+  const cols = rounds.map(r => `<div class="bracket-col">
+      <h3>${esc(r.label)}</h3>
+      ${r.ties.map(t => `<div class="tie">
+        ${teamRow(t.home, t)}${teamRow(t.away, t)}
+        ${t.utcDate ? `<div class="tie-when">${fmtKickoffDate(t.utcDate)} ·
+          ${fmtKickoff(t.utcDate)}</div>` : ''}
+      </div>`).join('')}</div>`).join('');
+
+  document.getElementById('bracket-root').innerHTML = `
+    <div class="section-head">
+      <h2 class="section-title">The <em>road</em> to the final</h2>
+      <span class="kicker" style="color:var(--ink-faint)">Knockouts</span>
+    </div>
+    <div class="bracket-scroll"><div class="bracket">
+      ${cols}
+      <div class="champion-slot">
+        <p class="kicker">Champion</p>
+        <p class="champion-name">${finalWin ?
+          `${flagImg(finalWin.country)} ${esc(finalWin.country)}` : 'To be won'}</p>
+        ${finalWin ? `<p class="tie-when">${esc(finalWin.owner)} takes the sweepstake glory</p>` : ''}
+      </div>
+    </div></div>`;
+}
+
 async function main() {
   let scores, participants, rules;
   let fixtures = null;
@@ -422,7 +461,7 @@ async function main() {
     () => renderStandings(scores, participants, status),
     () => renderRace(scores),
     () => renderMatchday(scores, participants, rules, fixtures),
-    // () => renderBracket(scores, participants, fixtures, status), (Task 8)
+    () => renderBracket(scores, participants, fixtures, status),
     // () => renderSquads(scores, participants, status),      (Task 9)
     // () => renderRecords(scores),                            (Task 9)
     // () => renderResults(scores),                            (Task 9)

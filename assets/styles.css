@@ -227,3 +227,25 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
 .timeline-stake { font-size: 0.85rem; color: var(--cream-dim); margin-top: 3px;
             line-height: 1.5; }
 .owner-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* ============ BRACKET ============ */
+.bracket-scroll { overflow-x: auto; padding-bottom: 12px; }
+.bracket { display: flex; gap: 18px; min-width: max-content; align-items: flex-start; }
+.bracket-col { width: 190px; flex-shrink: 0; }
+.bracket-col h3 { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--ink-faint); font-weight: 600;
+            margin-bottom: 10px; }
+.tie { border: 1px solid var(--hairline); border-radius: 10px; padding: 8px 10px;
+       margin-bottom: 8px; background: var(--bg-deep); }
+.tie-team { display: flex; align-items: center; gap: 7px; font-size: 0.8rem;
+            padding: 3px 0; color: var(--ink-dim); }
+.tie-team.won { color: var(--ink); font-weight: 800; }
+.tie-team.lost { opacity: 0.38; }
+.tie-team .flag { width: 18px; height: 13px; }
+.tie-when { font-family: var(--font-mono); font-size: 0.58rem; color: var(--ink-faint);
+            letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+.champion-slot { width: 190px; flex-shrink: 0; border: 1.5px solid var(--gold);
+            border-radius: var(--radius); padding: 18px 14px; text-align: center;
+            align-self: center; }
+.champion-slot .kicker { color: var(--gold); margin-bottom: 8px; }
+.champion-name { font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; }
