@@ -181,7 +181,7 @@ def build_email_html(scores, new_events, flag_codes=None, fixtures=None,
         border = f'border-left:3px solid {GOLD};' if is_leader else ''
         gain = gains.get(name, 0)
         chip = (f' <span style="font-family:{MONO};font-size:0.7rem;color:#4a7d4f;'
-                f'font-weight:700">&#9650; {gain} today</span>') if gain > 0 else ""
+                f'font-weight:700">&#9650; {gain} new</span>') if gain > 0 else ""
         standings_rows += (
             f'<tr style="background:{bg}">'
             f'<td style="{border}padding:12px 14px;font-family:{SERIF};font-style:italic;'
