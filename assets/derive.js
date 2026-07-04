@@ -163,7 +163,9 @@ export function bracketData(scores, fixtures, aliases = {}) {
         home: f.homeTeam, away: f.awayTeam, winner: null,
         utcDate: f.utcDate, matchId: f.matchId,
       }));
-    const ties = [...played, ...upcoming];
+    let ties = [...played, ...upcoming]
+      .sort((a, b) => (a.date || a.utcDate || '9999').localeCompare(b.date || b.utcDate || '9999'))
+      .slice(0, EXPECTED_TIES[stage]);
     while (ties.length < EXPECTED_TIES[stage]) {
       ties.push({ home: 'TBD', away: 'TBD', winner: null, matchId: null });
     }

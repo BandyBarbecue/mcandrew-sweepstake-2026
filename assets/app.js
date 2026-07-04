@@ -423,7 +423,8 @@ function renderBracket(scores, participants, fixtures, status) {
       <h2 class="section-title">The <em>road</em> to the final</h2>
       <span class="kicker" style="color:var(--ink-faint)">Knockouts</span>
     </div>
-    <div class="bracket-scroll"><div class="bracket">
+    <div class="bracket-scroll" tabindex="0" role="group"
+      aria-label="Knockout rounds — scroll horizontally for later rounds"><div class="bracket">
       ${cols}
       <div class="champion-slot">
         <p class="kicker">Champion</p>
