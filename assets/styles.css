@@ -212,3 +212,18 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
 @media (prefers-reduced-motion: reduce) {
   .race-svg .draw { stroke-dasharray: none; stroke-dashoffset: 0; transition: none; }
 }
+
+/* ============ MATCHDAY (cream) ============ */
+.timeline { border-left: 2px solid var(--cream-hairline); padding-left: 22px;
+            display: flex; flex-direction: column; gap: 22px; margin-top: 6px; }
+.timeline-item { position: relative; }
+.timeline-item::before { content: ''; position: absolute; left: -28px; top: 5px;
+            width: 10px; height: 10px; border-radius: 50%; background: var(--dot, var(--sage)); }
+.timeline-when { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--cream-dim); font-weight: 600; }
+.timeline-tie { font-weight: 800; font-size: 1.05rem; margin-top: 3px;
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.timeline-score { font-family: var(--font-mono); font-weight: 600; }
+.timeline-stake { font-size: 0.85rem; color: var(--cream-dim); margin-top: 3px;
+            line-height: 1.5; }
+.owner-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
