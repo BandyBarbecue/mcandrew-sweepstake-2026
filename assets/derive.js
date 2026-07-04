@@ -53,7 +53,7 @@ export function cumulativeSeries(scores, filter = 'all') {
   return { dates, series };
 }
 
-export function teamStatus(scores, participants) {
+export function teamStatus(scores, participants, fixtures = null) {
   const evs = allEvents(scores);
   const aliases = participants.apiNameAliases || {};
   const norm = n => aliases[n] || n;
@@ -61,11 +61,17 @@ export function teamStatus(scores, participants) {
   const qualified = new Set(evs.filter(e => QUALIFY_EVENTS.includes(e.event)).map(e => e.country));
   const koLosers = new Set(
     evs.filter(e => KNOCKOUT_EVENTS.includes(e.event)).map(e => norm(e.opponent)));
+  // A team with an upcoming knockout fixture is alive even if its QUALIFY_*
+  // award hasn't landed yet (best-third bonuses are only awarded when the
+  // team's R32 match finishes).
+  const inUpcomingKO = new Set((fixtures?.fixtures || [])
+    .filter(f => f.stage !== 'GROUP_STAGE')
+    .flatMap(f => [norm(f.homeTeam), norm(f.awayTeam)]));
   const status = {};
   for (const [country, owner] of Object.entries(participants.countryToOwner)) {
     let alive = true;
     if (koLosers.has(country)) alive = false;
-    else if (knockoutBegan && !qualified.has(country)) alive = false;
+    else if (knockoutBegan && !qualified.has(country) && !inUpcomingKO.has(country)) alive = false;
     status[country] = { owner, alive };
   }
   return status;
