@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-03T07:30:55.051426+00:00",
+  "lastRunAt": "2026-07-04T06:54:11.059224+00:00",
   "lastEmailAt": "2026-07-03T07:31:00.442419+00:00",
   "processedMatchIds": [
     537327,
@@ -86,7 +86,10 @@
     537424,
     537425,
     537426,
-    537429
+    537427,
+    537428,
+    537429,
+    537430
   ],
   "qualificationAwarded": [
     "Mexico",
@@ -119,9 +122,37 @@
     "DR Congo",
     "Algeria",
     "Bosnia & Herz.",
-    "Cape Verde"
+    "Cape Verde",
+    "Ghana"
   ],
   "recentResults": [
+    {
+      "matchId": 537430,
+      "homeTeam": "Colombia",
+      "awayTeam": "Ghana",
+      "homeScore": 1,
+      "awayScore": 0,
+      "date": "2026-07-04",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537427,
+      "homeTeam": "Argentina",
+      "awayTeam": "Cape Verde",
+      "homeScore": 3,
+      "awayScore": 2,
+      "date": "2026-07-03",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537428,
+      "homeTeam": "Australia",
+      "awayTeam": "Egypt",
+      "homeScore": 3,
+      "awayScore": 5,
+      "date": "2026-07-03",
+      "stage": "Round of 32"
+    },
     {
       "matchId": 537429,
       "homeTeam": "Switzerland",
@@ -152,7 +183,7 @@
     {
       "matchId": 537421,
       "homeTeam": "USA",
-      "awayTeam": "Bosnia-Herzegovina",
+      "awayTeam": "Bosnia & Herz.",
       "homeScore": 2,
       "awayScore": 0,
       "date": "2026-07-02",
@@ -184,38 +215,11 @@
       "awayScore": 0,
       "date": "2026-07-01",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537416,
-      "homeTeam": "France",
-      "awayTeam": "Sweden",
-      "homeScore": 3,
-      "awayScore": 0,
-      "date": "2026-06-30",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537424,
-      "homeTeam": "Ivory Coast",
-      "awayTeam": "Norway",
-      "homeScore": 1,
-      "awayScore": 2,
-      "date": "2026-06-30",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537418,
-      "homeTeam": "Netherlands",
-      "awayTeam": "Morocco",
-      "homeScore": 3,
-      "awayScore": 4,
-      "date": "2026-06-30",
-      "stage": "Round of 32"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 89,
+      "total": 93,
       "countries": {
         "Qatar": {
           "points": 1
@@ -227,7 +231,7 @@
           "points": 12
         },
         "Argentina": {
-          "points": 9
+          "points": 13
         },
         "Norway": {
           "points": 11
@@ -255,6 +259,14 @@
         }
       },
       "log": [
+        {
+          "country": "Argentina",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-03",
+          "opponent": "Cape Verde",
+          "matchId": 537427
+        },
         {
           "country": "Spain",
           "event": "LAST_32_WIN",
@@ -586,7 +598,7 @@
       ]
     },
     "Fiona": {
-      "total": 74,
+      "total": 78,
       "countries": {
         "Bosnia & Herz.": {
           "points": 5
@@ -622,10 +634,18 @@
           "points": 12
         },
         "Colombia": {
-          "points": 8
+          "points": 12
         }
       },
       "log": [
+        {
+          "country": "Colombia",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-04",
+          "opponent": "Ghana",
+          "matchId": 537430
+        },
         {
           "country": "Bosnia & Herz.",
           "event": "QUALIFY_BEST_THIRD",
@@ -1192,13 +1212,13 @@
       ]
     },
     "Alex": {
-      "total": 60,
+      "total": 66,
       "countries": {
         "Scotland": {
           "points": 2
         },
         "Egypt": {
-          "points": 7
+          "points": 11
         },
         "Australia": {
           "points": 6
@@ -1207,7 +1227,7 @@
           "points": 1
         },
         "Ghana": {
-          "points": 3
+          "points": 5
         },
         "Austria": {
           "points": 6
@@ -1232,6 +1252,22 @@
         }
       },
       "log": [
+        {
+          "country": "Ghana",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-04",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_Ghana"
+        },
+        {
+          "country": "Egypt",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-03",
+          "opponent": "Australia",
+          "matchId": 537428
+        },
         {
           "country": "Algeria",
           "event": "QUALIFY_BEST_THIRD",
