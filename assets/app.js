@@ -193,6 +193,7 @@ function renderStandings(scores, participants, status) {
 }
 
 let raceFilter = 'all';
+let raceRevealed = false;
 
 function biggestSwings(scores, n = 2) {
   const evs = D.allEvents(scores).filter(e => e.points >= 4);
@@ -202,6 +203,22 @@ function biggestSwings(scores, n = 2) {
 function renderRace(scores) {
   const root = document.getElementById('race-root');
   const { dates, series } = D.cumulativeSeries(scores, raceFilter);
+  if (!dates.length) {
+    root.innerHTML = `
+      <div class="section-head">
+        <h2 class="section-title">The points <em>race</em></h2>
+        <span class="kicker terra">The story so far</span>
+      </div>
+      <p class="race-empty">No points in this phase yet — check back after the next matchday.</p>
+      <div class="race-chips" role="group" aria-label="Filter chart">
+        ${[['all', 'All'], ['group', 'Group stage'], ['knockout', 'Knockouts']].map(([k, lbl]) =>
+          `<button class="race-chip" data-filter="${k}" aria-pressed="${k === raceFilter}">${lbl}</button>`).join('')}
+      </div>`;
+    root.querySelectorAll('.race-chip').forEach(chip => {
+      chip.addEventListener('click', () => { raceFilter = chip.dataset.filter; renderRace(scores); });
+    });
+    return;
+  }
   const players = Object.keys(series);
   const W = 640, H = 240, PAD_L = 34, PAD_B = 22, PAD_T = 44, PAD_R = 74;
   const maxVal = Math.max(1, ...players.flatMap(p => series[p]));
@@ -213,6 +230,14 @@ function renderRace(scores) {
     .sort((a, b) => a.y - b.y);
   for (let i = 1; i < labelYs.length; i++) {
     if (labelYs[i].y - labelYs[i - 1].y < 13) labelYs[i].y = labelYs[i - 1].y + 13;
+  }
+  // Clamp: if the cascade pushed past the bottom, shift the stack back up
+  const maxY = H - 6;
+  if (labelYs.length && labelYs[labelYs.length - 1].y > maxY) {
+    labelYs[labelYs.length - 1].y = maxY;
+    for (let i = labelYs.length - 2; i >= 0; i--) {
+      if (labelYs[i + 1].y - labelYs[i].y < 13) labelYs[i].y = labelYs[i + 1].y - 13;
+    }
   }
   const labelY = Object.fromEntries(labelYs.map(({ p, y }) => [p, y]));
 
@@ -271,15 +296,18 @@ function renderRace(scores) {
     const len = pl.getTotalLength();
     pl.style.setProperty('--len', len);
   });
-  new IntersectionObserver(([e], io) => {
-    if (e.isIntersecting) { svg.classList.add('in'); io.disconnect(); }
-  }, { threshold: 0.3 }).observe(svg);
+  if (raceRevealed) {
+    svg.classList.add('in');
+  } else {
+    new IntersectionObserver(([e], io) => {
+      if (e.isIntersecting) { raceRevealed = true; svg.classList.add('in'); io.disconnect(); }
+    }, { threshold: 0.3 }).observe(svg);
+  }
 
   root.querySelectorAll('.race-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       raceFilter = chip.dataset.filter;
       renderRace(scores);
-      root.querySelector('.race-svg').classList.add('in');
     });
   });
   root.querySelectorAll('.race-key').forEach(key => {

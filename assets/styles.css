@@ -208,6 +208,7 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--ink);
             color: var(--ink-dim); background: none; border: none; cursor: pointer;
             font-family: var(--font-sans); }
 .race-key i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.race-empty { color: var(--ink-dim); font-size: 0.9rem; font-style: italic; padding: 24px 0; }
 @media (prefers-reduced-motion: reduce) {
   .race-svg .draw { stroke-dasharray: none; stroke-dashoffset: 0; transition: none; }
 }
