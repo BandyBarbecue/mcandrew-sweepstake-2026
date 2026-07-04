@@ -192,6 +192,104 @@ function renderStandings(scores, participants, status) {
   });
 }
 
+let raceFilter = 'all';
+
+function biggestSwings(scores, n = 2) {
+  const evs = D.allEvents(scores).filter(e => e.points >= 4);
+  return [...evs].sort((a, b) => b.points - a.points).slice(0, n);
+}
+
+function renderRace(scores) {
+  const root = document.getElementById('race-root');
+  const { dates, series } = D.cumulativeSeries(scores, raceFilter);
+  const players = Object.keys(series);
+  const W = 640, H = 240, PAD_L = 34, PAD_B = 22, PAD_T = 26, PAD_R = 74;
+  const maxVal = Math.max(1, ...players.flatMap(p => series[p]));
+  const x = i => PAD_L + (i / Math.max(dates.length - 1, 1)) * (W - PAD_L - PAD_R);
+  const y = v => H - PAD_B - (v / maxVal) * (H - PAD_B - PAD_T);
+
+  const lines = players.map(p => {
+    const pts = series[p].map((v, i) => `${x(i)},${y(v)}`).join(' ');
+    const end = series[p].at(-1) ?? 0;
+    return `<g class="race-line" data-player="${esc(p)}">
+      <polyline class="draw" points="${pts}" fill="none"
+        stroke="${PLAYER_COLORS[p]}" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="${x(series[p].length - 1)}" cy="${y(end)}" r="3" fill="${PLAYER_COLORS[p]}"/>
+      <text class="race-axis" x="${x(series[p].length - 1) + 7}" y="${y(end) + 3}"
+        fill="${PLAYER_COLORS[p]}">${esc(p)} · ${end}</text></g>`;
+  }).join('');
+
+  const annos = raceFilter === 'all' ? biggestSwings(scores).map(e => {
+    const di = dates.indexOf(e.date);
+    if (di < 0) return '';
+    const val = series[e.owner][di];
+    const stageShort = { LAST_32_WIN: 'R32', LAST_16_WIN: 'R16', QUARTER_FINALS_WIN: 'QF',
+      SEMI_FINALS_WIN: 'SF', THIRD_PLACE_WIN: '3RD', FINAL_WIN: 'FINAL' }[e.event] || 'GRP';
+    return `<line x1="${x(di)}" y1="${y(val)}" x2="${x(di)}" y2="${PAD_T - 8}"
+        stroke="rgba(201,138,91,0.45)" stroke-width="1" stroke-dasharray="2,3"/>
+      <text class="race-anno" x="${Math.min(x(di), W - 150)}" y="${PAD_T - 12}">
+        ${esc(e.country.toUpperCase())} ${stageShort} · +${e.points}</text>`;
+  }).join('') : '';
+
+  const gridY = [0, Math.round(maxVal / 2), maxVal];
+  const grid = gridY.map(v => `<line x1="${PAD_L}" y1="${y(v)}" x2="${W - PAD_R}" y2="${y(v)}"
+      stroke="var(--hairline-soft)" stroke-width="1"/>
+    <text class="race-axis" x="${PAD_L - 6}" y="${y(v) + 3}" text-anchor="end">${v}</text>`).join('');
+  const xLabels = dates.length ? `<text class="race-axis" x="${PAD_L}" y="${H - 6}">${fmtDate(dates[0]).toUpperCase()}</text>
+    <text class="race-axis" x="${W - PAD_R}" y="${H - 6}" text-anchor="end">${fmtDate(dates.at(-1)).toUpperCase()}</text>` : '';
+
+  root.innerHTML = `
+    <div class="section-head">
+      <h2 class="section-title">The points <em>race</em></h2>
+      <span class="kicker terra">The story so far</span>
+    </div>
+    <svg class="race-svg" viewBox="0 0 ${W} ${H}" role="img"
+      aria-label="Cumulative points per player over the tournament">
+      ${grid}${xLabels}${annos}${lines}</svg>
+    <div class="race-legend">${players.map(p =>
+      `<button class="race-key" data-player="${esc(p)}">
+        <i style="background:${PLAYER_COLORS[p]}"></i>${esc(p)}</button>`).join('')}</div>
+    <div class="race-chips" role="group" aria-label="Filter chart">
+      ${[['all', 'All'], ['group', 'Group stage'], ['knockout', 'Knockouts']].map(([k, lbl]) =>
+        `<button class="race-chip" data-filter="${k}"
+          aria-pressed="${k === raceFilter}">${lbl}</button>`).join('')}</div>
+    <table class="sr-only"><caption>Current totals</caption>
+      ${Object.entries(scores.participants).map(([n, p]) =>
+        `<tr><th scope="row">${esc(n)}</th><td>${p.total} points</td></tr>`).join('')}</table>`;
+
+  const svg = root.querySelector('.race-svg');
+  svg.querySelectorAll('.draw').forEach(pl => {
+    const len = pl.getTotalLength();
+    pl.style.setProperty('--len', len);
+  });
+  new IntersectionObserver(([e], io) => {
+    if (e.isIntersecting) { svg.classList.add('in'); io.disconnect(); }
+  }, { threshold: 0.3 }).observe(svg);
+
+  root.querySelectorAll('.race-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      raceFilter = chip.dataset.filter;
+      renderRace(scores);
+      root.querySelector('.race-svg').classList.add('in');
+    });
+  });
+  root.querySelectorAll('.race-key').forEach(key => {
+    const hot = () => {
+      svg.classList.add('dimming');
+      svg.querySelectorAll('.race-line').forEach(l =>
+        l.classList.toggle('hot', l.dataset.player === key.dataset.player));
+    };
+    const cool = () => {
+      svg.classList.remove('dimming');
+      svg.querySelectorAll('.race-line').forEach(l => l.classList.remove('hot'));
+    };
+    key.addEventListener('mouseenter', hot);
+    key.addEventListener('mouseleave', cool);
+    key.addEventListener('focus', hot);
+    key.addEventListener('blur', cool);
+  });
+}
+
 function renderFooter(scores) {
   let updated = '—';
   if (scores.lastRunAt) {
@@ -230,7 +328,7 @@ async function main() {
     () => renderHero(scores, participants, status),
     // SECTION RENDERERS — added by later tasks:
     () => renderStandings(scores, participants, status),
-    // () => renderRace(scores),                               (Task 6)
+    () => renderRace(scores),
     // () => renderMatchday(scores, participants, rules, fixtures), (Task 7)
     // () => renderBracket(scores, participants, fixtures, status), (Task 8)
     // () => renderSquads(scores, participants, status),      (Task 9)
