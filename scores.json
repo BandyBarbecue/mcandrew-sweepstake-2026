@@ -1,6 +1,6 @@
 {
-  "lastRunAt": "2026-07-03T07:30:55.051426+00:00",
-  "lastEmailAt": "2026-07-03T07:31:00.442419+00:00",
+  "lastRunAt": "2026-07-04T06:54:11.059224+00:00",
+  "lastEmailAt": "2026-07-04T06:54:14.845244+00:00",
   "processedMatchIds": [
     537327,
     537328,
@@ -86,7 +86,10 @@
     537424,
     537425,
     537426,
-    537429
+    537427,
+    537428,
+    537429,
+    537430
   ],
   "qualificationAwarded": [
     "Mexico",
@@ -119,9 +122,37 @@
     "DR Congo",
     "Algeria",
     "Bosnia & Herz.",
-    "Cape Verde"
+    "Cape Verde",
+    "Ghana"
   ],
   "recentResults": [
+    {
+      "matchId": 537430,
+      "homeTeam": "Colombia",
+      "awayTeam": "Ghana",
+      "homeScore": 1,
+      "awayScore": 0,
+      "date": "2026-07-04",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537427,
+      "homeTeam": "Argentina",
+      "awayTeam": "Cape Verde",
+      "homeScore": 3,
+      "awayScore": 2,
+      "date": "2026-07-03",
+      "stage": "Round of 32"
+    },
+    {
+      "matchId": 537428,
+      "homeTeam": "Australia",
+      "awayTeam": "Egypt",
+      "homeScore": 3,
+      "awayScore": 5,
+      "date": "2026-07-03",
+      "stage": "Round of 32"
+    },
     {
       "matchId": 537429,
       "homeTeam": "Switzerland",
@@ -152,7 +183,7 @@
     {
       "matchId": 537421,
       "homeTeam": "USA",
-      "awayTeam": "Bosnia-Herzegovina",
+      "awayTeam": "Bosnia & Herz.",
       "homeScore": 2,
       "awayScore": 0,
       "date": "2026-07-02",
@@ -184,38 +215,11 @@
       "awayScore": 0,
       "date": "2026-07-01",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537416,
-      "homeTeam": "France",
-      "awayTeam": "Sweden",
-      "homeScore": 3,
-      "awayScore": 0,
-      "date": "2026-06-30",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537424,
-      "homeTeam": "Ivory Coast",
-      "awayTeam": "Norway",
-      "homeScore": 1,
-      "awayScore": 2,
-      "date": "2026-06-30",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537418,
-      "homeTeam": "Netherlands",
-      "awayTeam": "Morocco",
-      "homeScore": 3,
-      "awayScore": 4,
-      "date": "2026-06-30",
-      "stage": "Round of 32"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 89,
+      "total": 93,
       "countries": {
         "Qatar": {
           "points": 1
@@ -227,7 +231,7 @@
           "points": 12
         },
         "Argentina": {
-          "points": 9
+          "points": 13
         },
         "Norway": {
           "points": 11
@@ -255,6 +259,14 @@
         }
       },
       "log": [
+        {
+          "country": "Argentina",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-03",
+          "opponent": "Cape Verde",
+          "matchId": 537427
+        },
         {
           "country": "Spain",
           "event": "LAST_32_WIN",
@@ -586,7 +598,7 @@
       ]
     },
     "Fiona": {
-      "total": 74,
+      "total": 78,
       "countries": {
         "Bosnia & Herz.": {
           "points": 5
@@ -622,10 +634,18 @@
           "points": 12
         },
         "Colombia": {
-          "points": 8
+          "points": 12
         }
       },
       "log": [
+        {
+          "country": "Colombia",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-04",
+          "opponent": "Ghana",
+          "matchId": 537430
+        },
         {
           "country": "Bosnia & Herz.",
           "event": "QUALIFY_BEST_THIRD",
@@ -1192,13 +1212,13 @@
       ]
     },
     "Alex": {
-      "total": 60,
+      "total": 66,
       "countries": {
         "Scotland": {
           "points": 2
         },
         "Egypt": {
-          "points": 7
+          "points": 11
         },
         "Australia": {
           "points": 6
@@ -1207,7 +1227,7 @@
           "points": 1
         },
         "Ghana": {
-          "points": 3
+          "points": 5
         },
         "Austria": {
           "points": 6
@@ -1232,6 +1252,22 @@
         }
       },
       "log": [
+        {
+          "country": "Ghana",
+          "event": "QUALIFY_BEST_THIRD",
+          "points": 2,
+          "date": "2026-07-04",
+          "opponent": "Best 3rd place",
+          "matchId": "best3rd_Ghana"
+        },
+        {
+          "country": "Egypt",
+          "event": "LAST_32_WIN",
+          "points": 4,
+          "date": "2026-07-03",
+          "opponent": "Australia",
+          "matchId": 537428
+        },
         {
           "country": "Algeria",
           "event": "QUALIFY_BEST_THIRD",
@@ -1489,15 +1525,18 @@
     "Alex|Egypt|GROUP_STAGE_DRAW|537363",
     "Alex|Egypt|GROUP_STAGE_DRAW|537368",
     "Alex|Egypt|GROUP_STAGE_WIN|537366",
+    "Alex|Egypt|LAST_32_WIN|537428",
     "Alex|Egypt|QUALIFY_TOP_2|qual_Egypt",
     "Alex|Germany|GROUP_STAGE_WIN|537351",
     "Alex|Germany|GROUP_STAGE_WIN|537353",
     "Alex|Germany|QUALIFY_TOP_2|qual_Germany",
     "Alex|Ghana|GROUP_STAGE_DRAW|537411",
     "Alex|Ghana|GROUP_STAGE_WIN|537410",
+    "Alex|Ghana|QUALIFY_BEST_THIRD|best3rd_Ghana",
     "Alex|Portugal|GROUP_STAGE_DRAW|537403",
     "Alex|Portugal|GROUP_STAGE_DRAW|537407",
     "Alex|Portugal|GROUP_STAGE_WIN|537405",
+    "Alex|Portugal|LAST_32_WIN|537419",
     "Alex|Portugal|QUALIFY_TOP_2|qual_Portugal",
     "Alex|Scotland|GROUP_STAGE_WIN|537340",
     "Alex|Switzerland|GROUP_STAGE_DRAW|537334",
@@ -1534,13 +1573,21 @@
     "Edward|Sweden|GROUP_STAGE_WIN|537358",
     "Edward|Sweden|QUALIFY_BEST_THIRD|best3rd_Sweden",
     "Edward|Turkey|GROUP_STAGE_WIN|537349",
+    "Fiona|Bosnia & Herz.|GROUP_STAGE_DRAW|537333",
+    "Fiona|Bosnia & Herz.|GROUP_STAGE_WIN|537338",
+    "Fiona|Bosnia & Herz.|QUALIFY_BEST_THIRD|best3rd_Bosnia & Herz.",
     "Fiona|Canada|GROUP_STAGE_DRAW|537333",
     "Fiona|Canada|GROUP_STAGE_WIN|537336",
     "Fiona|Canada|LAST_32_WIN|537417",
     "Fiona|Canada|QUALIFY_TOP_2|qual_Canada",
+    "Fiona|Cape Verde|GROUP_STAGE_DRAW|537369",
+    "Fiona|Cape Verde|GROUP_STAGE_DRAW|537372",
+    "Fiona|Cape Verde|GROUP_STAGE_DRAW|537374",
+    "Fiona|Cape Verde|QUALIFY_TOP_2|qual_Cape Verde",
     "Fiona|Colombia|GROUP_STAGE_DRAW|537407",
     "Fiona|Colombia|GROUP_STAGE_WIN|537404",
     "Fiona|Colombia|GROUP_STAGE_WIN|537406",
+    "Fiona|Colombia|LAST_32_WIN|537430",
     "Fiona|Colombia|QUALIFY_TOP_2|qual_Colombia",
     "Fiona|DR Congo|GROUP_STAGE_DRAW|537403",
     "Fiona|DR Congo|GROUP_STAGE_WIN|537408",
@@ -1566,6 +1613,7 @@
     "Kenny|Argentina|GROUP_STAGE_WIN|537397",
     "Kenny|Argentina|GROUP_STAGE_WIN|537399",
     "Kenny|Argentina|GROUP_STAGE_WIN|537401",
+    "Kenny|Argentina|LAST_32_WIN|537427",
     "Kenny|Argentina|QUALIFY_TOP_2|qual_Argentina",
     "Kenny|Belgium|GROUP_STAGE_DRAW|537363",
     "Kenny|Belgium|GROUP_STAGE_DRAW|537365",
@@ -1600,6 +1648,7 @@
     "Kenny|Spain|GROUP_STAGE_DRAW|537369",
     "Kenny|Spain|GROUP_STAGE_WIN|537371",
     "Kenny|Spain|GROUP_STAGE_WIN|537373",
+    "Kenny|Spain|LAST_32_WIN|537420",
     "Kenny|Spain|QUALIFY_TOP_2|qual_Spain",
     "Kenny|Uruguay|GROUP_STAGE_DRAW|537370",
     "Kenny|Uruguay|GROUP_STAGE_DRAW|537372"

@@ -1,0 +1,131 @@
+{
+  "fetchedAt": "2026-07-03T20:32:39.013018+00:00",
+  "fixtures": [
+    {
+      "matchId": 537427,
+      "homeTeam": "Argentina",
+      "awayTeam": "Cape Verde",
+      "utcDate": "2026-07-03T22:00:00Z",
+      "stage": "LAST_32"
+    },
+    {
+      "matchId": 537430,
+      "homeTeam": "Colombia",
+      "awayTeam": "Ghana",
+      "utcDate": "2026-07-04T01:30:00Z",
+      "stage": "LAST_32"
+    },
+    {
+      "matchId": 537376,
+      "homeTeam": "Canada",
+      "awayTeam": "Morocco",
+      "utcDate": "2026-07-04T17:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537375,
+      "homeTeam": "Paraguay",
+      "awayTeam": "France",
+      "utcDate": "2026-07-04T21:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537377,
+      "homeTeam": "Brazil",
+      "awayTeam": "Norway",
+      "utcDate": "2026-07-05T20:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537378,
+      "homeTeam": "Mexico",
+      "awayTeam": "England",
+      "utcDate": "2026-07-06T00:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537379,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-06T19:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537380,
+      "homeTeam": "USA",
+      "awayTeam": "Belgium",
+      "utcDate": "2026-07-07T00:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537381,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-07T16:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537382,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-07T20:00:00Z",
+      "stage": "LAST_16"
+    },
+    {
+      "matchId": 537383,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-09T20:00:00Z",
+      "stage": "QUARTER_FINALS"
+    },
+    {
+      "matchId": 537384,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-10T19:00:00Z",
+      "stage": "QUARTER_FINALS"
+    },
+    {
+      "matchId": 537385,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-11T21:00:00Z",
+      "stage": "QUARTER_FINALS"
+    },
+    {
+      "matchId": 537386,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-12T01:00:00Z",
+      "stage": "QUARTER_FINALS"
+    },
+    {
+      "matchId": 537387,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-14T19:00:00Z",
+      "stage": "SEMI_FINALS"
+    },
+    {
+      "matchId": 537388,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-15T19:00:00Z",
+      "stage": "SEMI_FINALS"
+    },
+    {
+      "matchId": 537389,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-18T21:00:00Z",
+      "stage": "THIRD_PLACE"
+    },
+    {
+      "matchId": 537390,
+      "homeTeam": "TBD",
+      "awayTeam": "TBD",
+      "utcDate": "2026-07-19T19:00:00Z",
+      "stage": "FINAL"
+    }
+  ]
+}
