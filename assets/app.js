@@ -435,6 +435,106 @@ function renderBracket(scores, participants, fixtures, status) {
     </div></div>`;
 }
 
+function renderSquads(scores, participants, status) {
+  const ranked = Object.entries(scores.participants)
+    .sort((a, b) => b[1].total - a[1].total);
+  const panels = ranked.map(([name, p], idx) => {
+    const teams = Object.entries(p.countries);
+    const alive = teams.filter(([c]) => status[c]?.alive).length;
+    const rows = teams
+      .sort((a, b) => b[1].points - a[1].points)
+      .map(([c, cd]) => `<button class="squad-team ${status[c]?.alive ? '' : 'out'}"
+          data-owner="${esc(name)}" data-country="${esc(c)}">
+        ${flagImg(c)} <span class="name">${esc(c)}</span>
+        <span class="pts">${cd.points}</span></button>`).join('');
+    return `<div class="squad" data-reveal style="--stagger:${idx}">
+      <button class="squad-head" aria-expanded="false" aria-controls="squad-${idx}">
+        <span class="owner-dot" style="background:${PLAYER_COLORS[name]}"></span>
+        <span class="squad-name">${esc(name)}'s twelve</span>
+        <span class="squad-counts"><span class="alive">${alive} alive</span> ·
+          <span class="out">${teams.length - alive} out</span></span>
+        <svg class="standing-chev" viewBox="0 0 24 24" width="16" height="16" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="squad-body" id="squad-${idx}"><div>
+        <div class="squad-grid">${rows}</div></div></div></div>`;
+  }).join('');
+
+  document.getElementById('squads-root').innerHTML = `
+    <div class="section-head">
+      <h2 class="section-title">The <em>squads</em></h2>
+      <span class="kicker" style="color:var(--ink-faint)">Who owns whom</span>
+    </div>${panels}`;
+
+  const heads = document.querySelectorAll('.squad-head');
+  heads.forEach(btn => btn.addEventListener('click', () => {
+    heads.forEach(other => {
+      const body = document.getElementById(other.getAttribute('aria-controls'));
+      const open = other === btn && other.getAttribute('aria-expanded') !== 'true';
+      body.classList.toggle('open', open);
+      other.setAttribute('aria-expanded', String(open));
+    });
+  }));
+
+  document.querySelectorAll('.squad-team').forEach(btn =>
+    btn.addEventListener('click', () => {
+      const owner = btn.dataset.owner, country = btn.dataset.country;
+      const ranked2 = Object.entries(scores.participants)
+        .sort((a, b) => b[1].total - a[1].total);
+      const rank = ranked2.findIndex(([n]) => n === owner) + 1;
+      const head = document.querySelector(`.standing-head[aria-controls="log-${rank}"]`);
+      const body = document.getElementById(`log-${rank}`);
+      body.classList.add('open');
+      head.setAttribute('aria-expanded', 'true');
+      head.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      body.querySelectorAll('.log-row').forEach(row => {
+        if (row.textContent.includes(country)) {
+          row.classList.add('hl');
+          setTimeout(() => row.classList.remove('hl'), 2600);
+        }
+      });
+    }));
+}
+
+function renderRecords(scores) {
+  const r = D.records(scores);
+  const cards = [
+    { num: `+${r.biggestDay.points}`, cap: `Biggest single day —
+        ${esc(r.biggestDay.owner)}, ${fmtDate(r.biggestDay.date || '2026-06-11')}` },
+    { num: `${r.mostValuableTeam.points}`, cap: `Most valuable team —
+        ${esc(r.mostValuableTeam.country)} (${esc(r.mostValuableTeam.owner)})` },
+    { num: `${r.knockoutKing.points}`, cap: `Knockout king —
+        ${esc(r.knockoutKing.owner)}, knockout points` },
+    { num: `+${r.sharpestRise.points}`, cap: `Sharpest rise —
+        ${esc(r.sharpestRise.owner)}, three matchdays` },
+  ];
+  document.getElementById('records-root').innerHTML = `
+    <div class="section-head">
+      <h2 class="section-title">The record <em>books</em></h2>
+      <span class="kicker" style="color:var(--terra-deep)">Tournament so far</span>
+    </div>
+    <div class="records-grid">${cards.map((c, i) =>
+      `<div class="record-card" data-reveal style="--stagger:${i}">
+        <div class="record-num">${c.num}</div>
+        <div class="record-cap">${c.cap}</div></div>`).join('')}</div>`;
+}
+
+function renderResults(scores, participants) {
+  const aliases = participants.apiNameAliases || {};
+  const norm = n => aliases[n] || n;
+  const rows = (scores.recentResults || []).map(r => `<div class="result-line">
+      <span class="home">${esc(r.homeTeam)} ${flagImg(norm(r.homeTeam))}</span>
+      <span class="score">${r.homeScore ?? '–'} – ${r.awayScore ?? '–'}</span>
+      <span class="away">${flagImg(norm(r.awayTeam))} ${esc(r.awayTeam)}</span>
+      <span class="stage-chip">${esc(r.stage)}</span></div>`).join('');
+  document.getElementById('results-root').innerHTML = `
+    <div class="section-head">
+      <h2 class="section-title">Recent <em>results</em></h2>
+      <span class="kicker" style="color:var(--ink-faint)">Last ten</span>
+    </div>${rows || '<p class="log-text">No results yet.</p>'}`;
+}
+
 async function main() {
   let scores, participants, rules;
   let fixtures = null;
@@ -463,9 +563,9 @@ async function main() {
     () => renderRace(scores),
     () => renderMatchday(scores, participants, rules, fixtures),
     () => renderBracket(scores, participants, fixtures, status),
-    // () => renderSquads(scores, participants, status),      (Task 9)
-    // () => renderRecords(scores),                            (Task 9)
-    // () => renderResults(scores),                            (Task 9)
+    () => renderSquads(scores, participants, status),
+    () => renderRecords(scores),
+    () => renderResults(scores, participants),
     () => renderFooter(scores),
   ];
   for (const render of renderers) {
