@@ -203,10 +203,18 @@ function renderRace(scores) {
   const root = document.getElementById('race-root');
   const { dates, series } = D.cumulativeSeries(scores, raceFilter);
   const players = Object.keys(series);
-  const W = 640, H = 240, PAD_L = 34, PAD_B = 22, PAD_T = 26, PAD_R = 74;
+  const W = 640, H = 240, PAD_L = 34, PAD_B = 22, PAD_T = 44, PAD_R = 74;
   const maxVal = Math.max(1, ...players.flatMap(p => series[p]));
   const x = i => PAD_L + (i / Math.max(dates.length - 1, 1)) * (W - PAD_L - PAD_R);
   const y = v => H - PAD_B - (v / maxVal) * (H - PAD_B - PAD_T);
+
+  // Resolve end-label collisions: sort by y, enforce min 13-unit separation
+  const labelYs = players.map(p => ({ p, y: y(series[p].at(-1) ?? 0) + 3 }))
+    .sort((a, b) => a.y - b.y);
+  for (let i = 1; i < labelYs.length; i++) {
+    if (labelYs[i].y - labelYs[i - 1].y < 13) labelYs[i].y = labelYs[i - 1].y + 13;
+  }
+  const labelY = Object.fromEntries(labelYs.map(({ p, y }) => [p, y]));
 
   const lines = players.map(p => {
     const pts = series[p].map((v, i) => `${x(i)},${y(v)}`).join(' ');
@@ -215,19 +223,20 @@ function renderRace(scores) {
       <polyline class="draw" points="${pts}" fill="none"
         stroke="${PLAYER_COLORS[p]}" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="${x(series[p].length - 1)}" cy="${y(end)}" r="3" fill="${PLAYER_COLORS[p]}"/>
-      <text class="race-axis" x="${x(series[p].length - 1) + 7}" y="${y(end) + 3}"
+      <text class="race-axis" x="${x(series[p].length - 1) + 7}" y="${labelY[p]}"
         fill="${PLAYER_COLORS[p]}">${esc(p)} · ${end}</text></g>`;
   }).join('');
 
-  const annos = raceFilter === 'all' ? biggestSwings(scores).map(e => {
+  const annos = raceFilter === 'all' ? biggestSwings(scores).map((e, idx) => {
     const di = dates.indexOf(e.date);
     if (di < 0) return '';
     const val = series[e.owner][di];
     const stageShort = { LAST_32_WIN: 'R32', LAST_16_WIN: 'R16', QUARTER_FINALS_WIN: 'QF',
       SEMI_FINALS_WIN: 'SF', THIRD_PLACE_WIN: '3RD', FINAL_WIN: 'FINAL' }[e.event] || 'GRP';
-    return `<line x1="${x(di)}" y1="${y(val)}" x2="${x(di)}" y2="${PAD_T - 8}"
+    const annoY = 14 + idx * 13;
+    return `<line x1="${x(di)}" y1="${y(val)}" x2="${x(di)}" y2="${annoY + 3}"
         stroke="rgba(201,138,91,0.45)" stroke-width="1" stroke-dasharray="2,3"/>
-      <text class="race-anno" x="${Math.min(x(di), W - 150)}" y="${PAD_T - 12}">
+      <text class="race-anno" x="${Math.min(x(di), W - 150)}" y="${annoY}">
         ${esc(e.country.toUpperCase())} ${stageShort} · +${e.points}</text>`;
   }).join('') : '';
 
