@@ -340,6 +340,53 @@ function renderFooter(scores) {
     `Updated ${updated} · Data: football-data.org · Powered by GitHub Pages`;
 }
 
+function ownerDot(owner) {
+  return owner ? `<span class="owner-dot" title="${esc(owner)}"
+    style="background:${PLAYER_COLORS[owner] || '#888'}"></span>` : '';
+}
+
+function renderMatchday(scores, participants, rules, fixtures) {
+  const owners = participants.countryToOwner;
+  const nowISO = new Date().toISOString();
+  const upcoming = D.upcomingFixtures(fixtures, nowISO, 4);
+  const root = document.getElementById('matchday-root');
+  const today = new Date().toISOString().slice(0, 10);
+
+  let title, kicker, items;
+  if (upcoming.length) {
+    title = `Matchday <em>${D.matchdayNumber(today)}</em>`;
+    kicker = `Next up`;
+    items = upcoming.map((f, i) => {
+      const stake = D.fixtureStakes(f, owners, rules);
+      const dotOwner = owners[f.homeTeam] || owners[f.awayTeam];
+      return `<div class="timeline-item" data-reveal style="--stagger:${i};
+          --dot:${PLAYER_COLORS[dotOwner] || 'var(--sage)'}">
+        <div class="timeline-when">${fmtKickoff(f.utcDate)} ·
+          ${esc(D.STAGE_LABELS[f.stage] || f.stage)} · ${fmtDate(f.utcDate.slice(0, 10))}</div>
+        <div class="timeline-tie">${ownerDot(owners[f.homeTeam])} ${flagImg(f.homeTeam)}
+          ${esc(f.homeTeam)} <span class="timeline-score">v</span>
+          ${esc(f.awayTeam)} ${flagImg(f.awayTeam)} ${ownerDot(owners[f.awayTeam])}</div>
+        <div class="timeline-stake">${esc(stake)}</div></div>`;
+    }).join('');
+  } else {
+    title = `Latest <em>results</em>`;
+    kicker = 'Fixtures unavailable';
+    items = (scores.recentResults || []).slice(0, 4).map((r, i) =>
+      `<div class="timeline-item" data-reveal style="--stagger:${i};
+          --dot:${PLAYER_COLORS[owners[r.homeTeam]] || 'var(--sage)'}">
+        <div class="timeline-when">${esc(r.stage)} · ${fmtDate(r.date)}</div>
+        <div class="timeline-tie">${ownerDot(owners[r.homeTeam])} ${flagImg(r.homeTeam)}
+          ${esc(r.homeTeam)} <span class="timeline-score">${r.homeScore ?? '–'}–${r.awayScore ?? '–'}</span>
+          ${esc(r.awayTeam)} ${flagImg(r.awayTeam)} ${ownerDot(owners[r.awayTeam])}</div>
+      </div>`).join('');
+  }
+
+  root.innerHTML = `<div class="section-head">
+      <h2 class="section-title">${title}</h2>
+      <span class="kicker" style="color:var(--terra-deep)">${esc(kicker)}</span>
+    </div><div class="timeline">${items}</div>`;
+}
+
 async function main() {
   let scores, participants, rules;
   let fixtures = null;
@@ -366,7 +413,7 @@ async function main() {
     // SECTION RENDERERS — added by later tasks:
     () => renderStandings(scores, participants, status),
     () => renderRace(scores),
-    // () => renderMatchday(scores, participants, rules, fixtures), (Task 7)
+    () => renderMatchday(scores, participants, rules, fixtures),
     // () => renderBracket(scores, participants, fixtures, status), (Task 8)
     // () => renderSquads(scores, participants, status),      (Task 9)
     // () => renderRecords(scores),                            (Task 9)
