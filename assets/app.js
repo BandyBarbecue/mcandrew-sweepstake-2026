@@ -1,5 +1,6 @@
 import * as D from './derive.js';
 
+// Mirrors --gold/--sage/--slate/--rose in styles.css — keep in sync
 export const PLAYER_COLORS = {
   Kenny: '#d9a441', Fiona: '#7ea87f', Alex: '#8fa3c9', Edward: '#c9808f',
 };
@@ -54,7 +55,7 @@ function renderHero(scores, participants, status) {
     <div class="stat"><dt>Matchday</dt><dd>${D.matchdayNumber(today)}</dd></div>
     <div class="stat"><dt>Stage</dt><dd>${esc(stage)}</dd></div>
     <div class="stat"><dt>Leader</dt><dd class="gold">${esc(leader)}</dd></div>
-    <div class="stat"><dt>Teams alive</dt><dd>${alive}<small>/48</small></dd></div>`;
+    <div class="stat"><dt>Teams alive</dt><dd>${alive}<small>/${Object.keys(status).length}</small></dd></div>`;
 
   // Word-by-word reveal: wrap words, keep the <em> intact
   const h1 = document.getElementById('hero-title');
@@ -79,13 +80,20 @@ function initTopbarBehavior() {
 
   const btn = document.getElementById('topbar-menu');
   const nav = document.getElementById('topbar-nav');
+  const closeMenu = () => {
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  };
   btn.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
     btn.setAttribute('aria-expanded', String(open));
   });
-  nav.addEventListener('click', () => {
-    nav.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+  nav.addEventListener('click', closeMenu);
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
   });
 }
 
@@ -131,18 +139,22 @@ async function main() {
   const status = D.teamStatus(scores, participants, fixtures);
   document.getElementById('app').hidden = false;
 
-  renderTopbar(scores);
-  renderHero(scores, participants, status);
-  // SECTION RENDERERS — added by later tasks:
-  // renderStandings(scores, participants, status);   (Task 5)
-  // renderRace(scores);                                (Task 6)
-  // renderMatchday(scores, participants, rules, fixtures); (Task 7)
-  // renderBracket(scores, participants, fixtures, status); (Task 8)
-  // renderSquads(scores, participants, status);       (Task 9)
-  // renderRecords(scores);                             (Task 9)
-  // renderResults(scores);                             (Task 9)
-  renderFooter(scores);
-
+  const renderers = [
+    () => renderTopbar(scores),
+    () => renderHero(scores, participants, status),
+    // SECTION RENDERERS — added by later tasks:
+    // () => renderStandings(scores, participants, status),   (Task 5)
+    // () => renderRace(scores),                               (Task 6)
+    // () => renderMatchday(scores, participants, rules, fixtures), (Task 7)
+    // () => renderBracket(scores, participants, fixtures, status), (Task 8)
+    // () => renderSquads(scores, participants, status),      (Task 9)
+    // () => renderRecords(scores),                            (Task 9)
+    // () => renderResults(scores),                            (Task 9)
+    () => renderFooter(scores),
+  ];
+  for (const render of renderers) {
+    try { render(); } catch (e) { console.error('Section render failed:', e); }
+  }
   initTopbarBehavior();
   initReveals();
 }
