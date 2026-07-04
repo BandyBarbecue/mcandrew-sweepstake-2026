@@ -106,6 +106,92 @@ function initReveals() {
   document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 }
 
+function sparklineSVG(values, color) {
+  if (!values.length) return '';
+  const max = Math.max(...values, 1);
+  const pts = values.map((v, i) =>
+    `${(i / Math.max(values.length - 1, 1)) * 64},${18 - (v / max) * 16}`).join(' ');
+  return `<svg class="standing-spark" viewBox="0 0 64 20" width="64" height="20"
+    aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${color}"
+    stroke-width="1.5" stroke-linecap="round"/></svg>`;
+}
+
+function logRowHTML(e) {
+  const big = e.points >= 4 ? ' big' : '';
+  const label = D.EVENT_LABELS[e.event] || e.event;
+  const isQual = D.QUALIFY_EVENTS.includes(e.event);
+  const opp = e.opponent && !isQual ? ` vs ${esc(e.opponent)}` : '';
+  return `<div class="log-row">
+    <span class="log-pts${big}">+${e.points}</span>
+    <span class="log-text">${flagImg(e.country)} <strong>${esc(e.country)}</strong>
+      ${esc(label)}${opp}</span>
+    <span class="log-date">${fmtDate(e.date)}</span></div>`;
+}
+
+function renderStandings(scores, participants, status) {
+  const today = new Date().toISOString().slice(0, 10);
+  const { series } = D.cumulativeSeries(scores);
+  const ranked = Object.entries(scores.participants)
+    .sort((a, b) => b[1].total - a[1].total);
+
+  const rows = ranked.map(([name, p], idx) => {
+    const rank = idx + 1;
+    const isLeader = rank === 1;
+    const aliveCount = Object.keys(p.countries)
+      .filter(c => status[c] && status[c].alive).length;
+    const todayGain = (p.log || []).filter(e => e.date === today)
+      .reduce((s, e) => s + e.points, 0);
+    const log = [...(p.log || [])].sort((a, b) => b.date.localeCompare(a.date));
+
+    // Composition bar: share of points per round bucket (group+qual vs knockout)
+    const grpPts = (p.log || []).filter(e => !D.KNOCKOUT_EVENTS.includes(e.event))
+      .reduce((s, e) => s + e.points, 0);
+    const koPts = p.total - grpPts;
+    const compBar = isLeader && p.total > 0 ? `<div class="comp-bar" aria-hidden="true">
+        <span style="width:${(grpPts / p.total) * 100}%;background:var(--terra-deep)"></span>
+        <span style="width:${(koPts / p.total) * 100}%;background:var(--gold)"></span>
+      </div>` : '';
+
+    return `<div class="standing-row ${isLeader ? 'leader-card' : ''}" data-reveal
+        style="--stagger:${idx}">
+      <button class="standing-head" aria-expanded="false" aria-controls="log-${rank}">
+        <span class="standing-rank" aria-hidden="true">${rank}</span>
+        <span class="standing-name">${esc(name)}
+          <span class="standing-meta">${aliveCount} of ${Object.keys(p.countries).length} teams alive</span>
+        </span>
+        ${!isLeader ? sparklineSVG(series[name] || [], PLAYER_COLORS[name] || '#888') : ''}
+        <span class="standing-pts">${p.total}
+          ${todayGain > 0 ? `<span class="gain-chip">▲ ${todayGain} today</span>` : ''}
+        </span>
+        <svg class="standing-chev" viewBox="0 0 24 24" width="16" height="16" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      ${compBar}
+      <div class="standing-body" id="log-${rank}">
+        <div><div class="log-list">
+          ${log.length ? log.map(logRowHTML).join('') :
+            '<p class="log-text">No points yet.</p>'}
+        </div></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('standings-root').innerHTML = `
+    <div class="section-head">
+      <h2 class="section-title">The <em>standings</em></h2>
+      <span class="kicker" style="color:var(--ink-faint)">Leaderboard</span>
+    </div>${rows}`;
+
+  document.querySelectorAll('.standing-head').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = document.getElementById(btn.getAttribute('aria-controls'));
+      const open = body.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+}
+
 function renderFooter(scores) {
   let updated = '—';
   if (scores.lastRunAt) {
@@ -143,7 +229,7 @@ async function main() {
     () => renderTopbar(scores),
     () => renderHero(scores, participants, status),
     // SECTION RENDERERS — added by later tasks:
-    // () => renderStandings(scores, participants, status),   (Task 5)
+    () => renderStandings(scores, participants, status),
     // () => renderRace(scores),                               (Task 6)
     // () => renderMatchday(scores, participants, rules, fixtures), (Task 7)
     // () => renderBracket(scores, participants, fixtures, status), (Task 8)
