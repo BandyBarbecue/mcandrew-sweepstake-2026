@@ -72,6 +72,25 @@ test('bracketData pads to expected counts', () => {
   assert.ok(!r32.ties.some(t => t.away === 'Bosnia-Herzegovina'));
 });
 
+test('teamStatus keeps un-awarded best-thirds alive when they have an upcoming KO fixture', () => {
+  const synthScores = { participants: {
+    A: { total: 4, countries: { X: { points: 4 } },
+         log: [{ country: 'X', event: 'LAST_32_WIN', points: 4, date: '2026-07-01', opponent: 'Z', matchId: 1 }] },
+    B: { total: 0, countries: { Y: { points: 0 } }, log: [] },
+  } };
+  const synthParts = { countryToOwner: { X: 'A', Y: 'B', Z: 'B' }, apiNameAliases: {} };
+  const fixturesStub = { fixtures: [
+    { matchId: 2, homeTeam: 'Y', awayTeam: 'X', utcDate: '2026-07-05T16:00:00Z', stage: 'LAST_32' },
+  ] };
+  // Without fixtures: Y eliminated (knockouts began, no qualify event)
+  assert.equal(teamStatus(synthScores, synthParts).Y.alive, false);
+  // With fixtures: Y alive (upcoming KO fixture)
+  assert.equal(teamStatus(synthScores, synthParts, fixturesStub).Y.alive, true);
+  // koLosers still wins: Z lost to X, stays eliminated even if in a fixture
+  const zFix = { fixtures: [{ matchId: 3, homeTeam: 'Z', awayTeam: 'X', utcDate: '2026-07-06T16:00:00Z', stage: 'LAST_16' }] };
+  assert.equal(teamStatus(synthScores, synthParts, zFix).Z.alive, false);
+});
+
 test('matchdayNumber', () => {
   assert.equal(matchdayNumber('2026-06-11'), 1);
   assert.equal(matchdayNumber('2026-07-03'), 23);
