@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-05T07:34:11.727750+00:00",
+  "lastRunAt": "2026-07-06T08:37:59.671860+00:00",
   "lastEmailAt": "2026-07-04T23:37:29.104281+00:00",
   "processedMatchIds": [
     537327,
@@ -52,6 +52,8 @@
     537374,
     537375,
     537376,
+    537377,
+    537378,
     537391,
     537392,
     537393,
@@ -129,6 +131,24 @@
   ],
   "recentResults": [
     {
+      "matchId": 537378,
+      "homeTeam": "Mexico",
+      "awayTeam": "England",
+      "homeScore": 2,
+      "awayScore": 3,
+      "date": "2026-07-06",
+      "stage": "Round of 16"
+    },
+    {
+      "matchId": 537377,
+      "homeTeam": "Brazil",
+      "awayTeam": "Norway",
+      "homeScore": 1,
+      "awayScore": 2,
+      "date": "2026-07-05",
+      "stage": "Round of 16"
+    },
+    {
       "matchId": 537375,
       "homeTeam": "Paraguay",
       "awayTeam": "France",
@@ -199,29 +219,11 @@
       "awayScore": 0,
       "date": "2026-07-02",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537421,
-      "homeTeam": "USA",
-      "awayTeam": "Bosnia & Herz.",
-      "homeScore": 2,
-      "awayScore": 0,
-      "date": "2026-07-02",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537422,
-      "homeTeam": "Belgium",
-      "awayTeam": "Senegal",
-      "homeScore": 3,
-      "awayScore": 2,
-      "date": "2026-07-01",
-      "stage": "Round of 32"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 98,
+      "total": 103,
       "countries": {
         "Qatar": {
           "points": 1
@@ -236,7 +238,7 @@
           "points": 13
         },
         "Norway": {
-          "points": 11
+          "points": 16
         },
         "Iran": {
           "points": 3
@@ -261,6 +263,14 @@
         }
       },
       "log": [
+        {
+          "country": "Norway",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-05",
+          "opponent": "Brazil",
+          "matchId": 537377
+        },
         {
           "country": "Morocco",
           "event": "LAST_16_WIN",
@@ -608,7 +618,7 @@
       ]
     },
     "Fiona": {
-      "total": 78,
+      "total": 83,
       "countries": {
         "Bosnia & Herz.": {
           "points": 5
@@ -641,13 +651,21 @@
           "points": 6
         },
         "England": {
-          "points": 12
+          "points": 17
         },
         "Colombia": {
           "points": 12
         }
       },
       "log": [
+        {
+          "country": "England",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-06",
+          "opponent": "Mexico",
+          "matchId": 537378
+        },
         {
           "country": "Colombia",
           "event": "LAST_32_WIN",
