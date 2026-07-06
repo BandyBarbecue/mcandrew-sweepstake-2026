@@ -1,20 +1,6 @@
 {
-  "fetchedAt": "2026-07-05T07:34:13.667132+00:00",
+  "fetchedAt": "2026-07-06T08:38:01.422196+00:00",
   "fixtures": [
-    {
-      "matchId": 537377,
-      "homeTeam": "Brazil",
-      "awayTeam": "Norway",
-      "utcDate": "2026-07-05T20:00:00Z",
-      "stage": "LAST_16"
-    },
-    {
-      "matchId": 537378,
-      "homeTeam": "Mexico",
-      "awayTeam": "England",
-      "utcDate": "2026-07-06T00:00:00Z",
-      "stage": "LAST_16"
-    },
     {
       "matchId": 537379,
       "homeTeam": "Portugal",
@@ -59,8 +45,8 @@
     },
     {
       "matchId": 537385,
-      "homeTeam": "TBD",
-      "awayTeam": "TBD",
+      "homeTeam": "Norway",
+      "awayTeam": "England",
       "utcDate": "2026-07-11T21:00:00Z",
       "stage": "QUARTER_FINALS"
     },
