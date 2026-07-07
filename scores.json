@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-06T08:37:59.671860+00:00",
+  "lastRunAt": "2026-07-07T07:48:51.635380+00:00",
   "lastEmailAt": "2026-07-06T08:38:04.641023+00:00",
   "processedMatchIds": [
     537327,
@@ -54,6 +54,8 @@
     537376,
     537377,
     537378,
+    537379,
+    537380,
     537391,
     537392,
     537393,
@@ -131,6 +133,24 @@
   ],
   "recentResults": [
     {
+      "matchId": 537380,
+      "homeTeam": "USA",
+      "awayTeam": "Belgium",
+      "homeScore": 1,
+      "awayScore": 4,
+      "date": "2026-07-07",
+      "stage": "Round of 16"
+    },
+    {
+      "matchId": 537379,
+      "homeTeam": "Portugal",
+      "awayTeam": "Spain",
+      "homeScore": 0,
+      "awayScore": 1,
+      "date": "2026-07-06",
+      "stage": "Round of 16"
+    },
+    {
       "matchId": 537378,
       "homeTeam": "Mexico",
       "awayTeam": "England",
@@ -201,29 +221,11 @@
       "awayScore": 0,
       "date": "2026-07-03",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537419,
-      "homeTeam": "Portugal",
-      "awayTeam": "Croatia",
-      "homeScore": 2,
-      "awayScore": 1,
-      "date": "2026-07-02",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537420,
-      "homeTeam": "Spain",
-      "awayTeam": "Austria",
-      "homeScore": 3,
-      "awayScore": 0,
-      "date": "2026-07-02",
-      "stage": "Round of 32"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 103,
+      "total": 113,
       "countries": {
         "Qatar": {
           "points": 1
@@ -247,10 +249,10 @@
           "points": 7
         },
         "Spain": {
-          "points": 12
+          "points": 17
         },
         "Belgium": {
-          "points": 11
+          "points": 16
         },
         "Ivory Coast": {
           "points": 7
@@ -263,6 +265,22 @@
         }
       },
       "log": [
+        {
+          "country": "Belgium",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-07",
+          "opponent": "USA",
+          "matchId": 537380
+        },
+        {
+          "country": "Spain",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-06",
+          "opponent": "Portugal",
+          "matchId": 537379
+        },
         {
           "country": "Norway",
           "event": "LAST_16_WIN",
