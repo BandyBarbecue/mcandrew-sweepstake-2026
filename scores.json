@@ -1,6 +1,6 @@
 {
   "lastRunAt": "2026-07-08T06:35:08.590846+00:00",
-  "lastEmailAt": "2026-07-07T07:48:56.759733+00:00",
+  "lastEmailAt": "2026-07-08T06:35:14.216127+00:00",
   "processedMatchIds": [
     537327,
     537328,
@@ -1614,6 +1614,7 @@
     "Alex|Switzerland|GROUP_STAGE_DRAW|537334",
     "Alex|Switzerland|GROUP_STAGE_WIN|537335",
     "Alex|Switzerland|GROUP_STAGE_WIN|537337",
+    "Alex|Switzerland|LAST_16_WIN|537382",
     "Alex|Switzerland|LAST_32_WIN|537429",
     "Alex|Switzerland|QUALIFY_TOP_2|qual_Switzerland",
     "Edward|Brazil|GROUP_STAGE_DRAW|537339",
@@ -1687,6 +1688,7 @@
     "Kenny|Argentina|GROUP_STAGE_WIN|537397",
     "Kenny|Argentina|GROUP_STAGE_WIN|537399",
     "Kenny|Argentina|GROUP_STAGE_WIN|537401",
+    "Kenny|Argentina|LAST_16_WIN|537381",
     "Kenny|Argentina|LAST_32_WIN|537427",
     "Kenny|Argentina|QUALIFY_TOP_2|qual_Argentina",
     "Kenny|Belgium|GROUP_STAGE_DRAW|537363",
