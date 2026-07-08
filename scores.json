@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-07T07:48:51.635380+00:00",
+  "lastRunAt": "2026-07-08T06:35:08.590846+00:00",
   "lastEmailAt": "2026-07-07T07:48:56.759733+00:00",
   "processedMatchIds": [
     537327,
@@ -56,6 +56,8 @@
     537378,
     537379,
     537380,
+    537381,
+    537382,
     537391,
     537392,
     537393,
@@ -133,6 +135,24 @@
   ],
   "recentResults": [
     {
+      "matchId": 537382,
+      "homeTeam": "Switzerland",
+      "awayTeam": "Colombia",
+      "homeScore": 4,
+      "awayScore": 3,
+      "date": "2026-07-07",
+      "stage": "Round of 16"
+    },
+    {
+      "matchId": 537381,
+      "homeTeam": "Argentina",
+      "awayTeam": "Egypt",
+      "homeScore": 3,
+      "awayScore": 2,
+      "date": "2026-07-07",
+      "stage": "Round of 16"
+    },
+    {
       "matchId": 537380,
       "homeTeam": "USA",
       "awayTeam": "Belgium",
@@ -203,29 +223,11 @@
       "awayScore": 2,
       "date": "2026-07-03",
       "stage": "Round of 32"
-    },
-    {
-      "matchId": 537428,
-      "homeTeam": "Australia",
-      "awayTeam": "Egypt",
-      "homeScore": 3,
-      "awayScore": 5,
-      "date": "2026-07-03",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537429,
-      "homeTeam": "Switzerland",
-      "awayTeam": "Algeria",
-      "homeScore": 2,
-      "awayScore": 0,
-      "date": "2026-07-03",
-      "stage": "Round of 32"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 113,
+      "total": 118,
       "countries": {
         "Qatar": {
           "points": 1
@@ -237,7 +239,7 @@
           "points": 17
         },
         "Argentina": {
-          "points": 13
+          "points": 18
         },
         "Norway": {
           "points": 16
@@ -265,6 +267,14 @@
         }
       },
       "log": [
+        {
+          "country": "Argentina",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-07",
+          "opponent": "Egypt",
+          "matchId": 537381
+        },
         {
           "country": "Belgium",
           "event": "LAST_16_WIN",
@@ -1266,7 +1276,7 @@
       ]
     },
     "Alex": {
-      "total": 66,
+      "total": 71,
       "countries": {
         "Scotland": {
           "points": 2
@@ -1299,13 +1309,21 @@
           "points": 11
         },
         "Switzerland": {
-          "points": 12
+          "points": 17
         },
         "Uzbekistan": {
           "points": 0
         }
       },
       "log": [
+        {
+          "country": "Switzerland",
+          "event": "LAST_16_WIN",
+          "points": 5,
+          "date": "2026-07-07",
+          "opponent": "Colombia",
+          "matchId": 537382
+        },
         {
           "country": "Ghana",
           "event": "QUALIFY_BEST_THIRD",
