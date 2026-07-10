@@ -1,6 +1,6 @@
 {
   "lastRunAt": "2026-07-10T07:43:57.471424+00:00",
-  "lastEmailAt": "2026-07-08T06:35:14.216127+00:00",
+  "lastEmailAt": "2026-07-10T07:44:09.115951+00:00",
   "processedMatchIds": [
     537327,
     537328,
@@ -1640,6 +1640,7 @@
     "Edward|France|LAST_16_WIN|537375",
     "Edward|France|LAST_32_WIN|537416",
     "Edward|France|QUALIFY_TOP_2|qual_France",
+    "Edward|France|QUARTER_FINALS_WIN|537383",
     "Edward|Netherlands|GROUP_STAGE_DRAW|537357",
     "Edward|Netherlands|GROUP_STAGE_WIN|537359",
     "Edward|Netherlands|GROUP_STAGE_WIN|537361",
