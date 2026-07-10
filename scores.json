@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-09T07:51:45.896359+00:00",
+  "lastRunAt": "2026-07-10T07:43:57.471424+00:00",
   "lastEmailAt": "2026-07-08T06:35:14.216127+00:00",
   "processedMatchIds": [
     537327,
@@ -58,6 +58,7 @@
     537380,
     537381,
     537382,
+    537383,
     537391,
     537392,
     537393,
@@ -134,6 +135,15 @@
     "Ghana"
   ],
   "recentResults": [
+    {
+      "matchId": 537383,
+      "homeTeam": "France",
+      "awayTeam": "Morocco",
+      "homeScore": 2,
+      "awayScore": 0,
+      "date": "2026-07-09",
+      "stage": "Quarter-Final"
+    },
     {
       "matchId": 537382,
       "homeTeam": "Switzerland",
@@ -213,15 +223,6 @@
       "homeScore": 1,
       "awayScore": 0,
       "date": "2026-07-04",
-      "stage": "Round of 32"
-    },
-    {
-      "matchId": 537427,
-      "homeTeam": "Argentina",
-      "awayTeam": "Cape Verde",
-      "homeScore": 3,
-      "awayScore": 2,
-      "date": "2026-07-03",
       "stage": "Round of 32"
     }
   ],
@@ -993,7 +994,7 @@
       ]
     },
     "Edward": {
-      "total": 64,
+      "total": 70,
       "countries": {
         "Haiti": {
           "points": 0
@@ -1005,7 +1006,7 @@
           "points": 5
         },
         "France": {
-          "points": 18
+          "points": 24
         },
         "South Korea": {
           "points": 2
@@ -1033,6 +1034,14 @@
         }
       },
       "log": [
+        {
+          "country": "France",
+          "event": "QUARTER_FINALS_WIN",
+          "points": 6,
+          "date": "2026-07-09",
+          "opponent": "Morocco",
+          "matchId": 537383
+        },
         {
           "country": "France",
           "event": "LAST_16_WIN",
