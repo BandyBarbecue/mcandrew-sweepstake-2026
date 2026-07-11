@@ -1,13 +1,6 @@
 {
-  "fetchedAt": "2026-07-10T07:44:03.909783+00:00",
+  "fetchedAt": "2026-07-11T06:22:21.807142+00:00",
   "fixtures": [
-    {
-      "matchId": 537384,
-      "homeTeam": "Spain",
-      "awayTeam": "Belgium",
-      "utcDate": "2026-07-10T19:00:00Z",
-      "stage": "QUARTER_FINALS"
-    },
     {
       "matchId": 537385,
       "homeTeam": "Norway",
@@ -25,7 +18,7 @@
     {
       "matchId": 537387,
       "homeTeam": "France",
-      "awayTeam": "TBD",
+      "awayTeam": "Spain",
       "utcDate": "2026-07-14T19:00:00Z",
       "stage": "SEMI_FINALS"
     },
