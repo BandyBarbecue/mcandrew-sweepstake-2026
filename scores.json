@@ -1,6 +1,6 @@
 {
   "lastRunAt": "2026-07-11T06:22:19.728832+00:00",
-  "lastEmailAt": "2026-07-10T07:44:09.115951+00:00",
+  "lastEmailAt": "2026-07-11T06:22:30.350135+00:00",
   "processedMatchIds": [
     537327,
     537328,
@@ -1749,6 +1749,7 @@
     "Kenny|Spain|LAST_16_WIN|537379",
     "Kenny|Spain|LAST_32_WIN|537420",
     "Kenny|Spain|QUALIFY_TOP_2|qual_Spain",
+    "Kenny|Spain|QUARTER_FINALS_WIN|537384",
     "Kenny|Uruguay|GROUP_STAGE_DRAW|537370",
     "Kenny|Uruguay|GROUP_STAGE_DRAW|537372"
   ]
