@@ -1,20 +1,6 @@
 {
-  "fetchedAt": "2026-07-11T06:22:21.807142+00:00",
+  "fetchedAt": "2026-07-12T06:42:01.049230+00:00",
   "fixtures": [
-    {
-      "matchId": 537385,
-      "homeTeam": "Norway",
-      "awayTeam": "England",
-      "utcDate": "2026-07-11T21:00:00Z",
-      "stage": "QUARTER_FINALS"
-    },
-    {
-      "matchId": 537386,
-      "homeTeam": "Argentina",
-      "awayTeam": "Switzerland",
-      "utcDate": "2026-07-12T01:00:00Z",
-      "stage": "QUARTER_FINALS"
-    },
     {
       "matchId": 537387,
       "homeTeam": "France",
@@ -24,8 +10,8 @@
     },
     {
       "matchId": 537388,
-      "homeTeam": "TBD",
-      "awayTeam": "TBD",
+      "homeTeam": "England",
+      "awayTeam": "Argentina",
       "utcDate": "2026-07-15T19:00:00Z",
       "stage": "SEMI_FINALS"
     },
