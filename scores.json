@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-11T06:22:19.728832+00:00",
+  "lastRunAt": "2026-07-12T06:41:59.010278+00:00",
   "lastEmailAt": "2026-07-11T06:22:30.350135+00:00",
   "processedMatchIds": [
     537327,
@@ -60,6 +60,8 @@
     537382,
     537383,
     537384,
+    537385,
+    537386,
     537391,
     537392,
     537393,
@@ -137,6 +139,24 @@
   ],
   "recentResults": [
     {
+      "matchId": 537386,
+      "homeTeam": "Argentina",
+      "awayTeam": "Switzerland",
+      "homeScore": 3,
+      "awayScore": 1,
+      "date": "2026-07-12",
+      "stage": "Quarter-Final"
+    },
+    {
+      "matchId": 537385,
+      "homeTeam": "Norway",
+      "awayTeam": "England",
+      "homeScore": 1,
+      "awayScore": 2,
+      "date": "2026-07-11",
+      "stage": "Quarter-Final"
+    },
+    {
       "matchId": 537384,
       "homeTeam": "Spain",
       "awayTeam": "Belgium",
@@ -207,29 +227,11 @@
       "awayScore": 2,
       "date": "2026-07-05",
       "stage": "Round of 16"
-    },
-    {
-      "matchId": 537375,
-      "homeTeam": "Paraguay",
-      "awayTeam": "France",
-      "homeScore": 0,
-      "awayScore": 1,
-      "date": "2026-07-04",
-      "stage": "Round of 16"
-    },
-    {
-      "matchId": 537376,
-      "homeTeam": "Canada",
-      "awayTeam": "Morocco",
-      "homeScore": 0,
-      "awayScore": 3,
-      "date": "2026-07-04",
-      "stage": "Round of 16"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 124,
+      "total": 130,
       "countries": {
         "Qatar": {
           "points": 1
@@ -241,7 +243,7 @@
           "points": 17
         },
         "Argentina": {
-          "points": 18
+          "points": 24
         },
         "Norway": {
           "points": 16
@@ -269,6 +271,14 @@
         }
       },
       "log": [
+        {
+          "country": "Argentina",
+          "event": "QUARTER_FINALS_WIN",
+          "points": 6,
+          "date": "2026-07-12",
+          "opponent": "Switzerland",
+          "matchId": 537386
+        },
         {
           "country": "Spain",
           "event": "QUARTER_FINALS_WIN",
@@ -656,7 +666,7 @@
       ]
     },
     "Fiona": {
-      "total": 83,
+      "total": 89,
       "countries": {
         "Bosnia & Herz.": {
           "points": 5
@@ -689,13 +699,21 @@
           "points": 6
         },
         "England": {
-          "points": 17
+          "points": 23
         },
         "Colombia": {
           "points": 12
         }
       },
       "log": [
+        {
+          "country": "England",
+          "event": "QUARTER_FINALS_WIN",
+          "points": 6,
+          "date": "2026-07-11",
+          "opponent": "Norway",
+          "matchId": 537385
+        },
         {
           "country": "England",
           "event": "LAST_16_WIN",
