@@ -1,24 +1,17 @@
 {
-  "fetchedAt": "2026-07-15T06:23:03.190943+00:00",
+  "fetchedAt": "2026-07-16T06:27:04.002550+00:00",
   "fixtures": [
-    {
-      "matchId": 537388,
-      "homeTeam": "England",
-      "awayTeam": "Argentina",
-      "utcDate": "2026-07-15T19:00:00Z",
-      "stage": "SEMI_FINALS"
-    },
     {
       "matchId": 537389,
       "homeTeam": "France",
-      "awayTeam": "TBD",
+      "awayTeam": "England",
       "utcDate": "2026-07-18T21:00:00Z",
       "stage": "THIRD_PLACE"
     },
     {
       "matchId": 537390,
       "homeTeam": "Spain",
-      "awayTeam": "TBD",
+      "awayTeam": "Argentina",
       "utcDate": "2026-07-19T19:00:00Z",
       "stage": "FINAL"
     }
