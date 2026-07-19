@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-18T06:11:29.703657+00:00",
+  "lastRunAt": "2026-07-19T06:38:23.230411+00:00",
   "lastEmailAt": "2026-07-16T06:27:08.031356+00:00",
   "processedMatchIds": [
     537327,
@@ -64,6 +64,7 @@
     537386,
     537387,
     537388,
+    537389,
     537391,
     537392,
     537393,
@@ -140,6 +141,15 @@
     "Ghana"
   ],
   "recentResults": [
+    {
+      "matchId": 537389,
+      "homeTeam": "France",
+      "awayTeam": "England",
+      "homeScore": 4,
+      "awayScore": 6,
+      "date": "2026-07-18",
+      "stage": "3rd Place Play-off"
+    },
     {
       "matchId": 537388,
       "homeTeam": "England",
@@ -219,15 +229,6 @@
       "homeScore": 1,
       "awayScore": 4,
       "date": "2026-07-07",
-      "stage": "Round of 16"
-    },
-    {
-      "matchId": 537379,
-      "homeTeam": "Portugal",
-      "awayTeam": "Spain",
-      "homeScore": 0,
-      "awayScore": 1,
-      "date": "2026-07-06",
       "stage": "Round of 16"
     }
   ],
@@ -684,7 +685,7 @@
       ]
     },
     "Fiona": {
-      "total": 89,
+      "total": 94,
       "countries": {
         "Bosnia & Herz.": {
           "points": 5
@@ -717,13 +718,21 @@
           "points": 6
         },
         "England": {
-          "points": 23
+          "points": 28
         },
         "Colombia": {
           "points": 12
         }
       },
       "log": [
+        {
+          "country": "England",
+          "event": "THIRD_PLACE_WIN",
+          "points": 5,
+          "date": "2026-07-18",
+          "opponent": "France",
+          "matchId": 537389
+        },
         {
           "country": "England",
           "event": "QUARTER_FINALS_WIN",
