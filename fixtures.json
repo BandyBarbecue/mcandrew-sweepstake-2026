@@ -1,12 +1,4 @@
 {
-  "fetchedAt": "2026-07-19T06:38:24.785394+00:00",
-  "fixtures": [
-    {
-      "matchId": 537390,
-      "homeTeam": "Spain",
-      "awayTeam": "Argentina",
-      "utcDate": "2026-07-19T19:00:00Z",
-      "stage": "FINAL"
-    }
-  ]
+  "fetchedAt": "2026-07-20T06:55:49.204404+00:00",
+  "fixtures": []
 }
