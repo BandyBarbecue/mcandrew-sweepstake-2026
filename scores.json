@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-07-19T06:38:23.230411+00:00",
+  "lastRunAt": "2026-07-20T06:55:47.489598+00:00",
   "lastEmailAt": "2026-07-19T06:38:28.058883+00:00",
   "processedMatchIds": [
     537327,
@@ -65,6 +65,7 @@
     537387,
     537388,
     537389,
+    537390,
     537391,
     537392,
     537393,
@@ -141,6 +142,15 @@
     "Ghana"
   ],
   "recentResults": [
+    {
+      "matchId": 537390,
+      "homeTeam": "Spain",
+      "awayTeam": "Argentina",
+      "homeScore": 1,
+      "awayScore": 0,
+      "date": "2026-07-19",
+      "stage": "Final"
+    },
     {
       "matchId": 537389,
       "homeTeam": "France",
@@ -221,20 +231,11 @@
       "awayScore": 2,
       "date": "2026-07-07",
       "stage": "Round of 16"
-    },
-    {
-      "matchId": 537380,
-      "homeTeam": "USA",
-      "awayTeam": "Belgium",
-      "homeScore": 1,
-      "awayScore": 4,
-      "date": "2026-07-07",
-      "stage": "Round of 16"
     }
   ],
   "participants": {
     "Kenny": {
-      "total": 146,
+      "total": 161,
       "countries": {
         "Qatar": {
           "points": 1
@@ -258,7 +259,7 @@
           "points": 7
         },
         "Spain": {
-          "points": 31
+          "points": 46
         },
         "Belgium": {
           "points": 16
@@ -274,6 +275,14 @@
         }
       },
       "log": [
+        {
+          "country": "Spain",
+          "event": "FINAL_WIN",
+          "points": 15,
+          "date": "2026-07-19",
+          "opponent": "Argentina",
+          "matchId": 537390
+        },
         {
           "country": "Argentina",
           "event": "SEMI_FINALS_WIN",
