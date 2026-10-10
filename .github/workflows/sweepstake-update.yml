@@ -46,6 +46,7 @@ jobs:
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_SENDER: edward.mcandrew20@gmail.com
+          DIGEST_RECIPIENTS: ${{ secrets.DIGEST_RECIPIENTS }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
 

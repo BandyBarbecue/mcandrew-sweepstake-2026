@@ -18,6 +18,13 @@ if not GMAIL_APP_PASSWORD:
 SITE_URL = "https://BandyBarbecue.github.io/mcandrew-sweepstake-2026"
 
 
+def get_recipients():
+    """Recipients come from the DIGEST_RECIPIENTS secret (comma-separated), so no
+    addresses are stored in this public repo."""
+    raw = os.getenv("DIGEST_RECIPIENTS", "")
+    return [addr.strip() for addr in raw.split(",") if addr.strip()]
+
+
 def event_key(owner, entry):
     """Stable identity for a log entry, used to track what has been emailed."""
     return f"{owner}|{entry.get('country', '')}|{entry.get('event', '')}|{entry.get('matchId', '')}"
@@ -308,9 +315,12 @@ def main():
     if test_mode:
         subject = f"[TEST] {subject}"
 
-    recipients = [GMAIL_SENDER] if test_mode else list(participants["emails"].values())
+    recipients = [GMAIL_SENDER] if test_mode else get_recipients()
     if not recipients:
-        raise ValueError("No recipients found in participants.json emails")
+        # Warn loudly in the Actions UI, but don't fail the daily chain or mark
+        # events as emailed - they'll be sent once the secret is set.
+        print("::warning::DIGEST_RECIPIENTS is not set - skipping email.")
+        return
     html_body = build_email_html(
         scores, new_events if new_events else [],
         flag_codes=flag_codes, fixtures=fixtures,
